@@ -1,0 +1,225 @@
+.portal-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #FFF 0%, #FAEFDD 100%);
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .portal-wrapper {
+        padding: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .portal-wrapper {
+        padding: 3rem;
+    }
+}
+
+.portal-grid {
+    border-radius: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 80rem;
+    justify-content: center;
+    margin: 0px auto;
+}
+
+@media (min-width: 1024px) {
+    .portal-grid {
+        border-radius: 32px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .video-thumbnail {
+        width: 40rem;
+        height: 11rem;
+    }
+}
+
+.portal-section {
+    border-radius: 32px;
+    overflow-y: scroll;
+    background: #FAEFDD;
+    display: flex;
+    height: 80vh;
+    width: 45vw;
+    padding: 30px;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.portal-heading {
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 18px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+.portal-heading.green {
+    background-color: #778933;
+}
+
+.portal-heading.orange {
+    background-color: #F4AC1A;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Video Cards */
+.video-card {
+    border-radius: 24px;
+    background: #FFF;
+    display: flex;
+    width: 816px;
+    height: 180px;
+    padding-right: 59px;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+}
+
+@media (min-width: 640px) {
+    .video-card {
+        flex-direction: row;
+    }
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 15rem;
+    border-radius: 24px 0px 0px 24px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .video-thumbnail {
+        width: 40vw;
+        height: 20vh;
+    }
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-white {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+}
+
+/* Text Cards */
+.text-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: #778933;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    color: #4a4a4a;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    color: #778933;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+    color: #111827;
+}
+
+.arrow-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.video-card {
+    border-radius: 24px;
+    background: #FFF;
+    display: flex;
+    width: 41vw;
+    height: 20vh;
+    padding-right: 59px;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-title-1 {
+    margin-bottom: 1rem;
+    color: #1C4D2F;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.card-description-1 {
+    color: #555;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    align-self: stretch;
+}
+
+.main-heading-section {
+    margin-bottom: 3rem;
+    align-self: stretch;
+    text-align: center;
+}
+
+.main-heading-section h1 {
+    color: #2B2B2B;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.main-heading-section p {
+    color: #555;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+}

@@ -1,0 +1,89 @@
+.header-content {
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.header-content h1 {
+    font-size: 5vw;
+    color: black;
+    font-weight: 700;
+}
+
+.header-content p {
+    font-size: 2vw;
+    color: rgb(146, 146, 146);
+}
+
+.message-card {
+    padding: 2rem 2rem;
+    text-align: center;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    border: solid 1px;
+    border-color: gray;
+}
+
+.message-card h1 {
+    font-size: 1.6vw;
+    font-weight: 500;
+}
+
+.message-card p {
+    color: gray;
+    margin-top: 0.5rem;
+    font-size: 1.2vw;
+}
+
+@media (max-width:768px) {
+    .header-content h1 {
+        font-size: 3vw;
+        color: black;
+        font-weight: 700;
+    }
+
+    .header-content p {
+        font-size: 1.5vw;
+        color: rgb(146, 146, 146);
+    }
+}
+
+@media(max-width:1024px) {
+    .header-content h1 {
+        font-size: 4vw;
+        color: black;
+        font-weight: 700;
+    }
+
+    .header-content p {
+        font-size: 1.5vw;
+        color: rgb(146, 146, 146);
+    }
+}
+
+@media (max-width:1440px) {
+    .header-content h1 {
+        font-size: 3.5vw;
+        color: black;
+        font-weight: 700;
+    }
+
+    .header-content p {
+        font-size: 1.6vw;
+        color: rgb(146, 146, 146);
+    }
+}
+
+@media (min-width: 1441px) {
+    .header-content h1 {
+        font-size: 3vw;
+        color: black;
+        font-weight: 700;
+    }
+
+    .header-content p {
+        font-size: 1.4vw;
+        color: rgb(146, 146, 146);
+    }
+}

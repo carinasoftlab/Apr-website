@@ -1,0 +1,325 @@
+.data-section {
+    display: flex;
+    padding: 47.569px 74px 113px 74px;
+    flex-direction: column;
+    align-items: center;
+    gap: 52.431px;
+    align-self: stretch;
+    background: #1E4C30;
+}
+
+.live-data-section {
+    background: linear-gradient(to bottom right, #000000, #1f2937, #1f2937);
+    padding: 2rem 1.5rem;
+    color: var(--Discription-text);
+    text-align: center;
+}
+
+/* Container */
+.live-data-container {
+    padding: 2rem 0rem;
+}
+
+.live-data-heading {
+    text-align: center;
+}
+
+/* Title */
+.live-data-title {
+    color: #FFF;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 2rem;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+.live-data-grid {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+}
+
+.live-data-card {
+    position: relative;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    height: 16vw;
+    width: 20vw;
+}
+
+.card-image {
+    opacity: 100;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlays */
+.card-overlay-teal {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 206, 93, 0.75) 0%, rgba(0, 206, 93, 0.75) 100%);
+    opacity: 70;
+}
+
+.card-overlay-Tangerine {
+    position: absolute;
+    inset: 0;
+    background: #F4AC1A;
+    opacity: 0.8;
+}
+
+.card-overlay-blue {
+    position: absolute;
+    inset: 0;
+    background: #1C71F0;
+    opacity: 0.7;
+}
+
+.card-overlay-green {
+    position: absolute;
+    inset: 0;
+    background: #00CD85;
+    opacity: 0.7;
+}
+
+
+
+/* Card content */
+.card-content {
+    margin-top: 3rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vw;
+    padding: 2.5rem 0;
+}
+
+.card-number {
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 65px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 90.189px;
+}
+
+.card-label {
+    color: #FFF;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    border-radius: 15.391px;
+    background: #1E4C30;
+    display: flex;
+    padding: 16px 30.141px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card-number-2 {
+    z-index: 99;
+    color: #FFF;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 90.189px;
+}
+
+.card-label-2 {
+    text-align: center;
+    font-size: 1.2vw;
+    font-family: "Montserrat", sans-serif;
+    padding: 12px 1rem;
+    border-radius: 15px;
+    font-weight: 700;
+    background-color: #59460F;
+    color: white;
+}
+
+.card-number-3 {
+    z-index: 99;
+    color: #FFF;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 90.189px;
+}
+
+.card-label-3 {
+    text-align: center;
+    font-size: 1.2vw;
+    font-family: "Montserrat", sans-serif;
+    padding: 12px 1rem;
+    border-radius: 15px;
+    font-weight: 700;
+    background-color: #1D4070;
+    color: white;
+}
+
+.card-number-4 {
+    z-index: 99;
+    color: #FFF;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 90.189px;
+}
+
+.card-label-4 {
+    text-align: center;
+    font-size: 1.2vw;
+    font-family: "Montserrat", sans-serif;
+    padding: 12px 1rem;
+    border-radius: 15px;
+    font-weight: 700;
+    background-color: #1E4C30;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .live-data-section {
+        padding: 2rem 2rem;
+    }
+
+    .live-data-heading {
+        padding: 1rem 2rem;
+    }
+
+    .live-data-title {
+        font-size: 8vw;
+    }
+
+    .live-data-description {
+        margin-bottom: 0rem;
+        font-size: 2.4vw;
+    }
+
+    .card-content {
+        margin-top: 1rem;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 2.5rem 0;
+    }
+
+    .card-number {
+        font-size: 15vw;
+        font-weight: bold;
+        margin-bottom: 0rem;
+    }
+
+    .card-label {}
+
+    .card-label-2 {
+        padding: 10px 12px;
+        font-size: 3vw;
+    }
+
+    .card-number-2 {
+        font-size: 10vw;
+    }
+
+    .card-label {
+
+        font-size: 1rem;
+        padding: 6px 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        background-color: #009E84;
+        color: white;
+    }
+
+    .live-data-card {
+        height: 50vw;
+        width: auto;
+    }
+
+    .live-data-grid {
+        margin-top: 0px;
+        padding: 2rem 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .data-section {
+        padding: 2rem;
+        position: relative;
+        background-color: var(--color-black);
+    }
+
+    .live-data-grid {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .live-data-card {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        height: 20vw;
+        width: 30vw;
+    }
+
+    .card-number {
+        font-size: 5vw;
+        font-weight: bold;
+        margin-bottom: 0rem;
+    }
+
+    .card-content {
+        margin-top: 0px;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 20vw;
+        padding: 1rem 0;
+    }
+
+    .card-label {
+        /* margin-top: -1rem; */
+        font-size: 1vw;
+        padding: 8px 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        background-color: #009E84;
+        color: white;
+    }
+
+    .card-label-2 {
+        padding: 6px 12px;
+        font-size: 1.5vw;
+    }
+}

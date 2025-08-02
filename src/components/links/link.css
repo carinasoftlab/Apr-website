@@ -1,0 +1,44 @@
+.important-links-section {
+    padding: 4rem 0rem;
+    background: linear-gradient(180deg, #FAEFDD 0%, #FFF 100%);
+}
+
+.header {
+
+    color: #000000;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal
+}
+
+.link-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 3rem;
+}
+
+.content-img {
+    border-radius: 28px;
+    background: #FFF;
+    display: flex;
+    width: 15vw;
+    padding: 27px 48px 21.223px 48px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 13.777px;
+}
+
+.content-img h2 {
+    color: #000;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+}
+

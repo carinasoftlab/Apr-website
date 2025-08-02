@@ -1,0 +1,220 @@
+/* Base Styles */
+.schemes-section {
+    align-items: center;
+    position: relative;
+    background: linear-gradient(180deg, #FAEFDD 0%, #FFF 100%);
+    padding: 4rem 1rem;
+    text-align: center;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.schemes-heading {
+    color: var(--Text-Primary, #2B2B2B);
+    font-family: Montserrat;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.schemes-description {
+    font-family: "Montserrat", sans-serif;
+    margin: 1rem 0rem;
+    color: #484848;
+    font-size: 1.5vw;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Cards Layout */
+.schemes-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: auto;
+    width: 100%;
+}
+
+/* Dropdown Card */
+.dropdown-container {
+    width: 20vw;
+    padding: 1rem;
+    border-radius: 45px;
+    background: linear-gradient(180deg, #58AE7B 0%, #1B4C2F 100%);
+    box-shadow: 0 42px 27.8px -19px rgba(0, 0, 0, 0.36);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dropdown Button */
+.dropdown-button {
+    width: 100%;
+    height: 10vh;
+    font-family: Montserrat;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    color: var(--Text-White, #FFF);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-button:hover {
+    transform: translateY(-2px);
+}
+
+.pb-dropdown {
+    right: 1rem;
+    left: 5rem;
+}
+
+/* Arrow Rotation */
+.arrow {
+    font-size: 2.5vw;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out;
+}
+
+.arrow.rotate {
+    transform: rotate(90deg);
+}
+
+/* Dropdown Content */
+.dropdown-content-inline {
+    padding-inline: 1rem;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown-content-inline.open {
+    border-radius: 35px;
+    height: 30vh;
+    margin-top: 1.5rem;
+    max-height: 500px;
+    background-color: white;
+    opacity: 1;
+}
+
+/* Dropdown Items */
+.dropdown-item-inline {
+    padding: 1rem;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    padding: 0 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item-inline:hover {
+    background-color: #d7ffe7;
+    border-radius: 35px;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.arrow.subtle {
+    opacity: 0.7;
+    font-size: 1.2rem;
+    transition: opacity 0.2s ease;
+}
+
+.dropdown-item-inline:hover .arrow.subtle {
+    opacity: 1;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1200px) {
+    .schemes-heading {
+        font-size: 2.8rem;
+    }
+
+    .dropdown-button {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .schemes-heading {
+        font-size: 2.2rem;
+    }
+
+    .schemes-description {
+        font-size: 1rem;
+    }
+
+    .dropdown-container {
+        min-width: 218px;
+        max-width: 300px;
+        width: 30vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .schemes-heading {
+        font-size: 2rem;
+    }
+
+    .schemes-description {
+        font-size: 1.8vw;
+    }
+
+    .schemes-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown-container {
+        width: 100%;
+    }
+
+    .dropdown-button {
+        font-size: 1.5rem;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .schemes-heading {
+        font-size: 1.75rem;
+    }
+
+    .schemes-description {
+        font-size: 3.4vw;
+    }
+
+    .dropdown-button {
+        font-size: 1.25rem;
+    }
+
+    .arrow {
+        font-size: 7vw;
+    }
+}
+
+@media (max-width: 360px) {
+    .dropdown-button {
+        font-size: 1rem;
+    }
+
+    .schemes-description {
+        font-size: 4vw;
+    }
+}

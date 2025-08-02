@@ -1,0 +1,561 @@
+/* Global */
+* {
+    font-family: 'Inter', sans-serif, system-ui;
+}
+
+/* Backdrop */
+.district-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+/* Modal Container */
+.district-modal-container {
+    background-color: white;
+    width: 100%;
+    max-width: 64rem;
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    position: relative;
+    overflow-y: auto;
+    max-height: 90vh;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Close Button */
+.district-close-button {
+    padding: 12px 20px;
+    font-weight: 900;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 1.5rem;
+    color: black;
+    transition: color 0.2s ease;
+    background: whitesmoke;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.district-close-button:hover {
+    color: white;
+    background: rgb(255, 75, 75);
+}
+
+/* Header */
+.district-header {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+}
+
+/* Meta Info */
+.district-meta {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+/* Grid */
+.district-grid-card {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+/* Cards */
+.district-card {
+    background-color: #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.district-title {
+    text-align: center;
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.district-subtitle {
+    text-align: center;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: #374151;
+}
+
+.district-inner-card {
+    background: #ffffff;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Schemes */
+.district-schemes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.scheme-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.scheme-label {
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+}
+
+.dot-light {
+    background-color: #8b8b8b;
+}
+
+.dot-dark {
+    background-color: #dadada;
+}
+
+/* Stats Box */
+.district-box-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.info-box {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.info-box h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+.district-box-grid-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-box-1 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.info-box-1 h3 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #4b5563;
+}
+
+.info-box p {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* FC Section */
+.fc-section {
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    font-weight: 700;
+    color: #111827;
+    text-align: center;
+    background-color: #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.info-box-fc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+.info-box-fc h3 {
+    font-size: 3vw;
+}
+
+
+.info-box-fc p {
+    font-size: clamp(1rem, 1.6vw, 1.8rem);
+}
+
+.infra-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+/* Tags */
+.tag-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tag-badge {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    color: white;
+    white-space: nowrap;
+}
+
+.bg-green {
+    background-color: #10b981;
+}
+
+.bg-red {
+    background-color: #ef4444;
+}
+
+.bg-purple {
+    background-color: #8b5cf6;
+}
+
+.bg-gray {
+    background-color: #9ca3af;
+}
+
+/* Footer */
+.district-footer {
+    text-align: end;
+    margin-top: 2rem;
+}
+
+/* Responsive: Small devices */
+@media (max-width: 767px) {
+
+    .header-popup {
+        position: sticky;
+        top: -25px;
+        background-color: white;
+        z-index: 10;
+        padding: 0.5rem;
+    }
+
+    /* Header styles */
+    .district-header {
+        text-align: center;
+        font-size: clamp(0.5rem, 4vw, 2.25rem);
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Modal container with scrollable content */
+    .district-modal-container {
+        position: relative;
+        padding: 1rem;
+        max-height: 65vh;
+        overflow-y: auto;
+        /* Enables scrolling */
+    }
+
+    .info-box-1 h3 {
+        font-size: 2.5vw;
+        font-weight: 700;
+        color: #4b5563;
+    }
+
+    .district-box-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 0.5rem;
+    }
+
+    .info-box-1 p {
+        font-size: 3vw;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    .district-grid-card,
+    .district-card {
+        border-radius: 1rem;
+        background-color: #e5e7eb;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .district-grid-1 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .district-title {
+        text-align: center;
+        font-size: clamp(1.2rem, 2vw, 2rem);
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 0.5rem;
+    }
+
+    .fc-section {
+        padding: 1rem 0rem;
+    }
+
+    .district-subtitle,
+    .fc-section,
+    .info-box-fc p {
+        font-size: 3vw;
+    }
+
+    .info-box {
+        padding: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .info-box p {
+        font-size: 3vw;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    .info-box-1 {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        background: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .district-inner-card {
+        background: #ffffff;
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+
+    .info-box-fc {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+
+    .info-box-fc h3,
+    .info-box h3 {
+        font-size: 2.5vw;
+        font-weight: 600;
+        color: #4b5563;
+        margin-bottom: 0rem;
+    }
+
+    .scheme-label {
+        font-weight: 700;
+        font-size: 3vw;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .district-close-button {
+        padding: 6px 12px;
+        top: 1rem;
+        right: 0rem;
+        font-size: 1rem;
+    }
+
+    .district-footer {
+        font-size: 2.5vw;
+        text-align: end;
+        margin-top: 1rem;
+    }
+}
+
+/* Responsive: Medium tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .header-popup {
+        position: sticky;
+        top: -25px;
+        background-color: white;
+        z-index: 10;
+        padding: 0.5rem;
+    }
+
+    .district-header {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: clamp(0.5rem, 3vw, 2.25rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #1f2937;
+    }
+
+    .district-modal-container {
+        background-color: white;
+        width: 78%;
+        max-width: 50rem;
+        border-radius: 1.25rem;
+        padding: 1rem;
+        position: relative;
+        overflow-y: auto;
+        max-height: 62vh;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .district-close-button {
+        padding: 4px 12px;
+        font-weight: 900;
+        position: absolute;
+        top: 12px;
+        right: 0px;
+        font-size: 1.5rem;
+        color: black;
+        transition: color 0.2s ease;
+        background: whitesmoke;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .district-grid-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .district-box-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .district-box-grid-1 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .info-box-fc {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-box-fc h3 {
+        font-size: 1.7vw;
+    }
+
+    .info-box-fc p {
+        font-size: 2.5vw;
+    }
+
+    .info-box-1 {
+        align-items: center;
+        gap: 3rem;
+        display: flex;
+        justify-content: space-between;
+        background: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-box-1 h3 {
+        font-size: 1.7vw;
+        font-weight: 700;
+        color: #4b5563;
+    }
+
+    .info-box p {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #111827;
+    }
+}
+
+/* Responsive: Large screens */
+@media (min-width: 1025px) {
+    .district-grid-card {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .info-box-fc h3 {
+        font-size: 1vw;
+    }
+
+    .info-box-fc p {
+        font-size: 1.4vw;
+    }
+}

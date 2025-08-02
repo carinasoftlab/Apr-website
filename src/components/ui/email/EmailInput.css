@@ -1,0 +1,556 @@
+.email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.email-label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: start;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.email-input {
+    height: 3vw;
+    opacity: 70%;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+
+.email-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.grievance-label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: start;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.email-submit-button {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.email-submit-button:hover {
+    background-color: #1d4ed8;
+}
+
+.email-success-message {
+    font-size: 0.875rem;
+    color: #16a34a;
+}
+
+.message-textarea {
+    opacity: 70%;
+    font-weight: 400;
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    resize: vertical;
+    font-size: 2vw;
+    line-height: 1.5;
+    color: #374151;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.message-textarea {
+    opacity: 70%;
+    font-weight: 400;
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    resize: vertical;
+    font-size: 3vw;
+    line-height: 1.5;
+    color: #374151;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-card h1 {
+    font-size: 5vw;
+    font-weight: 500;
+}
+
+.message-card p {
+    color: gray;
+    margin-top: 0.5rem;
+    font-size: 3vw;
+}
+
+.email-form-wrapper {
+    border-radius: 12px;
+    border: solid 1px;
+    border-color: rgb(181, 181, 181);
+    max-width: 35rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    padding: 1rem;
+    background-color: white;
+}
+
+.message-container {
+    margin: 2rem auto;
+    max-width: 90vw;
+    width: 93vw;
+}
+
+.grievance-label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: start;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.email-submit-button {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.email-submit-button:hover {
+    background-color: #1d4ed8;
+}
+
+.email-success-message {
+    font-size: 0.875rem;
+    color: #16a34a;
+}
+
+.email-label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: start;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.email-input {
+    height: 10vw;
+    opacity: 70%;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+
+.email-submit-button {
+    width: auto;
+    margin-top: 1rem;
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .message-card {
+        padding: 1rem;
+        text-align: center;
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        justify-content: center;
+        border: solid 1px;
+        border-color: gray;
+    }
+
+    .message-card h1 {
+        font-size: 3vw;
+        font-weight: 500;
+    }
+
+    .message-card p {
+        color: gray;
+        margin-top: 0.3rem;
+        font-size: 1.5vw;
+    }
+
+    .email-form-wrapper {
+        border-radius: 12px;
+        border: solid 1px;
+        border-color: rgb(181, 181, 181);
+        max-width: 40rem;
+        margin: 1rem auto;
+        padding: 1rem;
+        background-color: white;
+    }
+
+    .email-label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: start;
+        font-size: 2vw;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1rem;
+    }
+
+    .email-input {
+        height: 6vw;
+        opacity: 70%;
+        font-weight: 400;
+        padding: 0.5rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        outline: none;
+        transition: box-shadow 0.2s;
+    }
+
+    .email-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .message-textarea {
+        opacity: 70%;
+        font-weight: 400;
+        padding: 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        resize: vertical;
+        font-size: 1.5vw;
+        line-height: 1;
+        color: #374151;
+        background-color: #ffffff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .email-submit-button {
+        width: auto;
+        margin-top: 1rem;
+        background-color: #2563eb;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .message-card {
+        margin: 1rem auto;
+        width: 50vw;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        justify-content: center;
+        border: solid 1px;
+        border-color: gray;
+    }
+
+    .message-card h1 {
+        font-size: 3vw;
+        font-weight: 500;
+    }
+
+    .message-card p {
+        color: gray;
+        margin-top: 0.3rem;
+        font-size: 1.5vw;
+    }
+
+    .email-form-wrapper {
+        border-radius: 12px;
+        border: solid 1px;
+        border-color: rgb(181, 181, 181);
+        max-width: 40rem;
+        margin: 1rem auto;
+        padding: 1rem;
+        background-color: white;
+    }
+
+    .email-label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: start;
+        font-size: 2vw;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1rem;
+    }
+
+    .email-input {
+        height: 6vw;
+        opacity: 70%;
+        font-weight: 400;
+        padding: 0.5rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        outline: none;
+        transition: box-shadow 0.2s;
+    }
+
+    .email-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .message-textarea {
+        opacity: 70%;
+        font-weight: 400;
+        padding: 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        resize: vertical;
+        font-size: 1.5vw;
+        line-height: 1;
+        color: #374151;
+        background-color: #ffffff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .email-submit-button {
+        width: auto;
+        margin-top: 1rem;
+        background-color: #2563eb;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .message-card {
+        margin: 1rem auto;
+        width: 50vw;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        justify-content: center;
+        border: solid 1px;
+        border-color: gray;
+    }
+
+    .message-card h1 {
+        font-size: 3vw;
+        font-weight: 500;
+    }
+
+    .message-card p {
+        color: gray;
+        margin-top: 0.3rem;
+        font-size: 1.5vw;
+    }
+
+    .email-form-wrapper {
+        border-radius: 12px;
+        border: solid 1px;
+        border-color: rgb(181, 181, 181);
+        max-width: 40rem;
+        margin: 1rem auto;
+        padding: 1rem;
+        background-color: white;
+    }
+
+    .email-label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: start;
+        font-size: 2vw;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1rem;
+    }
+
+    .email-input {
+        height: 6vw;
+        opacity: 70%;
+        font-weight: 400;
+        padding: 0.5rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        outline: none;
+        transition: box-shadow 0.2s;
+    }
+
+    .email-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .message-textarea {
+        opacity: 70%;
+        font-weight: 400;
+        padding: 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        resize: vertical;
+        font-size: 1.5vw;
+        line-height: 1.5;
+        color: #374151;
+        background-color: #ffffff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .email-submit-button {
+        width: auto;
+        margin-top: 1rem;
+        background-color: #2563eb;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+}
+
+@media (min-width: 1441px) {
+    .message-card {
+        margin: 1rem auto;
+        width: 50vw;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        justify-content: center;
+        border: solid 1px;
+        border-color: gray;
+    }
+
+    .message-card h1 {
+        font-size: 1.5vw;
+        font-weight: 500;
+    }
+
+    .message-card p {
+        color: gray;
+        margin-top: 0.3rem;
+        font-size: 1vw;
+    }
+
+    .email-form-wrapper {
+        border-radius: 12px;
+        border: solid 1px;
+        border-color: rgb(181, 181, 181);
+        max-width: 50vw;
+        margin: 0.5rem auto;
+        padding: 2rem;
+        background-color: white;
+    }
+
+    .email-label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: start;
+        font-size: 1.2vw;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1rem;
+    }
+
+    .email-input {
+        height: 3vw;
+        opacity: 70%;
+        font-weight: 400;
+        font-size: 1vw;
+        padding: 0.5rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        outline: none;
+        transition: box-shadow 0.2s;
+    }
+
+    .email-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .message-textarea {
+        opacity: 70%;
+        font-weight: 400;
+        padding: 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        resize: vertical;
+        font-size: 1vw;
+        line-height: 1.5;
+        color: #374151;
+        background-color: #ffffff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .email-submit-button {
+        width: auto;
+        margin-top: 1rem;
+        background-color: #2563eb;
+        color: white;
+        padding: 1rem;
+        border-radius: 0.375rem;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .grievance-label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: start;
+        font-size: 1.2vw;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1rem;
+    }
+}
