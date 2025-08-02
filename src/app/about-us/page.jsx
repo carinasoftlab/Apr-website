@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import Link from "@/components/links/page";
 import Footer from "@/components/footer/page";
+import Header from "@/components/Header/Header";
 
 export default function page() {
  const stats = [
@@ -15,6 +16,7 @@ export default function page() {
   ]
   return (
     <>
+<Header />
        <section className="2xl:py-36 xl:py-32 py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-prime-bg">
       <div className="max-w-11/12 mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

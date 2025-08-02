@@ -7,11 +7,12 @@ import Footer from "../components/footer/page";
 import About from "../components/about/page";
 import Links from "../components/links/page"
 import Quote from "../components/quote/page"
+import Header from "@/components/Header/Header";
 
 export default function Home() {
   return (
     <main>
-      {/* <Header /> */}
+      <Header />
       <Hero />
       <Quote />
       <Map />

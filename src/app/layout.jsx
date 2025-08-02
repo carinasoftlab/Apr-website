@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${montserrat.variable} ${poppins.variable} ${plusJakartaSans.variable}`}
       >
-        <Header />
+        {/* <Header /> */}
         {children}
       </body>
     </html>

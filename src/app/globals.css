@@ -40,6 +40,7 @@
   --prime-color: #1C4D2F;
   --prime-bg-color: #FAEFDD;
   --second-color: #F4AC1A;
+  --olive-color: #778933;
   --font-mont: 'Montserrat', system-ui, sans-serif;
 
 }
@@ -100,6 +101,7 @@ body {
   --color-prime: var(--prime-color);
   --color-second: var(--second-color);
   --color-prime-bg: var(--prime-bg-color);
+  --color-olive: var(--olive-color);
   --font-mont: var(--font-mont);
 }
 

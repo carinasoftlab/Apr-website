@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import { Mail, MapPin } from "lucide-react";
 import Link from "@/components/links/page";
 import Footer from "@/components/footer/page";
+import Header from "@/components/Header/Header";
 
 export default function Page() {
   return (
     <>
+    <Header />
       <section className="py-16 px-4 sm:px-6 lg:px-8 xl:py-40 bg-gradient-to-b from-white to-prime-bg font-mont">
         <div className="max-w-[90rem] mx-auto">
           <div className="grid lg:grid-cols-2 gap-y-12 items-center">

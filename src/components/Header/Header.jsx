@@ -107,12 +107,10 @@ const Header = () => {
                         SOR
                       </Link>
                     </li>
-                    <li onClick={closeMobileMenu}>
+                    <li onClick={closeMobileMenu} >
                       <Link
-                        href="/schemes/grants"
-                        className={
-                          activeHash === "/schemes/grants" ? "active" : ""
-                        }
+                        href="/scheme-fc-grants"
+                        className={`w-full  ${activeHash === "/scheme-fc-grants" ? "active" : ""} `}
                       >
                         FC Grants
                       </Link>
@@ -170,9 +168,9 @@ const Header = () => {
             </div>
           </div>
 
-          <a className="login" href="">
+          <Link className="login" href="/login">
             LOGIN
-          </a>
+          </Link>
         </div>
       </div>
     </section>
