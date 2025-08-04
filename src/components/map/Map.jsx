@@ -880,7 +880,7 @@ export default function Map() {
       )}
 
       <Image
-        src="/images/Map.png"
+        src="/images/map.svg"
         alt="Map Background"
         fill={true}
         className="map-bg-image"
@@ -888,8 +888,8 @@ export default function Map() {
       />
 
       <div className="map-overlay-white" />
-      <div className="map-overlay-left" />
-      <div className="map-overlay-right" />
+      {/* <div className="map-overlay-left" />
+      <div className="map-overlay-right" /> */}
 
       <motion.div
         className="map-text"

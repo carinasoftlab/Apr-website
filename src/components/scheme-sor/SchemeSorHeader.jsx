@@ -51,7 +51,7 @@ export function SchemeSorHeader() {
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-start">
           {/* Left Column: SOP List or Skeleton */}
           <div className="space-y-6">
-            <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-green-700">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-prime">
               Standard Operating Procedure
             </h2>
             <ul className="flex flex-col gap-6 text-sm md:text-base text-gray-700">

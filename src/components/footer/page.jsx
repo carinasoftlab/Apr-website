@@ -83,37 +83,23 @@ export default function Footer() {
           <div className="footer-contact-item">
             <MapPin className="footer-icon" />
             <p>
-              Revenue Department,<br/> Arunachal Pradesh Ground Floor,<br/> Vallabh Bhavan
-              - 2, Ministry,<br/> Area Hills, Arunachal Pradesh - 790104
+              Revenue Department,
+              <br /> Arunachal Pradesh Ground Floor,
+              <br /> Vallabh Bhavan - 2, Ministry,
+              <br /> Area Hills, Arunachal Pradesh - 790104
             </p>
           </div>
         </div>
 
-        {/* Submit Your RTI Section */}
-        {/* <div className="footer-rti">
-          <Card className="footer-card">
-            <CardHeader className="footer-card-header">
-              <CardTitle className="footer-card-title">
-                Submit Your RTI
-              </CardTitle>
-              <CardDescription className="footer-card-description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="footer-card-content">
-              <Input
-                type="email"
-                placeholder="Enter your email address"
-                className="footer-input"
-              />
-              <Button className="footer-button">SUBMIT</Button>
-            </CardContent>
-          </Card>
-          <p className="footer-note">
-            Please use the form below to submit any grievance you may have.
+        <div>
+          <p className="rti-text">
+            For RTI and grievance related queries,
+            <br /> mail us at:{" "}
+            <Link href="mailto:support@example.com" className="rti-email">
+              support@example.com
+            </Link>
           </p>
-        </div> */}
+        </div>
       </div>
 
       {/* Copyright Notice */}

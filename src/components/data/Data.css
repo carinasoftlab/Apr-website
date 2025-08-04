@@ -39,7 +39,7 @@
 
 .live-data-grid {
     display: flex;
-    gap: 5rem;
+    gap: 3rem;
     justify-content: center;
 }
 
@@ -195,7 +195,7 @@
     color: white;
 }
 
-@media (max-width: 768px) {
+@media(max-width:480px) {
     .live-data-section {
         padding: 2rem 2rem;
     }
@@ -231,8 +231,6 @@
         margin-bottom: 0rem;
     }
 
-    .card-label {}
-
     .card-label-2 {
         padding: 10px 12px;
         font-size: 3vw;
@@ -242,8 +240,12 @@
         font-size: 10vw;
     }
 
-    .card-label {
+    .card-label-3,
+    .card-label-4 {
+        font-size: 3vw;
+    }
 
+    .card-label {
         font-size: 1rem;
         padding: 6px 1rem;
         border-radius: 50px;
@@ -259,11 +261,90 @@
 
     .live-data-grid {
         margin-top: 0px;
-        padding: 2rem 3rem;
+        padding: 0rem;
         display: flex;
         flex-direction: column;
-        gap: 5rem;
+        gap: 2rem;
         justify-content: center;
+    }
+}
+
+@media (min-width:481px) and (max-width: 768px) {
+    .live-data-section {
+        padding: 2rem 2rem;
+    }
+
+    .live-data-heading {
+        padding: 1rem 2rem;
+    }
+
+    .live-data-title {
+        font-size: 8vw;
+    }
+
+    .live-data-description {
+        margin-bottom: 0rem;
+        font-size: 2.4vw;
+    }
+
+    .card-content {
+        margin-top: 1rem;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 2.5rem 0;
+    }
+
+    .card-number {
+        font-size: 10vw;
+        font-weight: bold;
+        margin-bottom: 0rem;
+    }
+
+    .card-label-2 {
+        padding: 10px 12px;
+        font-size: 2vw;
+    }
+
+    .card-number-2 {
+        font-size: 10vw;
+    }
+
+    .card-label-3,
+    .card-label-4 {
+        font-size: 2vw;
+    }
+
+    .card-label {
+        font-size: 1rem;
+        padding: 6px 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        background-color: #009E84;
+        color: white;
+    }
+
+    .live-data-card {
+        height: 30vw;
+        width: auto;
+    }
+
+    .live-data-grid {
+        margin-top: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        justify-content: center;
+    }
+
+       .live-data-grid .live-data-card {
+        flex: 1 1 250px;
+        max-width: 300px;
+        aspect-ratio: 3 / 4;
     }
 }
 
@@ -277,6 +358,7 @@
 
     .live-data-grid {
         display: flex;
+        flex-wrap: wrap;
         gap: 2rem;
         justify-content: center;
     }

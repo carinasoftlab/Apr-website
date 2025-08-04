@@ -37,7 +37,7 @@ export function PerformanceGrantsCard() {
             {!isLoading && item.rank}
           </div>
           <div
-            className={`p-4 h-12 rounded-r-md ${
+            className={`p-4 pl-7 md:pl-14 h-12 rounded-r-md ${
               isLoading ? "bg-[#FFF8EE]" : "bg-[#FAEFDD] text-gray-800 flex items-center text-lg"
             }`}
           >

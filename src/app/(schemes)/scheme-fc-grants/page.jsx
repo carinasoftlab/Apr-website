@@ -5,7 +5,7 @@ import SchemeRelatedLinks from "@/components/scheme-fc-grants/SchemeRelatedLinks
 import TiedFunds from "@/components/scheme-fc-grants/TiedFunds";
 import UnitedFunds from "@/components/scheme-fc-grants/UnitedFunds";
 import SchemeTab from "@/components/scheme-sor/SchemeTab";
-import Dropdown from "@/components/ui/dropdown/dropdown";
+import Dropdown from "@/components/ui/dropdown/Dropdown";
 import TiedFundsPagination from "@/components/ui/pagination/TiedFundsPagination";
 import { useState } from "react";
 import Link from "@/components/links/page";
@@ -13,8 +13,8 @@ import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
 
 const page = () => {
-  const [activeTab, setActiveTab] = useState("tied-funds");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("District 1");
+  const [selectedDistrict, setSelectedDistrict] = useState("all");
 
   const DEFAULT_TABS = [
     { id: "tied-funds", label: "Tied Funds" },
@@ -80,15 +80,18 @@ const page = () => {
                   Tied Funds
                 </h1>
               </div>
-              <div className="">
-                <Dropdown />
+              <div className="flex items-center  w-[19rem]">
+                <span className="font-semibold w-full">Select District</span>
+                <Dropdown
+                  selectedDistrict={selectedDistrict}
+                  onDistrictChange={setSelectedDistrict}
+                />
               </div>
             </div>
           </div>
 
           {/* Tab Content */}
           <div className="max-w-11/12 mx-auto">
-            {" "}
             {renderTabContent(activeTab)}
           </div>
 

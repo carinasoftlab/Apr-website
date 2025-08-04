@@ -21,15 +21,10 @@ const TiedFunds = () => {
         </div>
       </div>
 
-     
-
-       {/* Dynamic BeforeAfterWork components */}
-       {TiedFundsBeforeAfterWorkData.map((item) => (
-         <BeforeAfterWork key={item.id} data={item} />
-       ))}
-
-
-     
+      {/* Dynamic BeforeAfterWork components */}
+      {TiedFundsBeforeAfterWorkData.map((item) => (
+        <BeforeAfterWork key={item.id} data={item} />
+      ))}
     </div>
   );
 };

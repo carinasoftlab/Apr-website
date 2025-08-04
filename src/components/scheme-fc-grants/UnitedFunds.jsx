@@ -5,7 +5,7 @@ import { UnitedFundsBeforeAfterWorkData } from '@/constants/scheme-fc-grants.dat
 
 const UnitedFunds = () => {
   return (
-    <div className="rounded-2xl border p-8 md:p-14 border-[#F4AC1A] bg-gradient-to-t from-prime-bg to-white overflow-hidden space-y-8">
+    <div className="rounded-2xl border p-8 md:p-14 border-[#F4AC1A] bg-gradient-to-b from-prime-bg to-white overflow-hidden space-y-8">
     {/* Card Header */}
     <div className="flex flex-col  sm:justify-between sm:items-start gap-4 ">
       <div className="">

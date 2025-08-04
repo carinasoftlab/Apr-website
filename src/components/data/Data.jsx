@@ -92,7 +92,7 @@ export default function LiveData() {
             />
             <div className="card-overlay-Tangerine" />
             <div className="card-content">
-              <h3 className="card-number-2">2700</h3>
+              <h3 className="card-number-2">2700+</h3>
               <p className="card-label-2">Villages Added So Far</p>
             </div>
           </motion.div>
@@ -122,7 +122,7 @@ export default function LiveData() {
             />
             <div className="card-overlay-green" />
             <div className="card-content">
-              <h3 className="card-number-4">18</h3>
+              <h3 className="card-number-4">18+</h3>
               <p className="card-label-4">DPRC Centre</p>
             </div>
           </motion.div>

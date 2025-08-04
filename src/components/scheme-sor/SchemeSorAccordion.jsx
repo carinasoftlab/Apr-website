@@ -63,14 +63,14 @@ function AccordionItem({
             aria-labelledby={`accordion-header-${title
               .replace(/\s/g, "-")
               .toLowerCase()}`}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             className="overflow-hidden p-2 px-4 lg:p-6 lg:pt-3"
           >
             <div className="p-5 lg:p-6  rounded-3xl bg-white border border-gray-100 dark:border-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300 space-y-5">
-              <h2 className="text-sm  sm:text-xl font-bold text-green-700 dark:text-green-400">
+              <h2 className="text-sm  sm:text-xl font-bold text-prime dark:text-green-400">
                 {mainTitle}
               </h2>
               <p className="leading-relaxed text-xs lg:text-base">{description}</p>

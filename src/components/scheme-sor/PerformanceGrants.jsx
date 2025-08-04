@@ -8,7 +8,7 @@ const PerformanceGrants = () => {
     <div className="w-full space-y-8">
       {/* Header Section */}
       <div className="text-center ">
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white ">
+        <h1 className="text-3xl md:md:text-3xl lg:text-[52px] font-bold tracking-tight text-gray-900 dark:text-white uppercase">
           Performance Grants
         </h1>
       </div>

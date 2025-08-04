@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-// import { Button } from "@/components/ui/button";
 import "./DistrictReportCard.css";
 
 export default function DistrictReportCard({ districtData, onClose }) {
@@ -8,27 +7,18 @@ export default function DistrictReportCard({ districtData, onClose }) {
 
   const {
     name,
-    score,
-    rank,
-    topCriteria,
-    development,
-    totalDevelopment,
-    totalSchemes,
-    completedSchemes,
-    ongoingSchemes,
-    agriculture,
-    health,
-    introulturare,
-    livestock,
-    womenPRI,
+    50: score,
+    16: rank,
+    24: total,
+    12: completed,
+    8: going,
+    10: assets,
+    16: dprc,
+    10: womenPRI,
     totalLeaders,
-    training,
-    totalPanchayatBhawans,
-    // tags,
-    panchayatBhawans,
-    assets,
-    revenue,
-    lastUpdated,
+    10: training,
+    3: panchayatBhawans,
+    // lastUpdated
   } = districtData;
 
   useEffect(() => {
@@ -41,7 +31,10 @@ export default function DistrictReportCard({ districtData, onClose }) {
   return (
     <div className="district-modal-backdrop">
       <div className="district-modal-container">
+        <h1 className="HEADING">GRASS ROOT GOVERNANCE</h1>
+        {/* Header */}
         <div className="header-popup">
+          <h1 className="district-header">District Name : {name}</h1>
           <button
             onClick={onClose}
             aria-label="Close"
@@ -49,109 +42,137 @@ export default function DistrictReportCard({ districtData, onClose }) {
           >
             ✕
           </button>
-
-          <h1 className="district-header">District Name : {name}</h1>
         </div>
 
-        <div className="district-grid-card">
-          {/* SOR Grant */}
-          <div className="district-card">
-            <h2 className="district-title">SOR Grant</h2>
-            <div className="district-inner-card">
-              <h3 className="district-subtitle">Total Schemes</h3>
-              <div className="district-schemes">
-                <div className="scheme-item">
-                  <div className="scheme-label">
-                    <span className="dot dot-light" />
-                    Introulturare
-                  </div>
-                  <span className="scheme-value">{introulturare}</span>
-                </div>
-                <div className="scheme-item">
-                  <div className="scheme-label">
-                    <span className="dot dot-dark" />
-                    Agriculture
-                  </div>
-                  <span className="scheme-value">{agriculture}</span>
-                </div>
+        {/* Cards Grid */}
+        <div className="district-grid-1">
+          {/* SOR Card */}
+          <div className="sor-card">
+            <div className="sor-header"></div>
+            <div className="sor-title">SOR</div>
 
-                <div className="scheme-item">
-                  <div className="scheme-label">
-                    <span className="dot dot-dark" />
-                    Livestock
-                  </div>
-                  <span className="scheme-value">{livestock}</span>
-                </div>
-
-                <div className="scheme-item">
-                  <div className="scheme-label">
-                    <span className="dot dot-dark" />
-                    Health
-                  </div>
-                  <span className="scheme-value">{health}</span>
+            <div className="sor-content">
+              <div className="sor-item">
+                <div className="sor-label">Score</div>
+                <div className="sor-badge">
+                  <div>{50}</div>
                 </div>
               </div>
-            </div>
-            <div className="district-box-grid-1">
-              <div className="info-box-1">
-                <h3>BASIC GRANTS</h3>
-                <p>{totalSchemes}</p>
+
+              <div className="sor-item">
+                <div className="sor-label">Rank</div>
+                <div className="sor-badge">
+                  <div>{16}</div>
+                </div>
               </div>
-              <div className="info-box-1">
-                <h3>PERFORMANCE GRANTS</h3>
-                <p>{score}</p>
+
+              <div className="sor-item">
+                <div className="sor-label">Total Schemes</div>
+                <div className="sor-badge">
+                  <div>{24}</div>
+                </div>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">Complete Schemes</div>
+                <div className="sor-badge">
+                  <div>{12}</div>
+                </div>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">On Going Schemes</div>
+                <div className="sor-badge">
+                  <div>{8}</div>
+                </div>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">Assets</div>
+                <div className="sor-badge">
+                  <div>{10}</div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* RGSA Section */}
-          <div className="district-card col-span-2">
-            <h2 className="district-title">RGSA Schemes</h2>
-            <div className="district-box-grid">
-              <div className="info-box">
-                <h3>DPRC Development</h3>
-                <p>
-                  {development}/{totalDevelopment}
-                </p>
+          {/* RGSA Card */}
+          <div className="sor-card">
+            <div className="rgsa-header"></div>
+            <div className="rgsa-title">RGSA</div>
+
+            <div className="sor-content">
+              <div className="sor-item">
+                <div className="sor-label">Panchayat Bhawans</div>
+                <div className="sor-badge">
+                  <div>{3}</div>
+                </div>
               </div>
-              <div className="info-box">
-                <h3>Women PRI Leaders</h3>
-                <p>
-                  {womenPRI}/{totalLeaders}
-                </p>
+
+              <div className="sor-item">
+                <div className="sor-label">DPRC</div>
+                <div className="sor-badge">
+                  <div>{16}</div>
+                </div>
               </div>
-              <div className="info-box">
-                <h3>Training Imparted</h3>
-                <p>{training}</p>
+
+              <div className="sor-item">
+                <div className="sor-label">Women PRI Leader</div>
+                <div className="sor-badge">
+                  <div>{10}</div>
+                </div>
               </div>
-              <div className="info-box">
-                <h3>Panchayat Bhawans</h3>
-                <p>
-                  {panchayatBhawans}/{totalPanchayatBhawans}
-                </p>
+
+              <div className="sor-item">
+                <div className="sor-label">Training Imparted</div>
+                <div className="sor-badge">
+                  <div>{10}</div>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="fc-section">
-              <h2>FC GRANTS</h2>
-              <div className="district-box-grid">
-                <div className="info-box-fc">
-                  <h3>Tied Schemes</h3>
-                  <p>{totalSchemes}</p>
+          {/* FC Grants Card */}
+          <div className="sor-card">
+            <div className="fc-header"></div>
+            <div className="fc-title">FC Grants</div>
+
+            <div className="sor-content">
+              <div className="sor-item">
+                <div className="sor-label">Total Schemes</div>
+                <div className="sor-badge">
+                  <div>{24}</div>
                 </div>
-                <div className="info-box-fc">
-                  <h3>United Schemes</h3>
-                  <p>{totalSchemes}</p>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">Complete Schemes</div>
+                <div className="sor-badge">
+                  <div>{12}</div>
+                </div>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">On Going Schemes</div>
+                <div className="sor-badge">
+                  <div>{8}</div>
+                </div>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">Assets</div>
+                <div className="sor-badge">
+                  <div>{10}</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Tags and Footer */}
-        <div className="district-footer">
-          <p className="footer-updated">Last Updated: {lastUpdated}</p>
-        </div>
+        {/* Footer */}
+        {/* <div className="district-footer">
+          <p>Last Updated: {lastUpdated}</p>
+        </div> */}
       </div>
     </div>
   );

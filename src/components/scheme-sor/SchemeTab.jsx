@@ -15,11 +15,11 @@ const SchemeTab = ({ actionButtons, currentTab, onTabChange }) => {
                 onClick={() =>
                   onTabChange(button.id || button.label.toLowerCase().replace(/\s+/g, "-"))
                 }
-                className={`relative w-full flex-shrink-0 min-w-[140px] rounded-md px-4 py-2 text-sm font-medium shadow-sm overflow-hidden transition-colors duration-200
+                className={`relative font-bold w-full flex-shrink-0 min-w-[140px] rounded-md px-4 py-2 text-sm  shadow-sm overflow-hidden transition-colors duration-200
                   ${
                     isActive
-                      ? "text-white rounded-md px-4 py-2 "
-                      : "text-gray-700 bg-white dark:bg-white/[0.03] border  border-gray-200 dark:border-white/[0.09] dark:text-white hover:text-[var(--prime-color)] dark:hover:text-white"
+                      ? "text-white rounded-md px-4 py-2  "
+                      : "text-prime bg-white dark:bg-white/[0.03] border  border-prime dark:border-white/[0.09] dark:text-white hover:text-[var(--prime-color)] dark:hover:text-white"
                   }
                 `}
               >

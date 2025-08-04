@@ -98,7 +98,7 @@ export default function LoginPage() {
           </div>
 
           {/* Welcome Text */}
-          <div className="text-black px-4 lg:px-0">
+          <div className="text-[#2B2B2B] px-4 lg:px-0">
             <h2 className="text-base text-center sm:text-lg md:text-xl lg:text-2xl font-bold opacity-90 mb-1">
               Welcome to
             </h2>
@@ -111,9 +111,9 @@ export default function LoginPage() {
         {/* Right Side - Login Form */}
         <div className="flex items-center justify-center lg:justify-start">
           <div className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0">
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-6 sm:p-8 md:p-10 lg:p-12">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-6 sm:p-8 md:p-10 lg:p-12  ">
               {/* Form Header */}
-              <div className="text-center mb-6 sm:mb-8">
+              <div className="text-center mb-6 sm:mb-13">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800">
                   Sign in with Email
                 </h3>
@@ -132,11 +132,10 @@ export default function LoginPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-gray-100 border-0 rounded-lg sm:rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-200 text-sm sm:text-base ${
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-[#EBEBEB] border-0 rounded-lg sm:rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-200 text-sm sm:text-base ${
                       errors.email ? "ring-2 ring-red-500" : ""
                     }`}
                     disabled={isLoading}
-                    placeholder="Enter your email"
                   />
                   {errors.email && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.email}</p>}
                 </div>
@@ -152,11 +151,10 @@ export default function LoginPage() {
                     name="password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-gray-100 border-0 rounded-lg sm:rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-200 text-sm sm:text-base ${
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-[#EBEBEB] border-0 rounded-lg sm:rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-200 text-sm sm:text-base ${
                       errors.password ? "ring-2 ring-red-500" : ""
                     }`}
                     disabled={isLoading}
-                    placeholder="Enter your password"
                   />
                   {errors.password && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.password}</p>}
                 </div>

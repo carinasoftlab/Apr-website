@@ -48,8 +48,8 @@ export function SchemeSorSchemesSection() {
         <div className="mb-8 bg-white lg:p-6 flex flex-col gap-5">
           <div className="flex flex-col lg:flex-row items-center justify-between">
             {/* Heading */}
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center md:text-left">
-              SCHEMES UNDER <span className="text-[var(--prime-color)]">SOR</span>
+            <h2 className="text-3xl  md:text-[52px] font-bold tracking-tight text-center md:text-left">
+              SCHEMES UNDER <span className="text-prime">SOR</span>
             </h2>
             {/* Tab Buttons */}
             <div className="flex flex-col md:flex-row gap-3 md:gap-4">
