@@ -45,7 +45,7 @@ function AccordionItem({
           .toLowerCase()}`}
         id={`accordion-header-${title.replace(/\s/g, "-").toLowerCase()}`}
       >
-        <span className="font-bold text-lg">{title}</span>
+        <span className="font-bold text-base md:text-lg">{title}</span>
         <motion.div
           initial={false}
           animate={{ rotate: isOpen ? 180 : 0 }}

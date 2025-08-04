@@ -96,7 +96,7 @@ export default function Footer() {
             For RTI and grievance related queries,
             <br /> mail us at:{" "}
             <Link href="mailto:support@example.com" className="rti-email">
-              support@example.com
+              support@panchayatiRaaj.gov.in
             </Link>
           </p>
         </div>

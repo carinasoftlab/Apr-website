@@ -42,13 +42,13 @@ export function SchemeSorSchemesSection() {
   };
 
   return (
-    <section className="flex max-w-11/12 items-center justify-center w-full py-12 bg-gray-50">
-      <div className="w-full md:px-6">
+    <section className="flex max-w-11/12 items-center justify-center w-full py-12 ">
+      <div className="w-full md:px-6 lg:px-0 xl:px-6">
         {/* Unified Header and Controls */}
         <div className="mb-8 bg-white lg:p-6 flex flex-col gap-5">
           <div className="flex flex-col lg:flex-row items-center justify-between">
             {/* Heading */}
-            <h2 className="text-3xl  md:text-[52px] font-bold tracking-tight text-center md:text-left">
+            <h2 className="text-3xl  md:text-[52px]  font-bold tracking-tight text-center md:text-left">
               SCHEMES UNDER <span className="text-prime">SOR</span>
             </h2>
             {/* Tab Buttons */}
@@ -66,7 +66,7 @@ export function SchemeSorSchemesSection() {
           </div>
         </div>
 
-       <div className="h-screen"> {renderTabContent(activeTab)}</div>
+       <div className=""> {renderTabContent(activeTab)}</div>
       </div>
     </section>
   );

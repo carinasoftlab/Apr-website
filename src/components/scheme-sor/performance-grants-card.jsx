@@ -16,9 +16,9 @@ export function PerformanceGrantsCard() {
   return (
     <div className="w-full mx-auto bg-white rounded-xl overflow-hidden">
       {/* Header */}
-      <div className="grid grid-cols-2 text-lg font-bold text-gray-800">
-        <div className="p-4">Performance Rank</div>
-        <div className="p-4">District Name</div>
+      <div className="grid grid-cols-[20%_80%]  text-sm md:text-lg font-bold text-gray-800">
+        <div className="p-4 text-center">Performance Rank</div>
+        <div className="p-4 text-center">District Name</div>
       </div>
 
       {/* Content */}
@@ -30,15 +30,15 @@ export function PerformanceGrantsCard() {
           }`}
         >
           <div
-            className={`p-4 h-12 rounded-l-md ${
+            className={`p-4 h-15 rounded-l-md text-sm md:text-lg ${
               isLoading ? "bg-[#FBE8B4]" : "bg-[#F4AC1A] text-black font-bold flex items-center justify-center text-lg"
             }`}
           >
             {!isLoading && item.rank}
           </div>
           <div
-            className={`p-4 pl-7 md:pl-14 h-12 rounded-r-md ${
-              isLoading ? "bg-[#FFF8EE]" : "bg-[#FAEFDD] text-gray-800 flex items-center text-lg"
+            className={`p-4  h-15 rounded-r-md text-center! justify-center text-sm md:text-lg ${
+              isLoading ? "bg-[#FFF8EE] text-center" : "bg-[#FAEFDD] text-gray-800 flex items-center  text-lg text-center"
             }`}
           >
             {!isLoading && item.district}

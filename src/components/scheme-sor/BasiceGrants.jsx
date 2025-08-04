@@ -8,7 +8,7 @@ const BasiceGrants = () => {
   return (
     <div>
       {/* Search Section */}
-      <div className="bg-gray-50 lg:p-4 flex flex-col md:flex-row items-start md:items-center gap-3">
+      <div className=" lg:p-4 flex flex-col md:flex-row items-start md:items-center gap-3">
         <div className="flex items-center gap-2">
           <p className="font-bold text-gray-800">Month & Year</p>
         </div>
