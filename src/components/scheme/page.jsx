@@ -127,7 +127,7 @@ const Scheme = () => {
                     color: "var(--Text-White, #FFF)",
                     textAlign: "center",
                     fontFamily: "Montserrat, sans-serif",
-                    fontSize: "32px",
+                    
                     fontStyle: "normal",
                     fontWeight: 700,
                     lineHeight: "normal",

@@ -67,7 +67,7 @@ export default function PanchayatBhawansTab({ selectedDistrict, isLoading }) {
             </div>
 
             {/* Title */}
-            <div className="px-6 py-4">
+            <div className=" py-4">
               <h3 className="text-xl font-bold text-gray-900 text-center mb-4">
                 {item.title}
               </h3>

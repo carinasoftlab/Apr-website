@@ -47,7 +47,7 @@ const cardItemVariants = {
 export default function LiveData() {
   return (
     <section id="data" className="data-section">
-      <div className="live-data-container">
+      <div className="live-data-container py-2">
         <motion.div
           className="live-data-heading"
           variants={itemVariants}
@@ -55,11 +55,13 @@ export default function LiveData() {
           whileInView="visible"
           viewport={{ once: true, amount: 1 }}
         >
-          <h2 className="live-data-title">LIVE DATA</h2>
+          {/* <h2 className="live-data-title">LIVE DATA</h2> */}
+                  <h1 className="text-2xl md:text-4xl lg:text-5xl 2xl:text-[3.3rem] text-center font-bold text-white mb-8 2xl:mb-14">LIVE DATA</h1>
+
         </motion.div>
 
         <motion.div
-          className="live-data-grid"
+          className="live-data-grid gap-6"
           variants={cardGridVariants}
           initial="hidden"
           whileInView="visible"

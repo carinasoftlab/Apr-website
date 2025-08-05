@@ -78,7 +78,7 @@ export default function WomenPRILeadersTab({ selectedDistrict, isLoading }) {
             </p>
 
             {/* Location */}
-            <p className="text-lg text-[#555555] font-medium text-center leading-relaxed px-3">
+            <p className="text-base text-[#555555] font-medium text-center leading-tight px-3">
               {item.location}
             </p>
           </motion.div>

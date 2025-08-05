@@ -16,8 +16,8 @@ export default function Footer() {
             <Image
               src="/images/footerlogo.svg"
               alt="Panchayati Raj Logo"
-              width={270}
-              height={270}
+              width={200}
+              height={200}
               className="footer-logo-img"
             />
             <h2 className="footer-title">PANCHAYATI RAJ</h2>
@@ -67,38 +67,42 @@ export default function Footer() {
         </div>
 
         {/* Other Links Section */}
-        <div className="footer-links">
-          <h3 className="footer-heading">OTHER LINK</h3>
-          <nav className="footer-nav">
-            <Link href="#">Home</Link>
-            <Link href="#">About Us</Link>
-            <Link href="#">Term of Service</Link>
-            <Link href="#">Privacy Policy</Link>
-          </nav>
-        </div>
+        <div className="footer-right-container">
+          <div className="footer-links-1">
+            <div className="footer-links">
+              <h3 className="footer-heading">OTHER LINK</h3>
+              <nav className="footer-nav">
+                <Link href="#">Home</Link>
+                <Link href="#">About Us</Link>
+                <Link href="#">Term of Service</Link>
+                <Link href="#">Privacy Policy</Link>
+              </nav>
+            </div>
 
-        {/* Get In Touch Section */}
-        <div className="footer-contact">
-          <h3 className="footer-heading">GET IN TOUCH</h3>
-          <div className="footer-contact-item">
-            <MapPin className="footer-icon" />
-            <p>
-              Revenue Department,
-              <br /> Arunachal Pradesh Ground Floor,
-              <br /> Vallabh Bhavan - 2, Ministry,
-              <br /> Area Hills, Arunachal Pradesh - 790104
+            {/* Get In Touch Section */}
+            <div className="footer-contact">
+              <h3 className="footer-heading">GET IN TOUCH</h3>
+              <div className="footer-contact-item">
+                <MapPin height={15} className="footer-icon" />
+                <p>
+                  Revenue Department,
+                  <br /> Arunachal Pradesh Ground Floor,
+                  <br /> Vallabh Bhavan - 2, Ministry,
+                  <br /> Area Hills, Arunachal Pradesh - 790104
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p className="rti-text">
+              For RTI and grievance related queries,
+              <br /> mail us at:{" "}
+              <Link href="mailto:support@example.com" className="rti-email">
+                support@panchayatiRaaj.gov.in
+              </Link>
             </p>
           </div>
-        </div>
-
-        <div>
-          <p className="rti-text">
-            For RTI and grievance related queries,
-            <br /> mail us at:{" "}
-            <Link href="mailto:support@example.com" className="rti-email">
-              support@panchayatiRaaj.gov.in
-            </Link>
-          </p>
         </div>
       </div>
 

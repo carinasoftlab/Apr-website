@@ -1,3 +1,5 @@
+
+"use client";
 import React from 'react'
 import Image from 'next/image'
 import "./Quote.css"
@@ -66,7 +68,7 @@ const page = () => {
             />
             <div className="text-center">
               <h2>SHRI MANISH K GUPTA</h2>
-              <p>Hon’ble Chief Secretary</p>
+              <p>Chief Secretary</p>
             </div>
           </div>
 
@@ -79,7 +81,7 @@ const page = () => {
             />
             <div className="text-center">
               <h2>DR. SONAL SWAROOP, IAS</h2>
-              <p>Hon’ble, Secretary Panchayati Raj</p>
+              <p>Secretary Panchayati Raj</p>
             </div>
           </div>
         </div>

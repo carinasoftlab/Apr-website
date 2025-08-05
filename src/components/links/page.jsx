@@ -39,13 +39,13 @@ export default function Links() {
       className="important-links-section bg-gradient-to-b from-[#FAEFDD] to-[#FFFFFF] py-8 lg:py-16"
     >
       <div className="header text-center mb-10">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-[#2b2b2b]">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl 2xl:text-[3.3rem] text-center font-bold text-[#2B2B2B] mb-4">
           IMPORTANT LINKS
         </h1>
       </div>
 
       <motion.div
-        className="link-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 px-8"
+        className="link-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 px-8"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -67,7 +67,7 @@ export default function Links() {
                 className="object-contain"
               />
             </div>
-            <h2 className="text-black font-normal text-base lg:text-xl text-center leading-tight hover:text-[#1c4d2f] transition-colors">
+            <h2 className="text-black font-normal text-base lg:text-lg 2xl:text-xl text-center leading-tight hover:text-[#1c4d2f] transition-colors">
               {link.name}
             </h2>
           </motion.a>

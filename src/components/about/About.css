@@ -1,18 +1,18 @@
 .portal-wrapper {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background: linear-gradient(180deg, #FFF 0%, #FAEFDD 100%);
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 @media (min-width: 768px) {
     .portal-wrapper {
-        padding: 2rem;
+        /* padding: 2rem; */
     }
 }
 
 @media (min-width: 1024px) {
     .portal-wrapper {
-        padding: 2rem;
+        /* padding: 2rem; */
     }
 }
 
@@ -21,7 +21,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    max-width: 80rem;
+    /* max-width: 80rem; */
     justify-content: center;
     margin: 0px auto;
 }
@@ -43,7 +43,7 @@
     overflow-y: scroll;
     background: #FAEFDD;
     display: flex;
-    height: 80vh;
+    /* height: 80vh; */
     width: 45vw;
     padding: 30px;
     flex-direction: column;
@@ -78,12 +78,12 @@
     border-radius: 24px;
     background: #FFF;
     display: flex;
-    width: 816px;
+    /* width: 816px; */
     height: 180px;
     padding-right: 59px;
     justify-content: center;
     align-items: center;
-    gap: 26px;
+    /* gap: 26px; */
 }
 
 @media (min-width: 640px) {
@@ -95,7 +95,7 @@
 .video-thumbnail {
     position: relative;
     width: 100%;
-    height: 20vh;
+    height: 10vw;
     border-radius: 24px 0px 0px 24px;
     overflow: hidden;
     display: flex;
@@ -122,27 +122,27 @@
 /* Text Cards */
 .text-card {
     background-color: white;
-    border-radius: 0.75rem;
+    /* border-radius: 0.75rem; */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
 }
 
 .card-title {
     color: #778933;
-    font-size: 1.125rem;
+    font-size: 1vw;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .card-description {
     color: #4a4a4a;
-    font-size: 0.875rem;
+    font-size: 1vw;
     margin-bottom: 1rem;
 }
 
 .read-more {
     color: #778933;
-    font-size: 0.875rem;
+    font-size: 1vw;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -164,31 +164,31 @@
     border-radius: 24px;
     background: #FFF;
     display: flex;
-    width: 41vw;
-    height: 20vh;
+    /* width: 41vw; */
+    height: 10vw;
     padding-right: 59px;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    /* gap: 1rem; */
 }
 
 .card-title-1 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: #1C4D2F;
     font-family: "Montserrat", sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3vw;
     font-style: normal;
     font-weight: 700;
-    line-height: 26px;
+    line-height: 24px;
 }
 
 .card-description-1 {
     color: #555;
     font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
+    font-size: 1vw;
     font-style: normal;
     font-weight: 500;
-    line-height: 21px;
+    line-height: 20px;
     align-self: stretch;
 }
 
@@ -198,7 +198,7 @@
     text-align: center;
 }
 
-.main-heading-section h1 {
+/* .main-heading-section h1 {
     color: #2B2B2B;
     text-align: center;
     font-family: "Montserrat", sans-serif;
@@ -206,7 +206,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-}
+} */
 
 .main-heading-section p {
     color: #555;
@@ -224,14 +224,14 @@
         overflow-y: scroll;
         background: #FAEFDD;
         display: flex;
-        height: 65vh;
+        /* height: 65vh; */
         width: auto;
         padding: 12px;
         flex-direction: column;
         gap: 12px;
     }
 
-    .main-heading-section h1 {
+    /* .main-heading-section h1 {
         color: #2B2B2B;
         text-align: center;
         font-family: "Montserrat", sans-serif;
@@ -239,7 +239,7 @@
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-    }
+    } */
 
     .main-heading-section p {
         color: #555;
@@ -260,7 +260,7 @@
         padding-right: 2rem;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
+        /* gap: 0.5rem; */
     }
 
     .video-thumbnail {
@@ -281,7 +281,7 @@
         font-size: 2.9vw;
         font-style: normal;
         font-weight: 700;
-        line-height: 12px;
+        line-height: 24px;
     }
 
     .card-description-1 {
@@ -290,7 +290,7 @@
         font-size: 2vw;
         font-style: normal;
         font-weight: 500;
-        line-height: 12px;
+        line-height: 16px;
         align-self: stretch;
     }
 
@@ -306,7 +306,7 @@
 
 @media(min-width: 641px) and (max-width:768px) {
 
-    .main-heading-section h1 {
+    /* .main-heading-section h1 {
         color: #2B2B2B;
         text-align: center;
         font-family: "Montserrat", sans-serif;
@@ -314,7 +314,7 @@
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-    }
+    } */
 
     .main-heading-section p {
         color: #555;
@@ -326,22 +326,22 @@
         line-height: 23px;
     }
 
-    .portal-grid {
+    /* .portal-grid {
         border-radius: 32px;
         display: flex;
         gap: 1rem;
         max-width: auto;
         justify-content: center;
         margin: 0px auto;
-    }
+    } */
 
     .portal-section {
         border-radius: 16px;
         overflow-y: scroll;
         background: #FAEFDD;
         display: flex;
-        height: 55vh;
-        width: 50%;
+        /* height: 55vh; */
+        width: 100%;
         padding: 1rem;
         flex-direction: column;
         gap: 12px;
@@ -367,17 +367,17 @@
         background: #FFF;
         display: flex;
         width: 100%;
-        height: 15vh;
+        height: 10vh;
         padding-right: 0.5rem;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
+        /* gap: 0.5rem; */
     }
 
     .video-thumbnail {
         position: relative;
         width: 50vw;
-        height: 15vh;
+        height: 10vh;
         border-radius: 16px 0px 0px 16px;
         overflow: hidden;
         display: flex;
@@ -407,9 +407,9 @@
 
     .text-card {
         background-color: white;
-        border-radius: 16px;
+        /* border-radius: 16px; */
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        padding: 0.5rem;
+        /* padding: 0.5rem; */
     }
 
     .card-title {
@@ -442,11 +442,21 @@
         overflow-y: scroll;
         background: #FAEFDD;
         display: flex;
-        height: 60vh;
+        /* height: 60vh; */
         width: auto;
         padding: 1.5rem;
         flex-direction: column;
         gap: 12px;
+    }
+
+    .main-heading-section p {
+        color: #555;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
     }
 
     .video-card {
@@ -454,17 +464,17 @@
         background: #FFF;
         display: flex;
         width: auto;
-        height: 20vh;
+        height: 15 vh;
         padding-right: 1rem;
         justify-content: center;
         align-items: center;
-        gap: 1rem;
+        /* gap: 1rem; */
     }
 
     .video-thumbnail {
         position: relative;
         width: 35vw;
-        height: 20vh;
+        height: 15 vh;
         border-radius: 12px 0px 0px 12px;
         overflow: hidden;
         display: flex;
@@ -494,9 +504,9 @@
 
     .text-card {
         background-color: white;
-        border-radius: 12px;
+        /* border-radius: 12px; */
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        padding: 1rem;
+        /* padding: 1rem; */
     }
 
     .card-description {
@@ -513,3 +523,47 @@
     }
 }
 
+@media(min-width: 1440px) {
+    .video-card {
+        border-radius: 16px;
+        background: #FFF;
+        display: flex;
+        /* width: 42vw vw; */
+        height: 8vw;
+        padding-right: 26px;
+        justify-content: center;
+        align-items: center;
+        /* gap: 1rem; */
+    }
+
+    .video-thumbnail {
+        position: relative;
+        width: 100%;
+        height: 8vw;
+        border-radius: 24px 0px 0px 24px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+   .card-description-1 {
+        color: #555;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1vw;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 28px;
+        align-self: stretch;
+    }
+
+    .card-title-1 {
+        margin-bottom: 0.5rem;
+        color: #1C4D2F;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.3vw;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+    }
+}

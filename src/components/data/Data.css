@@ -16,9 +16,9 @@
 }
 
 /* Container */
-.live-data-container {
+/* .live-data-container {
     padding: 2rem 0rem;
-}
+} */
 
 .live-data-heading {
     text-align: center;
@@ -39,7 +39,7 @@
 
 .live-data-grid {
     display: flex;
-    gap: 3rem;
+    /* gap: 3rem; */
     justify-content: center;
 }
 
@@ -264,7 +264,7 @@
         padding: 0rem;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        /* gap: 2rem; */
         justify-content: center;
     }
 }
@@ -337,7 +337,7 @@
         margin-top: 0px;
         display: flex;
         flex-wrap: wrap;
-        gap: 3rem;
+        /* gap: 3rem; */
         justify-content: center;
     }
 
@@ -359,7 +359,7 @@
     .live-data-grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 2rem;
+        /* gap: 2rem; */
         justify-content: center;
     }
 
@@ -373,7 +373,7 @@
     }
 
     .card-number {
-        font-size: 5vw;
+        font-size: 10vw;
         font-weight: bold;
         margin-bottom: 0rem;
     }
@@ -392,9 +392,9 @@
 
     .card-label {
         /* margin-top: -1rem; */
-        font-size: 1vw;
+        font-size: 1.5vw;
         padding: 8px 1rem;
-        border-radius: 50px;
+        border-radius: 12px;
         font-weight: 600;
         background-color: #009E84;
         color: white;

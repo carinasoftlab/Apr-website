@@ -1,4 +1,5 @@
 .about-container {
+    padding: 2rem;
     background: linear-gradient(180deg, #F4C81A 0%, #F4AC1A 100%);
 }
 
@@ -184,7 +185,7 @@
     }
 
     .about-content-right-image p {
-        font-size: clamp(12px, 5vw, 15px);
+        font-size: clamp(12px, 5vw, 12px);
         text-align: justify;
         color: var(--Text-Primary, #2B2B2B);
         font-family: "Montserrat", sans-serif;
@@ -199,7 +200,7 @@
     }
 
     .about-content-center p {
-        font-size: clamp(11px, 3vw, 11px);
+        font-size: clamp(9px, 3vw, 9px);
         text-align: justify;
         color: var(--Text-Primary, #2B2B2B);
         font-family: "Montserrat", sans-serif;
