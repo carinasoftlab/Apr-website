@@ -73,7 +73,8 @@
 // }
 
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import PanchayatBhawansTab from "./tabs/PanchayatBhawansTab";
 import TrainingImpartedTab from "./tabs/TrainingImpartedTab";
@@ -83,9 +84,18 @@ import DistrictSelector from "./DistrictSelector";
 import SchemeTab from "../scheme-sor/SchemeTab";
 
 export function SchemeRgsaSchemesSection() {
-  const [activeTab, setActiveTab] = useState("panchayat-bhawans");
+  const searchParams = useSearchParams();
+  const tabQuery = searchParams.get("tab");
+  const [activeTab, setActiveTab] = useState(tabQuery || "panchayat-bhawans");
   const [selectedDistrict, setSelectedDistrict] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
+
+  // Update tab if query changes (for client navigation)
+  useEffect(() => {
+    if (tabQuery && tabQuery !== activeTab) {
+      setActiveTab(tabQuery);
+    }
+  }, [tabQuery]);
 
   const TABS = [
     { id: "panchayat-bhawans", label: "Panchayat Bhawans" },

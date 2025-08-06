@@ -77,12 +77,13 @@ export default function HeroCarousel() {
             </div>
           </SwiperSlide>
         ))}
+        <div className="custom-pagination-wrapper">
+        <div className="custom-pagination"></div>
+      </div>
       </Swiper>
 
       {/* Custom Pagination Below */}
-      <div className="custom-pagination-wrapper">
-        <div className="custom-pagination"></div>
-      </div>
+      
     </div>
   );
 }

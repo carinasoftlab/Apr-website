@@ -1,6 +1,6 @@
-* {
-    font-family: "Montserrat", sans-serif;
-}
+    /* * {
+        font-family: "Montserrat", sans-serif;
+    } */
 
 .footer {
     background-color: #fff;
@@ -111,7 +111,7 @@
     margin-top: 0.25rem;
 }
 
-.footer-copy {
+/* .footer-copy {
     padding-top: 1.5rem;
     border-top: 1px solid;
     font-family: "Montserrat", sans-serif;
@@ -119,7 +119,7 @@
     text-align: center;
     font-size: 0.75rem;
     color: #6b7280;
-}
+} */
 
 .rti-text {
     font-size: 1.2vw;
@@ -271,9 +271,9 @@
         font-size: 0.85rem;
     }
 
-    .footer-copy {
+    /* .footer-copy {
         font-size: 0.7rem;
-    }
+    } */
 
     .footer-right-container {
         display: flex;

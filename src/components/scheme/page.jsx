@@ -1,46 +1,28 @@
 "use client";
+
 import { useState } from "react";
-import { motion } from "framer-motion";
-import "./Scheme.css";
-import Modal from "../modal/Pb/Pb";
-import Dprc from "../modal/Dprc/Dprc";
-import GrantContent from "../modal/performance-grants/Grant-content";
-import TiedContent from "../modal/Tied-grants/Tied-content";
+import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+
 const schemesData = [
   {
     title: "RGSA",
-
-    itemColor: "#E8F5E8", // Light green for items
-    items: [
-      "Panchayat Bhavan",
-      "DPRC",
-      "Training Imparted",
-      "Women PRI Leaders",
-    ],
+    items: ["Panchayat Bhavan", "DPRC", "Training Imparted", "Women PRI Leaders"],
   },
   {
     title: "SOR",
-
-    itemColor: "#FFF2E8", // Light orange for items
     items: ["Basic Grants", "Performance Grants"],
   },
   {
     title: "FC GRANTS",
-
-    itemColor: "#E8F5E8", // Light green for items
     items: ["Tied Funds", "Untied Funds", "FAQ", "Scheme Related Links"],
   },
 ];
 
 const Scheme = () => {
-  const [showPBModal, setShowPBModal] = useState(false);
-  const [showDPRCModal, setShowDPRCModal] = useState(false);
-  const [showBasicGrant, setShowBasicGrant] = useState(false);
-  const [showPerformanceGrant, setShowPerformanceGrant] = useState(false);
-  const [showTiedGrant, setShowTiedGrant] = useState(false);
-  const [showUntiedGrant, setShowUntiedGrant] = useState(false);
   const [openDropdowns, setOpenDropdowns] = useState({});
+  const router = useRouter();
 
   const handleDropdownToggle = (index) => {
     setOpenDropdowns((prev) => ({
@@ -49,153 +31,95 @@ const Scheme = () => {
     }));
   };
 
-  const handleGrantClick = (grantType) => {
-    switch (grantType) {
-      case "Basic Grants":
-        setShowBasicGrant(true);
-        break;
-      default:
-        break;
-    }
+  // Map item to tab id for RGSA, SOR, FC GRANTS
+  const rgsaTabMap = {
+    "Panchayat Bhavan": "panchayat-bhawans",
+    "DPRC": "dprc",
+    "Training Imparted": "training-imparted",
+    "Women PRI Leaders": "women-pri-leaders",
+  };
+  const sorTabMap = {
+    "Basic Grants": "basice-grants",
+    "Performance Grants": "performance-grants",
+  };
+  const fcGrantsTabMap = {
+    "Tied Funds": "tied-funds",
+    "Untied Funds": "untied-funds",
+    "FAQ": "faq",
+    "Scheme Related Links": "scheme-related-links",
   };
 
-  const handleItemClick = (item) => {
-    setOpenDropdowns({});
-    switch (item) {
-      case "Panchayat Bhavan":
-        setShowPBModal(true);
-        break;
-      case "DPRC":
-        setShowDPRCModal(true);
-        break;
-      case "Basic Grants":
-        setShowBasicGrant(true);
-        break;
-      case "Performance Grants":
-        setShowPerformanceGrant(true);
-        break;
-      case "Tied Funds":
-        setShowTiedGrant(true);
-        break;
-      case "Untied Funds":
-        setShowUntiedGrant(true);
-        break;
+  // Handler for item click
+  const handleItemClick = (schemeTitle, item) => {
+    if (schemeTitle === "RGSA" && rgsaTabMap[item]) {
+      router.push(`/scheme-rgsa?tab=${rgsaTabMap[item]}`);
+    } else if (schemeTitle === "SOR" && sorTabMap[item]) {
+      router.push(`/scheme-sor?tab=${sorTabMap[item]}`);
+    } else if (schemeTitle === "FC GRANTS" && fcGrantsTabMap[item]) {
+      router.push(`/scheme-fc-grants?tab=${fcGrantsTabMap[item]}`);
     }
   };
 
   return (
-    <section id="scheme" className="schemes-section">
-      <div className="scheme-overlay-left" />
-      <div className="scheme-overlay-right" />
-      <motion.h2
-        className="schemes-heading"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.4 }}
-      >
+    <section
+      id="scheme"
+      className="flex flex-col items-center overflow-hidden  bg-gradient-to-b from-[#FAEFDD] to-white py-16 px-4 text-center lg:min-h-[60vh]"
+    >
+      <h2 className="text-2xl md:text-4xl lg:text-5xl 2xl:text-[3.3rem] font-bold text-[#2B2B2B] mb-10">
         SCHEMES
-      </motion.h2>
-           <div className="schemes-cards">
-        {schemesData.map((scheme, index) => {
-          const isSOR = scheme.title === "SOR";
+      </h2>
 
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: index * 0.2 }}
-              viewport={{ once: true, amount: 0.5 }}
-            >
-              <div
-                className={`dropdown-container ${
-                  openDropdowns[index] ? "expanded" : ""
-                }`}
-                style={{
-                  minHeight: openDropdowns[index]
-                    ? `${60 + scheme.items.length * 50}px`
-                    : "60px",
-                }}
+      <motion.div
+
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-wrap justify-center gap-6 w-full mt-4 sm:mt-8">
+        {schemesData.map((scheme, index) => (
+          <div key={`scheme-${index}`} className={`transition-all duration-700 ease-in-out delay-200  `}>
+            <div className={`transition-all duration-700 ease-in-out w-full sm:w-[90%] md:w-[40vw] lg:w-[30vw] min-w-[250px] p-4  sm:p-6 lg:p-7 rounded-[32px]  bg-gradient-to-b from-[#58AE7B] to-[#1B4C2F] shadow-[0_42px_28px_-19px_rgba(0,0,0,0.36)]`}>
+              {/* Dropdown Button */}
+              <Button
+                type="button"
+                aria-expanded={!!openDropdowns[index]}
+                variant="none"
+                className="w-full flex items-center justify-between gap-4 text-white font-bold uppercase tracking-wide text-[clamp(18px,4vw,32px)] px-4 py-3 rounded-xl hover:-translate-y-0.5 transition-transform duration-200 ease-out will-change-transform"
+                onClick={() => handleDropdownToggle(index)}
               >
-                {/* Dropdown Button */}
-                <Button
-                  variant="none"
-                  className="dropdown-button"
-                  onClick={() => handleDropdownToggle(index)}
-                  style={{
-                    color: "var(--Text-White, #FFF)",
-                    textAlign: "center",
-                    fontFamily: "Montserrat, sans-serif",
-                    
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    lineHeight: "normal",
-                    flex: "1 0 0",
-                  }}
-                >
-                  {scheme.title}
-                  <span
-                    className={`arrow ${openDropdowns[index] ? "rotate" : ""}`}
-                    style={{ color: "var(--Text-White, #FFF)" }}
-                  >
-                    ›
-                  </span>
-                </Button>
+                <div className="w-[95%]">{scheme.title}</div>
+                <span
+                  className={`text-white text-[clamp(20px,3vw,32px)] font-bold transition-all duration-500 ${openDropdowns[index] ? "rotate-90" : 'rotate-0'} `}
 
-                {/* Dropdown Items */}
+                >
+                  ›
+                </span>
+              </Button>
+
+              {/* Dropdown Content */}
+              {openDropdowns[index] && (
                 <div
-                  className={`dropdown-content-inline ${
-                    openDropdowns[index] ? "open" : ""
-                  }`}
+                  className="mt-12   bg-white text-black rounded-[32px] px-4 py-2 overflow-hidden"
                 >
                   {scheme.items.map((item, i) => (
                     <button
-                      key={i}
-                      onClick={() => handleItemClick(item)}
-                      className="dropdown-item-inline"
+                      type="button"
+                      key={`item-${i}`}
+                      className="w-full text-black flex justify-between items-center px-4 py-3 text-left text-[clamp(14px,2.5vw,16px)] font-medium transition-all duration-200 ease-out  hover:text-prime hover:text"
+                      onClick={() => handleItemClick(scheme.title, item)}
                     >
-                      <span style={{ color: scheme.color }}>{item}</span>
-                      <span
-                        className="arrow subtle"
-                        style={{ color: scheme.color }}
-                      >
+                      <span>{item}</span>
+                      <span className="text-[clamp(10px,2vw,16px)] text-black opacity-70 transition-opacity duration-200 hover:opacity-100">
                         ›
                       </span>
                     </button>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-      <Modal isOpen={showPBModal} onClose={() => setShowPBModal(false)} />
-      <Dprc isOpen={showDPRCModal} onClose={() => setShowDPRCModal(false)} />
-
-      {showBasicGrant && (
-        <GrantContent
-          isOpen={showBasicGrant}
-          onClose={() => setShowBasicGrant(false)}
-          type="Basic Grants"
-        />
-      )}
-
-      <GrantContent
-        isOpen={showPerformanceGrant}
-        onClose={() => setShowPerformanceGrant(false)}
-        type="Performance Grants"
-      />
-      <TiedContent
-        isOpen={showTiedGrant}
-        onClose={() => setShowTiedGrant(false)}
-        type="Tied Funds"
-      />
-      <TiedContent
-        isOpen={showUntiedGrant}
-        onClose={() => setShowUntiedGrant(false)}
-        type="Untied Funds"
-      />
+              )}
+            </div>
+          </div>
+        ))}
+      </motion.div>
     </section>
   );
 };

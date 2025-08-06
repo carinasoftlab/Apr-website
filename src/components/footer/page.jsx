@@ -85,10 +85,9 @@ export default function Footer() {
               <div className="footer-contact-item">
                 <MapPin height={15} className="footer-icon" />
                 <p>
-                  Revenue Department,
-                  <br /> Arunachal Pradesh Ground Floor,
-                  <br /> Vallabh Bhavan - 2, Ministry,
-                  <br /> Area Hills, Arunachal Pradesh - 790104
+
+                  State Institute of Rural Development <br /> & Panchayati Raj (SIRD&PR) <br /> Nerba colony, Doni colony, <br />Itanagar, Arunachal Pradesh 791111
+                 
                 </p>
               </div>
             </div>
@@ -107,7 +106,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright Notice */}
-      <div className="footer-copy">
+      <div className=" border-t border-[#E2E8F0] pt-4 md:pt-6 text-center font-medium text-sm mt-4">
         <p>© Copyright 2022, All Rights Reserved by PanchayatiRaaj</p>
       </div>
     </footer>

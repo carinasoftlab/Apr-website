@@ -46,6 +46,41 @@ export default function DistrictReportCard({ districtData, onClose }) {
 
         {/* Cards Grid */}
         <div className="district-grid-1">
+          {/* RGSA Card */}
+          <div className="sor-card">
+            <div className="rgsa-header"></div>
+            <div className="rgsa-title">RGSA</div>
+
+            <div className="sor-content">
+              <div className="sor-item">
+                <div className="sor-label">Panchayat Bhawans</div>
+                <div className="sor-badge">
+                  <div>{3}</div>
+                </div>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">DPRC</div>
+                <div className="sor-badge">
+                  <div>{16}</div>
+                </div>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">Women PRI Leader</div>
+                <div className="sor-badge">
+                  <div>{10}</div>
+                </div>
+              </div>
+
+              <div className="sor-item">
+                <div className="sor-label">Training Imparted</div>
+                <div className="sor-badge">
+                  <div>{10}</div>
+                </div>
+              </div>
+            </div>
+          </div>
           {/* SOR Card */}
           <div className="sor-card">
             <div className="sor-header"></div>
@@ -96,41 +131,6 @@ export default function DistrictReportCard({ districtData, onClose }) {
             </div>
           </div>
 
-          {/* RGSA Card */}
-          <div className="sor-card">
-            <div className="rgsa-header"></div>
-            <div className="rgsa-title">RGSA</div>
-
-            <div className="sor-content">
-              <div className="sor-item">
-                <div className="sor-label">Panchayat Bhawans</div>
-                <div className="sor-badge">
-                  <div>{3}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">DPRC</div>
-                <div className="sor-badge">
-                  <div>{16}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Women PRI Leader</div>
-                <div className="sor-badge">
-                  <div>{10}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Training Imparted</div>
-                <div className="sor-badge">
-                  <div>{10}</div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* FC Grants Card */}
           <div className="sor-card">

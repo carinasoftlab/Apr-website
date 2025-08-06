@@ -7,14 +7,23 @@ import UnitedFunds from "@/components/scheme-fc-grants/UnitedFunds";
 import SchemeTab from "@/components/scheme-sor/SchemeTab";
 import Dropdown from "@/components/ui/dropdown/Dropdown";
 import TiedFundsPagination from "@/components/ui/pagination/TiedFundsPagination";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "@/components/links/page";
 import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
 
 const page = () => {
-  const [activeTab, setActiveTab] = useState("District 1");
+  const searchParams = useSearchParams();
+  const tabQuery = searchParams.get("tab");
+  const [activeTab, setActiveTab] = useState(tabQuery || "tied-funds");
   const [selectedDistrict, setSelectedDistrict] = useState("all");
+
+  useEffect(() => {
+    if (tabQuery && tabQuery !== activeTab) {
+      setActiveTab(tabQuery);
+    }
+  }, [tabQuery]);
 
   const DEFAULT_TABS = [
     { id: "tied-funds", label: "Tied Funds" },

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { SchemeSorAccordion } from "./SchemeSorAccordion";
 import { schemeSorData } from "@/constants/scheme-sor.data";
 import { Button } from "../ui/button";
@@ -10,8 +11,16 @@ import BasiceGrants from "./BasiceGrants";
 import PerformanceGrants from "./PerformanceGrants";
 
 export function SchemeSorSchemesSection() {
-  const [activeTab, setActiveTab] = useState("basice-grants");
+  const searchParams = useSearchParams();
+  const tabQuery = searchParams.get("tab");
+  const [activeTab, setActiveTab] = useState(tabQuery || "basice-grants");
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    if (tabQuery && tabQuery !== activeTab) {
+      setActiveTab(tabQuery);
+    }
+  }, [tabQuery]);
 
   const DEFAULT_TABS = [
     { id: "basice-grants", label: "Basic Grants" },
