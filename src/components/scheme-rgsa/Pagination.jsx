@@ -1,96 +1,77 @@
-"use client";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+"use client"
+import { motion } from "framer-motion"
 
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
   const getVisiblePages = () => {
-    const delta = 2;
-    const range = [];
-    const rangeWithDots = [];
+    const maxVisible = 3 // Show 3 pages at a time
+    let start = Math.max(1, currentPage - Math.floor(maxVisible / 2))
+    const end = Math.min(totalPages, start + maxVisible - 1)
 
-    for (
-      let i = Math.max(2, currentPage - delta);
-      i <= Math.min(totalPages - 1, currentPage + delta);
-      i++
-    ) {
-      range.push(i);
+    // Adjust start if we're near the end
+    if (end - start + 1 < maxVisible) {
+      start = Math.max(1, end - maxVisible + 1)
     }
 
-    if (currentPage - delta > 2) {
-      rangeWithDots.push(1, "...");
-    } else {
-      rangeWithDots.push(1);
+    const pages = []
+    for (let i = start; i <= end; i++) {
+      pages.push(i)
     }
+    return pages
+  }
 
-    rangeWithDots.push(...range);
+  const visiblePages = getVisiblePages()
 
-    if (currentPage + delta < totalPages - 1) {
-      rangeWithDots.push("...", totalPages);
-    } else if (totalPages > 1) {
-      rangeWithDots.push(totalPages);
-    }
-
-    return rangeWithDots;
-  };
-
-  const visiblePages = getVisiblePages();
+  const navButtonClass =
+    "px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors flex items-center justify-center flex-shrink-0"
 
   return (
-    <div className="flex items-center justify-end space-x-2 py-8">
+    <div className="flex items-center justify-center lg:justify-end gap-4 py-8">
       {/* Previous Button */}
       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={currentPage === 1 ? {} : { scale: 1.02 }}
+        whileTap={currentPage === 1 ? {} : { scale: 0.98 }}
         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+        className={`${navButtonClass} ${
           currentPage === 1
-            ? "text-gray-400 cursor-not-allowed"
-            : "text-gray-700 hover:bg-gray-100"
+            ? "bg-gray-100 text-gray-300 cursor-not-allowed rounded-md"
+            : "bg-blue-100 text-black hover:bg-blue-200 rounded-md"
         }`}
       >
-        <ChevronLeft className="w-4 h-4 mr-1" />
         Previous
       </motion.button>
 
-      {/* Page Numbers */}
-      <div className="flex items-center space-x-1">
-        {visiblePages.map((page, index) => (
-          <div key={index}>
-            {page === "..." ? (
-              <span className="px-3 py-2 text-gray-500">...</span>
-            ) : (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => onPageChange(page)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  currentPage === page
-                    ? "bg-[#E3EBF7] text-[#285192]"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
-              >
-                {page}
-              </motion.button>
-            )}
-          </div>
+      <div className="flex items-center gap-2">
+        {visiblePages.map((page) => (
+          <motion.button
+            key={page}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => onPageChange(page)}
+            className={`w-10 h-10 rounded-md text-sm font-medium flex items-center justify-center transition-colors ${
+              currentPage === page
+                ? "bg-blue-100 text-blue-600"
+                : "text-gray-600 hover:bg-gray-100"
+            }`}
+          >
+            {page}
+          </motion.button>
         ))}
       </div>
 
       {/* Next Button */}
       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={currentPage === totalPages ? {} : { scale: 1.02 }}
+        whileTap={currentPage === totalPages ? {} : { scale: 0.98 }}
         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+        className={`${navButtonClass} ${
           currentPage === totalPages
-            ? "text-gray-400 cursor-not-allowed"
-            : "text-gray-700 hover:bg-gray-100"
+            ? "bg-gray-100 text-gray-300 cursor-not-allowed rounded-md"
+            : "bg-blue-100 text-black hover:bg-blue-200 rounded-md"
         }`}
       >
         Next
-        <ChevronRight className="w-4 h-4 ml-1" />
       </motion.button>
     </div>
   );

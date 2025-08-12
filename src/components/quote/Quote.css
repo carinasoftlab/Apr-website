@@ -1,5 +1,4 @@
 .about-container {
-    padding: 2rem;
     background: linear-gradient(180deg, #F4C81A 0%, #F4AC1A 100%);
 }
 
@@ -150,7 +149,7 @@
 
     .about-content-left-image img,
     .about-content-right-image img {
-        max-width: 30vw;
+        max-width: 400px;
     }
 
     .about-content-bottom-left img,
@@ -158,49 +157,8 @@
         max-width: 200px;
     }
 
-    .about-content-left-image {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .about-content-left-image h2,
-    .about-content-right-image h2 {
-        color: var(--Text-Primary, #2B2B2B);
-        font-family: "Montserrat", sans-serif;
-        font-style: normal;
-        font-weight: 800;
-        line-height: normal;
-        font-size: clamp(16px, 5vw, 18px);
-    }
-
-    .about-content-left-image p {
-        color: var(--Text-Primary, #2B2B2B);
-        font-family: "Montserrat", sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        font-size: clamp(16px, 5vw, 16px);
-    }
-
-    .about-content-right-image p {
-        font-size: clamp(12px, 5vw, 12px);
-        text-align: justify;
-        color: var(--Text-Primary, #2B2B2B);
-        font-family: "Montserrat", sans-serif;
-        font-style: normal;
-    }
-
-    .about-content-right-image {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
     .about-content-center p {
-        font-size: clamp(9px, 3vw, 9px);
+        font-size: clamp(11px, 3vw, 11px);
         text-align: justify;
         color: var(--Text-Primary, #2B2B2B);
         font-family: "Montserrat", sans-serif;

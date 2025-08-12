@@ -1,125 +1,135 @@
-"use client";
-import React from "react";
 import Image from "next/image";
 
-const page = () => {
+export default function Page() {
   return (
-    <section className="px-4 sm:px-6 md:px-8 py-8 md:py-10 lg:py-[60px] bg-gradient-to-b from-[#F4C81A] to-[#F4AC1A]">
-      <h1 className="text-2xl md:text-4xl lg:text-5xl 2xl:text-[3.3rem] text-center font-bold text-[#2B2B2B] mb-4">
-        ABOUT US
-      </h1>
-
-      <div className="flex flex-col gap-10">
-        {/* Top Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-8 px-2 sm:px-4">
-          {/* Left Image */}
-          <div className="flex flex-col items-center gap-4 text-center w-full lg:w-1/3">
-            <Image
-              src="/images/img1.svg"
-              alt="about"
-              width={500}
-              height={500}
-              className="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:max-w-[400px] xl:max-w-[462px]"
-            />
-            <div>
-              <h2 className="text-[#2B2B2B] font-extrabold text-base sm:text-lg  md:text-xl  xl:text-2xl">
-                SHRI PEMA KHANDU
-              </h2>
-              <p className="text-[#2B2B2B] font-normal text-sm md:text-base   xl:text-lg">
-                Hon'ble, Chief Minister
+    <main className="min-h-screen w-full bg">
+      <section className="mx-auto max-w-full px-4 lg:px-16 py-10 md:py-16">
+        {/* Top: Chief Minister */}
+        <div className="flex flex-col gap-8 md:flex-row md:items-center">
+          {/* Portrait */}
+          <div className="flex flex-col items-center md:items-center">
+            <div className="relative h-48 w-48 shrink-0 overflow-hidden rounded-full ring-5 ring-[#87541D] md:h-64 md:w-64 lg:h-80 lg:w-80 xl:h-80 xl:w-80">
+              <Image
+                src="/images/img1.svg"
+                alt="Portrait of the Hon'ble Chief Minister"
+                className="object-cover h-full w-full"
+                priority
+                fill
+              />
+            </div>
+            <div className="mt-4 text-center items-center md:text-center">
+              <p className="font-extrabold uppercase text-lg tracking-wide text-black">
+                Shri Pema Khandu
               </p>
+              <p className="text-sm text-black">Hon'ble, Chief Minister</p>
             </div>
           </div>
 
-          {/* Center Text */}
-          <div className="w-full md:w-11/12 lg:w-2/3 xl:max-w-[683px] px-2 py-4">
-            <p className="text-justify text-[#2B2B2B] text-base sm:text-lg md:text-sm xl:text-lg font-normal">
-              The Department of Panchayati Raj was established in the year 1985.
-              Since then, the functions of the Department, as per the Allocation
-              of Business Rules, were limited to conducting Panchayati Raj
-              elections and promulgating Acts, Laws, Bye-laws, Guidelines, etc.,
-              of the Panchayati Raj Department and its relevant matters. The
-              workload of the Department has increased manifold, and despite a
-              shortage of manpower, the Department of Panchayati Raj has had to
-              implement various flagship programmes in mission mode with limited
-              manpower. As per the implementation strategy of the Department, in
-              all the respective programme guidelines, there were provisions for
-              manpower for programme-driven engagement on a monthly fixed
-              honorarium/salary basis in order to work with elected PRIs and
-              ensure the smooth implementation of civil works, basic services,
-              and to oversee accounts and establishment matters at the district
-              level as well as at headquarters.
+          {/* Message content */}
+          <article className="flex-1 max-w-fit text-center md:text-start">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-bold uppercase tracking-tight text-zinc-800 xl:text-[2.6rem]">
+              Message from Hon'ble Chief Minister
+            </h2>
+            <p className="mt-5 max-w-4xl text-sm  text-justify leading-relaxed text-zinc-800 md:text-sm xl:text-[1rem]">
+              The Department of Panchayati Raj was established in the Year 1985.
+              Since then, the functions of the Department as per Allocation of
+              Business Rules were limited with the conduct of Panchayati Raj
+              Election and promulgation of Acts, Laws, Bye-Laws, Guidelines etc.
+              of Panchayati Raj Department and Its relevant matters. The work
+              load of the Department has increased manifold and despite shortage
+              of man power the department of Panchayati Raj had to implement the
+              various flagship programmes in mission mode with limited man
+              powers. As per implementation strategy of the Department, in all
+              the respective.
             </p>
-          </div>
+          </article>
+        </div>
+        {/* Divider */}
+        <hr className="my-10 border-amber-500 h-2 md:my-6 md:mt-6 xl:mt-1 w-auto xl:w-5xl  ml-auto" />
+        {/* Middle: Minister */}
+        <div className="flex flex-col-reverse gap-8 md:flex-row md:items-center  justify-end">
+          {/* Message content */}
+          <article className="flex-1 max-w-fit text-center md:text-start lg:text-start">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-bold uppercase tracking-tight text-zinc-800 xl:text-[2.6rem]">
+              Message from Hon'ble Minister
+            </h2>
+            <p className="mt-5 max-w-3xl text-sm text-justify leading-relaxed text-zinc-800 md:text-sm xl:text-[1rem]">
+              The Department of Panchayati Raj was established in the year 1985.
+              Since then, the functions of the Department as per Allocation of
+              Business Rules were limited to the conduct of Panchayati Raj
+              Election and promulgation of Acts, Laws, Bye-Laws, and Guidelines
+              of Panchayati Raj Department and its relevant matters. The work
+              load of the Department has increased manifold.
+            </p>
+          </article>
 
-          {/* Right Image */}
-          <div className="flex flex-col items-center gap-4 text-center w-full lg:w-1/3">
-            <Image
-              src="/images/img2.svg"
-              alt="about"
-              width={475}
-              height={475}
-            //className="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:max-w-[400px] xl:max-w-[462px]"
-              className="w-full max-w-[180px] sm:max-w-[230px] md:max-w-[280px] lg:max-w-[310px] xl:max-w-[330px]"
-            />
-            <div>
-              <h2 className="text-[#2B2B2B] font-extrabold text-base sm:text-lg   xl:text-2xl">
-                SHRI OJING TASING
-              </h2>
-              <p className="text-[#2B2B2B] font-normal text-sm md:text-base   xl:text-lg">
-                Hon’ble Minister, Panchayati Raaj
+          {/* Portrait */}
+          <div className="flex flex-col items-center md:items-center">
+            <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full ring-5 ring-[#87541D] md:h-56 md:w-56 lg:h-64 lg:w-64 xl:h-65 xl:w-65">
+              <Image
+                src="/images/img2.svg"
+                alt="Portrait of the Hon'ble Chief Minister"
+                className="object-cover h-full w-full"
+                priority
+                fill
+              />
+            </div>
+            <div className="mt-4 text-center md:text-center">
+              <p className="font-extrabold uppercase text-lg tracking-wide text-black">
+                Shri Ojing Tasing
+              </p>
+              <p className="text-sm text-black">
+                Hon'ble Minister, Panchayati Raj
               </p>
             </div>
           </div>
         </div>
+        {/* Divider */}
+        <hr className="my-10 border-amber-500 h-2 md:my-6 md:mt-6 w-auto xl:w-5xl  ml-auto" />
+        {/* Bottom: Two officials */}
+        {/*  */}
+        <div className="max-w-5xl ml-auto">
+          <div className="flex justify-center lg:justify-start gap-12">
+            {/* Card 1 */}
+            <div className="flex flex-col items-center">
+              <div className="relative h-24 w-24 overflow-hidden rounded-full ring-4 ring-[#87541D] md:h-32 md:w-32 lg:h-40 lg:w-40 xl:h-48 xl:w-48">
+                <Image
+                  src="/images/img3.svg"
+                  alt="Portrait of the Hon'ble Chief Minister"
+                  className="object-cover h-full w-full"
+                  priority
+                  fill
+                />
+              </div>
+              <div className="mt-3 text-center">
+                <p className="text-xs lg:text-sm font-extrabold uppercase tracking-wide text-neutral-900">
+                  Shri Manish K Gupta
+                </p>
+                <p className="text-sm text-black">Chief Secretary</p>
+              </div>
+            </div>
 
-        {/* Bottom Section */}
-        <div className="flex flex-wrap justify-center items-center gap-10">
-          {/* Bottom Left */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-[120px] h-[120px] md:w-[150px] md:h-[150px] lg:w-[190px] lg:h-[190px] xl:w-[250px] xl:h-[250px]">
-              <Image
-                src="/images/img3.svg"
-                alt="about"
-                width={250}
-                height={250}
-                className="w-full h-full rounded-full object-cover aspect-square"
-              />
-            </div>
-            <div className="mt-2">
-              <h2 className="text-[#2B2B2B] font-extrabold text-xs sm:text-sm md:text-base">
-                SHRI MANISH K GUPTA
-              </h2>
-              <p className="text-[#2B2B2B] font-normal text-[10px] sm:text-xs md:text-sm">
-                Chief Secretary
-              </p>
-            </div>
-          </div>
-
-          {/* Bottom Right */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-[120px] h-[120px] md:w-[150px] md:h-[150px] lg:w-[190px] lg:h-[190px] xl:w-[250px] xl:h-[250px]">
-              <Image
-                src="/images/img4.svg"
-                alt="about"
-                width={250}
-                height={250}
-                className="w-full h-full rounded-full object-cover aspect-square"
-              />
-            </div>
-            <div className="mt-2">
-              <h2 className="text-[#2B2B2B] font-extrabold text-xs sm:text-sm md:text-base">
-                DR. SONAL SWAROOP, IAS
-              </h2>
-              <p className="text-[#2B2B2B] font-normal text-[10px] sm:text-xs md:text-sm">
-                Secretary Panchayati Raj
-              </p>
+            {/* Card 2 */}
+            <div className="flex flex-col items-center">
+              <div className="relative h-24 w-24 overflow-hidden rounded-full ring-5 ring-[#87541D] md:h-32 md:w-32 lg:h-40 lg:w-40 xl:h-48 xl:w-48">
+                <Image
+                  src="/images/img4.svg"
+                  alt="Portrait of the Hon'ble Chief Minister"
+                  className="object-cover h-full w-full"
+                  priority
+                  fill
+                />
+              </div>
+              <div className="mt-3 text-center">
+                <p className="text-xs lg:text-sm font-extrabold uppercase tracking-wide text-neutral-900">
+                  Dr. Sonal Swaroop, IAS
+                </p>
+                <p className="text-sm text-black">Secretary Panchayati Raj</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
-};
-
-export default page;
+}

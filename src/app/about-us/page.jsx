@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import Link from "@/components/links/page";
+import ImportantLinks from "@/components/implink/ImportantLinks";
 import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
 
@@ -136,7 +136,7 @@ export default function page() {
           </div>
         </div>
       </section>
-      <Link />
+      <ImportantLinks />
       <Footer />
     </>
   );

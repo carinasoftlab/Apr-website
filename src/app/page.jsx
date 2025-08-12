@@ -5,8 +5,8 @@ import Scheme from "../components/scheme/page";
 import Data from "../components/data/Data";
 import Footer from "../components/footer/page";
 import About from "../components/about/page";
-import Links from "../components/links/page"
-import Quote from "../components/quote/page"
+import ImportantLinks from "../components/implink/ImportantLinks";
+import Quote from "../components/quote/page";
 import Header from "@/components/Header/Header";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
       <Scheme />
       <About />
       <Data />
-      <Links />
+      <ImportantLinks />
       <Footer />
     </main>
   );

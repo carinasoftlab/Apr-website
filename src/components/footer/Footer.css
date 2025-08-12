@@ -1,6 +1,6 @@
-    /* * {
-        font-family: "Montserrat", sans-serif;
-    } */
+* {
+    font-family: "Montserrat", sans-serif;
+}
 
 .footer {
     background-color: #fff;
@@ -9,18 +9,12 @@
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-    padding: 2rem 1rem;
     margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.footer-right-container {
     display: flex;
-    gap: 8rem;
+   flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 1rem;
 }
 
 .footer-links,
@@ -52,7 +46,7 @@
 
 .footer-title {
     font-family: "Montserrat", sans-serif;
-    font-size: 1.5vw;
+    font-size: 2rem;
     font-weight: bold;
     color: #1f2937;
 }
@@ -63,19 +57,14 @@
     margin-top: 1rem;
 }
 
-.footer-links-1 {
-    display: flex;
-    gap: 8rem;
-}
-
 .footer-heading {
     font-size: 0.75rem;
     font-weight: 600;
     color: #6b7280;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
 }
-
 
 .footer-nav {
     display: flex;
@@ -85,7 +74,6 @@
 .footer-nav a {
     font-family: "Montserrat", sans-serif;
     color: #374151;
-    font-size: 1vw;
     font-weight: 500;
     text-decoration: none;
     margin-bottom: 0.5rem;
@@ -100,7 +88,6 @@
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;
-    font-size: 1vw;
     color: #374151;
 }
 
@@ -111,43 +98,27 @@
     margin-top: 0.25rem;
 }
 
-/* .footer-copy {
-    padding-top: 1.5rem;
+.footer-copy {
     border-top: 1px solid;
     font-family: "Montserrat", sans-serif;
     margin-top: 3rem;
     text-align: center;
     font-size: 0.75rem;
     color: #6b7280;
-} */
-
-.rti-text {
-    font-size: 1.2vw;
 }
 
 .rti-email {
     font-weight: 600;
     color: #1E4C30;
-    font-size: 1.2vw;
     text-decoration: underline;
+    transition: all 0.3s ease;
 }
 
 .rti-email:hover {
     color: #F4AC1A;
-}
-
-@media (min-width: 1024px) {
-    .footer-container {
-        max-width: px;
-        flex-wrap: nowrap;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 4rem;
-    }
-
-    /* .footer-container>div {
-        flex: 1;
-    } */
+    background-color: rgba(244, 172, 26, 0.1);
+    padding: 2px 6px;
+    border-radius: 6px;
 }
 
 /* Responsive Styles */
@@ -160,7 +131,7 @@
     }
 
     .footer-title {
-        font-size: 1.8vw;
+        font-size: 1.75rem;
     }
 
     .footer-heading {
@@ -170,40 +141,6 @@
     .footer-nav a {
         font-size: 0.9rem;
     }
-
-    .footer-container {
-        align-items: center;
-        margin: 0 auto;
-        display: flex;
-        gap: 2rem;
-        justify-content: space-around;
-        padding: 0 1rem;
-    }
-
-    .footer-right-container {
-        display: flex;
-        gap: 4rem;
-    }
-
-    .footer-contact-item p {
-        font-size: 1.5vw;
-    }
-
-    .footer-links-1 {
-        display: flex;
-        gap: 4rem;
-    }
-
-    .footer-logo-img {
-        height: 13vw;
-    }
-
-    .footer-socials {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 1rem;
-    }
-
 }
 
 /* Mobile (max-width: 768px) */
@@ -213,9 +150,9 @@
         text-align: start;
     }
 
-    .footer {
-        padding: 2rem 1rem;
-    }
+         .footer {
+             padding: 2rem 2rem;
+         }
 
     .footer-left {
         align-items: center;
@@ -242,15 +179,6 @@
     .footer-socials {
         justify-content: start;
     }
-
-    .footer-nav a {
-        font-size: 1.5vw;
-    }
-
-
-    .footer-contact-item p {
-        font-size: 1.5vw;
-    }
 }
 
 /* Small Mobile (max-width: 480px) */
@@ -271,28 +199,7 @@
         font-size: 0.85rem;
     }
 
-    /* .footer-copy {
+    .footer-copy {
         font-size: 0.7rem;
-    } */
-
-    .footer-right-container {
-        display: flex;
-        flex-direction: column;
-        gap: 4rem;
-    }
-
-    .footer-contact-item p {
-        font-size: 3vw;
-    }
-
-    .rti-text {
-        font-size: 3vw;
-    }
-
-    .rti-email {
-        font-weight: 600;
-        color: #1E4C30;
-        font-size: 3vw;
-        text-decoration: underline;
     }
 }

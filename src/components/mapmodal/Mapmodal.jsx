@@ -12,8 +12,7 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
       if (!hovered) return;
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -(event.clientY / window.innerHeight) * 2 + 1;
-      // You can use x, y if you want to animate or show tooltip
-      // console.log({ x, y });
+ 
     };
 
     if (hovered) {
@@ -89,40 +88,5 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
       })}
     </group>
   );
-  // <group ref={ref} {...props} dispose={null}>
-  //   {meshNames.map((name) => {
-  //     const node = nodes[name];
-  //     if (!node?.geometry) return null;
-
-  //     const isClicked = props.clickedName === name;
-
-  //     const { scale } = useSpring({
-  //       scale: isClicked ? [1.04, 1.04, 1.04] : [1, 1, 1],
-  //       config: { mass: 1, tension: 180, friction: 18 },
-  //     });
-
-  //     return (
-  //       <a.mesh
-  //         key={name}
-  //         geometry={node.geometry}
-  //         material={materials.Material}
-  //         scale={scale}
-  //         onClick={(e) => {
-  //           props.setClickedName(name);
-  //           e.stopPropagation();
-  //         }}
-  //         onPointerOver={(e) => {
-  //           e.stopPropagation();
-  //           setHovered(true);
-  //           document.body.style.cursor = "pointer";
-  //         }}
-  //         onPointerOut={(e) => {
-  //           e.stopPropagation();
-  //           setHovered(false);
-  //           document.body.style.cursor = "default";
-  //         }}
-  //       />
-  //     );
-  //   })}
-  // </group>
+ 
 });

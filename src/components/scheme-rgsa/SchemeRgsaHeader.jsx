@@ -9,7 +9,6 @@ const rgsaProcedures = [
     text: "The funding pattern is in the ratio of 90:10 (Central: State) for the Northeastern States.",
     dotColor: "bg-yellow-400",
   },
- 
 ];
 
 const rgsaProcedures_2 = [
@@ -40,15 +39,21 @@ export function SchemeRgsaHeader() {
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-16 bg-gradient-to-t from-prime-bg to-white">
-      <div className="max-w-11/12 px-4 md:px-6 mx-auto">
+      <div className="max-w-max px-4 md:px-6 mx-auto">
         {/* Title and Description */}
-        <div className="mb-12 lg:mb-16 flex flex-col items-center justify-center">
+        <div className="mb-12 lg:mb-16 flex flex-col items-center justify-center px-4">
           <h1 className="text-2xl md:text-3xl text-center lg:text-[52px] font-bold text-gray-800 leading-tight mb-6 uppercase">
             Revamped Rashtriya Gram Swaraj Abhiyan (RGSA)
           </h1>
-          <p className="text-sm md:text-base lg:text-lg 2xl:text-xl 2xl:leading-relaxed text-gray-700 text-center max-w-8xl">
-            The Rashtriya Gram Swaraj Abhiyan (RGSA) scheme was launched by the Hon’ble Prime Minister on National Panchayati Raj Diwas (24th April 2018). It aims to strengthen Gram Sabha functions effectively as the basic forum for people’s participation, transparency, and accountability in the Panchayat System.
-Subsequently, the Centrally Sponsored Scheme of Revamped RGSA was approved by the Government on 13.04.2022 for implementation from 2022-23 to 2025-26 (co-terminus with XVth Finance Commission Period).
+          <p className="text-sm text-justify md:text-base lg:text-lg 2xl:text-xl 2xl:leading-relaxed text-gray-700 max-w-7xl">
+            The Rashtriya Gram Swaraj Abhiyan (RGSA) scheme was launched by the
+            Hon’ble Prime Minister on National Panchayati Raj Diwas (24th April
+            2018). It aims to strengthen Gram Sabha functions effectively as the
+            basic forum for people’s participation, transparency, and
+            accountability in the Panchayat System. Subsequently, the Centrally
+            Sponsored Scheme of Revamped RGSA was approved by the Government on
+            13.04.2022 for implementation from 2022-23 to 2025-26 (co-terminus
+            with XVth Finance Commission Period).
           </p>
         </div>
 
@@ -62,14 +67,22 @@ Subsequently, the Centrally Sponsored Scheme of Revamped RGSA was approved by th
             <ul className="flex flex-col gap-6 text-sm md:text-base text-gray-700">
               {isLoading
                 ? Array.from({ length: 4 }).map((_, i) => (
-                    <li key={i} className="flex items-start space-x-3 animate-pulse">
+                    <li
+                      key={i}
+                      className="flex items-start space-x-3 animate-pulse"
+                    >
                       <div className="w-2 h-2 bg-gray-300 rounded-full mt-2 flex-shrink-0"></div>
                       <div className="h-4 bg-gray-300 rounded w-full max-w-[90%]"></div>
                     </li>
                   ))
                 : rgsaProcedures.map((item, index) => (
-                    <li key={index} className="flex text-lg items-start space-x-3">
-                      <div className={`w-2 h-2 ${item.dotColor} rounded-full mt-2 flex-shrink-0`}></div>
+                    <li
+                      key={index}
+                      className="flex text-lg items-start space-x-3"
+                    >
+                      <div
+                        className={`w-2 h-2 ${item.dotColor} rounded-full mt-2 flex-shrink-0`}
+                      ></div>
                       <span className="2xl:text-xl">{item.text}</span>
                     </li>
                   ))}
@@ -80,14 +93,22 @@ Subsequently, the Centrally Sponsored Scheme of Revamped RGSA was approved by th
             <ul className="flex flex-col gap-6 text-sm md:text-base text-gray-700">
               {isLoading
                 ? Array.from({ length: 4 }).map((_, i) => (
-                    <li key={i} className="flex items-start space-x-3 animate-pulse">
+                    <li
+                      key={i}
+                      className="flex items-start space-x-3 animate-pulse"
+                    >
                       <div className="w-2 h-2 bg-gray-300 rounded-full mt-2 flex-shrink-0"></div>
                       <div className="h-4 bg-gray-300 rounded w-full max-w-[90%]"></div>
                     </li>
                   ))
                 : rgsaProcedures_2.map((item, index) => (
-                    <li key={index} className="flex text-lg items-start space-x-3">
-                      <div className={`w-2 h-2 ${item.dotColor} rounded-full mt-2 flex-shrink-0`}></div>
+                    <li
+                      key={index}
+                      className="flex text-lg items-start space-x-3"
+                    >
+                      <div
+                        className={`w-2 h-2 ${item.dotColor} rounded-full mt-2 flex-shrink-0`}
+                      ></div>
                       <span className="2xl:text-xl">{item.text}</span>
                     </li>
                   ))}
@@ -102,11 +123,10 @@ Subsequently, the Centrally Sponsored Scheme of Revamped RGSA was approved by th
               ) : (
                 <Image
                   src="/images/scheme-sor/sor_grants_landscape.svg"
-                 
                   alt="SOR Grants Landscape"
                   className="w-full h-auto rounded-[42px] object-cover object-center shadow-lg"
-                    priority
-                    layout="fill" 
+                  priority
+                  layout="fill"
                 />
               )}
             </div>

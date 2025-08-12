@@ -4,13 +4,30 @@ import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const DISTRICTS = [
-  { id: "all", name: "All Districts" },
-  { id: "gangtok", name: "Gangtok" },
-  { id: "mangan", name: "Mangan" },
-  { id: "namchi", name: "Namchi" },
-  { id: "gyalshing", name: "Gyalshing" },
-  { id: "soreng", name: "Soreng" },
-  { id: "pakyong", name: "Pakyong" },
+  { id: "1", name: "All Districts" },
+  { id: "2", name: "Tawang" },
+  { id: "3", name: "West Kameng" },
+  { id: "4", name: "East Kameng" },
+  { id: "5", name: "Pakke-Kessang" },
+  { id: "6", name: "Papum Pare" },
+  { id: "7", name: "Kra Daadi" },
+  { id: "8", name: "Kurung Kumey" },
+  { id: "9", name: "Lower Subansiri" },
+  { id: "10", name: "Upper Subansiri" },
+  { id: "11", name: "West Siang" },
+  { id: "12", name: "Leparada" },
+  { id: "13", name: "Shi-Yomi" },
+  { id: "14", name: "East Siang" },
+  { id: "15", name: "Upper Siang" },
+  { id: "16", name: "Lower Siang" },
+  { id: "17", name: "Lower Dibang Valley" },
+  { id: "18", name: "Dibang Valley" },
+  { id: "19", name: "Lohit" },
+  { id: "20", name: "Namsai" },
+  { id: "21", name: "Anjaw" },
+  { id: "22", name: "Changlang" },
+  { id: "23", name: "Tirap" },
+  { id: "24", name: "Longding" },
 ];
 
 export default function DistrictSelector({

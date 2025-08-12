@@ -17,7 +17,7 @@
 //     </>
 //   );
 // }
-import Link from "@/components/links/page";
+import ImportantLinks from "@/components/implink/ImportantLinks";
 import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
 import { Suspense } from "react";
@@ -32,7 +32,7 @@ export default function SchemeRgsaPage() {
           <ClientWrapper />
         </Suspense>
       </main>
-      <Link />
+      <ImportantLinks />
       <Footer />
     </>
   );

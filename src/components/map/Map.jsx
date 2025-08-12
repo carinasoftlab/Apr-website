@@ -8,7 +8,6 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import DistrictReportCard from "../ui/DistrictReportCard";
 import { DISTRICT_DATA } from "@/constants/map-district.data";
 
-
 function RotatingMapGroup({ children }) {
   const groupRef = useRef();
   const { viewport } = useThree();
@@ -56,8 +55,6 @@ export default function Map() {
       />
 
       <div className="map-overlay-white" />
-      {/* <div className="map-overlay-left" />
-      <div className="map-overlay-right" /> */}
 
       <motion.div
         className="map-text"
@@ -66,7 +63,9 @@ export default function Map() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
-        <h1 className="text-2xl md:text-4xl lg:text-5xl 2xl:text-[3.3rem] text-center font-bold text-[#2B2B2B] mb-4">PANCHAYATI RAAJ AT A GLANCE</h1>
+        <h1 className="text-2xl md:text-4xl lg:text-5xl 2xl:text-[3.3rem] text-center font-bold text-[#2B2B2B] mb-4">
+          PANCHAYATI RAAJ AT A GLANCE
+        </h1>
       </motion.div>
 
       <div className="map-canvas-container">

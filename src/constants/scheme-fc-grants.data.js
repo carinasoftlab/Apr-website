@@ -1,16 +1,35 @@
 export const DISTRICTS = [
-  { value: "1", label: "District 1" },
-  { value: "2", label: "District 2" },
-  { value: "3", label: "District 3" },
-  { value: "4", label: "District 4" },
-  { value: "5", label: "District 5" },
+  { value: "1", label: "Tawang" },
+  { value: "2", label: "West Kameng" },
+  { value: "3", label: "East Kameng" },
+  { value: "4", label: "Pakke-Kessang" },
+  { value: "5", label: "Papum Pare" },
+  { value: "6", label: "Kra Daadi" },
+  { value: "7", label: "Kurung Kumey" },
+  { value: "8", label: "Lower Subansiri" },
+  { value: "9", label: "Upper Subansiri" },
+  { value: "10", label: "West Siang" },
+  { value: "11", label: "Leparada" },
+  { value: "12", label: "Shi-Yomi" },
+  { value: "13", label: "East Siang" },
+  { value: "14", label: "Upper Siang" },
+  { value: "15", label: "Lower Siang" },
+  { value: "16", label: "Lower Dibang Valley" },
+  { value: "17", label: "Dibang Valley" },
+  { value: "18", label: "Lohit" },
+  { value: "19", label: "Namsai" },
+  { value: "20", label: "Anjaw" },
+  { value: "21", label: "Changlang" },
+  { value: "22", label: "Tirap" },
+  { value: "23", label: "Longding" },
 ];
+
 
 export const TiedFundsBeforeAfterWorkData = [
   {
     id: 1,
     heading: "Before the Work (FFC 2nd Instalment 2016-17) Ongoing Work",
-  
+
     image: "/images/scheme-fc-grants/before-work.svg",
     addedOn: "20 Jan 2022",
     schemeName: "Scheme Name",

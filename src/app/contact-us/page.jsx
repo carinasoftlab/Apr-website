@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, MapPin } from "lucide-react";
-import Link from "@/components/links/page";
+import ImportantLinks from "@/components/implink/ImportantLinks";
 import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
 
@@ -100,7 +100,7 @@ export default function Page() {
         </div>
       </section>
 
-      <Link />
+      <ImportantLinks />
       <Footer />
     </>
   );

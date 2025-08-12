@@ -1,0 +1,677 @@
+{
+  "employees": [
+    {
+      "id": 0,
+      "name": "Establishment Section",
+      "designation": "Panchayati Raj Department",
+      "placeOfPosting": "Government of Arunachal Pradesh",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 0,
+      "section": "Root",
+      "parentId": null,
+      "subordinates": [
+        1
+      ],
+      "parentIds": []
+    },
+    {
+      "id": 1,
+      "name": "Minister, HM(PR)",
+      "designation": "Minister, HM(PR) \u2013 Government of Arunachal Pradesh",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 1,
+      "section": "Top Level",
+      "subordinates": [
+        2
+      ],
+      "parentIds": [
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Secretary (PR)",
+      "designation": "Secretary (PR) \u2013 Government of Arunachal Pradesh",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 2,
+      "section": "Top Level",
+      "subordinates": [
+        3
+      ],
+      "parentIds": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Tajing Jonnom",
+      "designation": "Director (PR) \u2013 Government of Arunachal Pradesh",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7085565169",
+      "image": "../image/001.jpeg",
+      "level": 3,
+      "section": "Top Level",
+      "subordinates": [
+        4
+      ],
+      "parentIds": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Likha Sampu",
+      "designation": "Joint Director (PR) \u2013 Government of Arunachal Pradesh",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9436042677",
+      "image": "../image/002.jpeg",
+      "level": 4,
+      "section": "Top Level",
+      "subordinates": [
+        200,
+        201
+      ],
+      "parentIds": [
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Akom Gaat Ligu",
+      "designation": "Deputy Director",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9612826993",
+      "image": "deputy_director.jpg",
+      "level": 5,
+      "section": "Rural Establishment Wing",
+      "subordinates": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "parentIds": [
+        201
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Obang Minki",
+      "designation": "Senior Finance & Accounts Officer",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7085801462",
+      "image": "finance_officer.jpg",
+      "level": 6,
+      "section": "Finance Department",
+      "subordinates": [
+        65,
+        66,
+        67,
+        68
+      ],
+      "parentIds": [
+        5
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Tapang Kopak",
+      "designation": "Assistant Director",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9436228822",
+      "image": "assistant_director.jpg",
+      "level": 6,
+      "section": "Administration",
+      "subordinates": [
+        42,
+        43,
+        44,
+        45
+      ],
+      "parentIds": [
+        5
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Admin Officer",
+      "designation": "Admin Officer",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "admin_officer.jpg",
+      "level": 6,
+      "section": "Administration",
+      "subordinates": [
+        46,
+        47
+      ],
+      "parentIds": [
+        5
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Debajit Pegu",
+      "designation": "Superintendent",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9436050960",
+      "image": "superintendent.jpg",
+      "level": 6,
+      "section": "General Administration",
+      "subordinates": [
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "parentIds": [
+        5
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Nabam Rajesh",
+      "designation": "Deputy Director",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9436222178",
+      "image": "deputy_director_tech.jpg",
+      "level": 5,
+      "section": "Technical & Planning Wing",
+      "subordinates": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "parentIds": [
+        200
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Assistant Engineer",
+      "designation": "Assistant Engineer",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "engineer.jpg",
+      "level": 6,
+      "section": "Engineering",
+      "subordinates": [
+        53,
+        54,
+        55
+      ],
+      "parentIds": [
+        10
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Assistant Architect",
+      "designation": "Assistant Architect",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "architect.jpg",
+      "level": 6,
+      "section": "Planning",
+      "subordinates": [
+        56,
+        57
+      ],
+      "parentIds": [
+        10
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Planning and Research Officer",
+      "designation": "Planning and Research Officer",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "research_officer.jpg",
+      "level": 6,
+      "section": "Research & Planning",
+      "subordinates": [
+        58,
+        59,
+        60
+      ],
+      "parentIds": [
+        10
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Senior Data Analyst",
+      "designation": "Senior Data Analyst",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "data_analyst.jpg",
+      "level": 6,
+      "section": "Data Management",
+      "subordinates": [
+        61,
+        62,
+        63,
+        64
+      ],
+      "parentIds": [
+        10
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Assistant",
+      "designation": "Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "assistant.jpg",
+      "level": 7,
+      "section": "Administration Support",
+      "subordinates": [],
+      "parentIds": [
+        7
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Report and Return Assistant",
+      "designation": "Report and Return Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "report_assistant.jpg",
+      "level": 7,
+      "section": "Documentation",
+      "subordinates": [],
+      "parentIds": [
+        7
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Lower Division Clerk",
+      "designation": "Lower Division Clerk",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "clerk.jpg",
+      "level": 7,
+      "section": "Clerical",
+      "subordinates": [],
+      "parentIds": [
+        7
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Upper Division Clerk",
+      "designation": "Upper Division Clerk",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "udc.jpg",
+      "level": 7,
+      "section": "Clerical",
+      "subordinates": [],
+      "parentIds": [
+        7
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Data Entry Operator",
+      "designation": "Data Entry Operator",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "deo.jpg",
+      "level": 7,
+      "section": "Data Entry",
+      "subordinates": [],
+      "parentIds": [
+        8,
+        63
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Computer Assistant",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "computer_assistant.jpg",
+      "level": 7,
+      "section": "IT Support",
+      "subordinates": [],
+      "parentIds": [
+        8,
+        64
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Driver",
+      "designation": "Driver",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "driver.jpg",
+      "level": 7,
+      "section": "Transport",
+      "subordinates": [],
+      "parentIds": [
+        9
+      ]
+    },
+    {
+      "id": 49,
+      "name": "MTS/Peon",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "mts.jpg",
+      "level": 7,
+      "section": "Support Staff",
+      "subordinates": [],
+      "parentIds": [
+        9
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Contingency Staff",
+      "designation": "Contingency",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "contingency.jpg",
+      "level": 7,
+      "section": "Temporary Staff",
+      "subordinates": [],
+      "parentIds": [
+        9
+      ]
+    },
+    {
+      "id": 51,
+      "name": "Office Assistant",
+      "designation": "Office Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "office_assistant.jpg",
+      "level": 7,
+      "section": "General Support",
+      "subordinates": [],
+      "parentIds": [
+        9
+      ]
+    },
+    {
+      "id": 52,
+      "name": "Security Guard",
+      "designation": "Security Guard",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "security.jpg",
+      "level": 7,
+      "section": "Security",
+      "subordinates": [],
+      "parentIds": [
+        9
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Technical Assistant",
+      "designation": "Technical Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "tech_assistant.jpg",
+      "level": 7,
+      "section": "Technical Support",
+      "subordinates": [],
+      "parentIds": [
+        11
+      ]
+    },
+    {
+      "id": 54,
+      "name": "Junior Engineer",
+      "designation": "Junior Engineer",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "junior_engineer.jpg",
+      "level": 7,
+      "section": "Engineering Support",
+      "subordinates": [],
+      "parentIds": [
+        11
+      ]
+    },
+    {
+      "id": 55,
+      "name": "Draftsman",
+      "designation": "Draftsman",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "draftsman.jpg",
+      "level": 7,
+      "section": "Design Support",
+      "subordinates": [],
+      "parentIds": [
+        11
+      ]
+    },
+    {
+      "id": 56,
+      "name": "Planning Assistant",
+      "designation": "Planning Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "planning_assistant.jpg",
+      "level": 7,
+      "section": "Planning Support",
+      "subordinates": [],
+      "parentIds": [
+        12
+      ]
+    },
+    {
+      "id": 57,
+      "name": "Design Assistant",
+      "designation": "Design Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "design_assistant.jpg",
+      "level": 7,
+      "section": "Design Support",
+      "subordinates": [],
+      "parentIds": [
+        12
+      ]
+    },
+    {
+      "id": 58,
+      "name": "Research Assistant",
+      "designation": "Research Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "research_assistant.jpg",
+      "level": 7,
+      "section": "Research Support",
+      "subordinates": [],
+      "parentIds": [
+        13
+      ]
+    },
+    {
+      "id": 59,
+      "name": "Survey Assistant",
+      "designation": "Survey Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "survey_assistant.jpg",
+      "level": 7,
+      "section": "Survey Support",
+      "subordinates": [],
+      "parentIds": [
+        13
+      ]
+    },
+    {
+      "id": 60,
+      "name": "Field Assistant",
+      "designation": "Field Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "field_assistant.jpg",
+      "level": 7,
+      "section": "Field Support",
+      "subordinates": [],
+      "parentIds": [
+        13
+      ]
+    },
+    {
+      "id": 61,
+      "name": "Junior Data Analyst",
+      "designation": "Junior Data Analyst",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "junior_analyst.jpg",
+      "level": 7,
+      "section": "Data Analysis",
+      "subordinates": [],
+      "parentIds": [
+        14
+      ]
+    },
+    {
+      "id": 62,
+      "name": "Database Administrator",
+      "designation": "Database Administrator",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "db_admin.jpg",
+      "level": 7,
+      "section": "Database Management",
+      "subordinates": [],
+      "parentIds": [
+        14
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Data Entry Operator",
+      "designation": "DEO",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "deo_tech.jpg",
+      "level": 7,
+      "section": "Data Entry",
+      "subordinates": [],
+      "parentIds": [
+        14
+      ]
+    },
+    {
+      "id": 64,
+      "name": "Computer Assistant",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "comp_assistant_tech.jpg",
+      "level": 7,
+      "section": "IT Support",
+      "subordinates": [],
+      "parentIds": [
+        14
+      ]
+    },
+    {
+      "id": 65,
+      "name": "Tek Bahadur",
+      "designation": "Senior Accountant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8787345994",
+      "image": "accountant.jpg",
+      "level": 7,
+      "section": "Accounts",
+      "subordinates": [],
+      "parentIds": [
+        6
+      ]
+    },
+    {
+      "id": 66,
+      "name": "Yajap Ruyi",
+      "designation": "Junior Accountant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8259083684",
+      "image": "accountant.jpg",
+      "level": 7,
+      "section": "Accounts",
+      "subordinates": [],
+      "parentIds": [
+        6
+      ]
+    },
+    {
+      "id": 67,
+      "name": "Ratna Acharyee",
+      "designation": "Training Consultant (LSDG&MIS)",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "6009383910",
+      "image": "consultant.jpg",
+      "level": 7,
+      "section": "Training & Development",
+      "subordinates": [],
+      "parentIds": [
+        6
+      ]
+    },
+    {
+      "id": 68,
+      "name": "Vikram Das",
+      "designation": "Account & MIS Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9862690302",
+      "image": "mis_assistant.jpg",
+      "level": 7,
+      "section": "MIS",
+      "subordinates": [],
+      "parentIds": [
+        6
+      ]
+    },
+    {
+      "id": 200,
+      "name": "Establishment Section",
+      "designation": "Section",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 5,
+      "section": "Administrative Section",
+      "parentIds": [
+        4
+      ],
+      "subordinates": []
+    },
+    {
+      "id": 201,
+      "name": "Rural Establishment Wing",
+      "designation": "Wing",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 5,
+      "section": "Rural Wing",
+      "parentIds": [
+        4
+      ],
+      "subordinates": []
+    }
+  ]
+}

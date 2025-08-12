@@ -4,6 +4,40 @@
     /* padding: 1rem; */
 }
 
+.portal-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.portal-section::-webkit-scrollbar-thumb {
+    background-color: #ffe3b5;
+    /* very light */
+    border-radius: 10px;
+}
+
+.portal-section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #ffe3b5;
+    /* faint */
+    border-radius: 10px;
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
 @media (min-width: 768px) {
     .portal-wrapper {
         /* padding: 2rem; */
@@ -43,9 +77,8 @@
     overflow-y: scroll;
     background: #FAEFDD;
     display: flex;
-    /* height: 80vh; */
     width: 45vw;
-    padding: 30px;
+    padding: 0px 30px;
     flex-direction: column;
     gap: 12px;
 }
@@ -226,7 +259,7 @@
         display: flex;
         /* height: 65vh; */
         width: auto;
-        padding: 12px;
+        padding: 0px 26px;
         flex-direction: column;
         gap: 12px;
     }
@@ -547,7 +580,7 @@
         align-items: center;
     }
 
-   .card-description-1 {
+    .card-description-1 {
         color: #555;
         font-family: "Montserrat", sans-serif;
         font-size: 1vw;

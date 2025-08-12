@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-import "./DistrictReportCard.css";
-
 export default function DistrictReportCard({ districtData, onClose }) {
   if (!districtData) return null;
 
@@ -18,7 +16,6 @@ export default function DistrictReportCard({ districtData, onClose }) {
     totalLeaders,
     10: training,
     3: panchayatBhawans,
-    // lastUpdated
   } = districtData;
 
   useEffect(() => {
@@ -29,150 +26,114 @@ export default function DistrictReportCard({ districtData, onClose }) {
   }, []);
 
   return (
-    <div className="district-modal-backdrop">
-      <div className="district-modal-container">
-        <h1 className="HEADING">GRASS ROOT GOVERNANCE</h1>
+    <div className="fixed inset-0 bg-black/40 z-50 flex justify-center items-center p-4 overflow-hidden">
+      <div className="relative bg-white w-full max-w-5xl rounded-2xl p-6 md:p-10 max-h-[90vh] overflow-y-auto shadow-2xl">
+        <h1 className="text-center text-green-900 text-3xl md:text-4xl font-bold font-montserrat mb-4">
+          GRASS ROOT GOVERNANCE
+        </h1>
+
         {/* Header */}
-        <div className="header-popup">
-          <h1 className="district-header">District Name : {name}</h1>
+        <div className="flex justify-between items-center mb-8 flex-wrap gap-4">
+          <h1 className="text-center text-gray-800 text-2xl md:text-3xl font-bold flex-1">
+            District Name : {name}
+          </h1>
           <button
             onClick={onClose}
             aria-label="Close"
-            className="district-close-button"
+            className="absolute top-4 right-4 px-4 py-2 font-extrabold text-lg md:text-xl bg-gray-100 hover:bg-red-500 hover:text-white transition rounded-full shadow-md"
           >
             ✕
           </button>
         </div>
 
         {/* Cards Grid */}
-        <div className="district-grid-1">
+        <div className="flex flex-wrap justify-center gap-4">
           {/* RGSA Card */}
-          <div className="sor-card">
-            <div className="rgsa-header"></div>
-            <div className="rgsa-title">RGSA</div>
-
-            <div className="sor-content">
-              <div className="sor-item">
-                <div className="sor-label">Panchayat Bhawans</div>
-                <div className="sor-badge">
-                  <div>{3}</div>
+          <div className="w-full sm:w-[48%] h-fit lg:w-[31%] max-w-sm rounded-xl border border-yellow-500 bg-gradient-to-t from-[#FAEFDD] to-white shadow-md overflow-hidden">
+            <div className="h-2 bg-yellow-500" />
+            <div className="bg-yellow-500 text-white text-center font-bold font-montserrat text-2xl py-4">
+              RGSA
+            </div>
+            <div className="p-4 space-y-3">
+              {[
+                ["Panchayat Bhawans", 3],
+                ["DPRC", 16],
+                ["Women PRI Leader", 10],
+                ["Training Imparted", 10],
+              ].map(([label, value]) => (
+                <div
+                  className="flex justify-between items-center gap-4"
+                  key={label}
+                >
+                  <div className="font-bold text-gray-800 text-sm md:text-base flex-1">
+                    {label}
+                  </div>
+                  <div className="rounded-md bg-gray-200 w-10 h-10 flex items-center justify-center font-bold text-sm">
+                    {value}
+                  </div>
                 </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">DPRC</div>
-                <div className="sor-badge">
-                  <div>{16}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Women PRI Leader</div>
-                <div className="sor-badge">
-                  <div>{10}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Training Imparted</div>
-                <div className="sor-badge">
-                  <div>{10}</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
+
           {/* SOR Card */}
-          <div className="sor-card">
-            <div className="sor-header"></div>
-            <div className="sor-title">SOR</div>
-
-            <div className="sor-content">
-              <div className="sor-item">
-                <div className="sor-label">Score</div>
-                <div className="sor-badge">
-                  <div>{50}</div>
+          <div className="w-full sm:w-[48%] h-fit lg:w-[31%] max-w-sm rounded-xl border border-yellow-500 bg-gradient-to-t from-[#FAEFDD] to-white shadow-md overflow-hidden">
+            <div className="h-2 bg-[#778933]" />
+            <div className="bg-[#778933] text-white text-center font-bold font-montserrat text-2xl py-4">
+              SOR
+            </div>
+            <div className="p-4 space-y-3">
+              {[
+                ["Score", 50],
+                ["Rank", 16],
+                ["Total Schemes", 24],
+                ["Complete Schemes", 12],
+                ["On Going Schemes", 8],
+                ["Assets", 10],
+              ].map(([label, value]) => (
+                <div
+                  className="flex justify-between items-center gap-4"
+                  key={label}
+                >
+                  <div className="font-bold text-gray-800 text-sm md:text-base flex-1">
+                    {label}
+                  </div>
+                  <div className="rounded-md bg-gray-200 w-10 h-10 flex items-center justify-center font-bold text-sm">
+                    {value}
+                  </div>
                 </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Rank</div>
-                <div className="sor-badge">
-                  <div>{16}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Total Schemes</div>
-                <div className="sor-badge">
-                  <div>{24}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Complete Schemes</div>
-                <div className="sor-badge">
-                  <div>{12}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">On Going Schemes</div>
-                <div className="sor-badge">
-                  <div>{8}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Assets</div>
-                <div className="sor-badge">
-                  <div>{10}</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
-
 
           {/* FC Grants Card */}
-          <div className="sor-card">
-            <div className="fc-header"></div>
-            <div className="fc-title">FC Grants</div>
-
-            <div className="sor-content">
-              <div className="sor-item">
-                <div className="sor-label">Total Schemes</div>
-                <div className="sor-badge">
-                  <div>{24}</div>
+          <div className="w-full sm:w-[48%] h-fit lg:w-[31%] max-w-sm rounded-xl border border-yellow-500 bg-gradient-to-t from-[#FAEFDD] to-white shadow-md overflow-hidden">
+            <div className="h-2 bg-green-900" />
+            <div className="bg-green-900 text-white text-center font-bold font-montserrat text-2xl py-4">
+              FC GRANTS
+            </div>
+            <div className="p-4 space-y-3">
+              {[
+                ["Total Schemes", 24],
+                ["Complete Schemes", 12],
+                ["On Going Schemes", 8],
+                ["Assets", 10],
+              ].map(([label, value]) => (
+                <div
+                  className="flex justify-between items-center gap-4"
+                  key={label}
+                >
+                  <div className="font-bold text-gray-800 text-sm md:text-base flex-1">
+                    {label}
+                  </div>
+                  <div className="rounded-md bg-gray-200 w-10 h-10 flex items-center justify-center font-bold text-sm">
+                    {value}
+                  </div>
                 </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Complete Schemes</div>
-                <div className="sor-badge">
-                  <div>{12}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">On Going Schemes</div>
-                <div className="sor-badge">
-                  <div>{8}</div>
-                </div>
-              </div>
-
-              <div className="sor-item">
-                <div className="sor-label">Assets</div>
-                <div className="sor-badge">
-                  <div>{10}</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-
-        {/* Footer */}
-        {/* <div className="district-footer">
-          <p>Last Updated: {lastUpdated}</p>
-        </div> */}
       </div>
     </div>
   );

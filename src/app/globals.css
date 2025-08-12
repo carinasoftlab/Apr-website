@@ -1,10 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-stack: var(--font-inter), system-ui, sans-serif;
+  --font-stack: var(--font-mont), system-ui, sans-serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -41,14 +43,14 @@
   --prime-bg-color: #FAEFDD;
   --second-color: #F4AC1A;
   --olive-color: #778933;
-  --font-mont: 'Montserrat', system-ui, sans-serif;
-
+  --font-systm: system-ui, sans-serif;
+  --font-mont: 'Montserrat', sans-serif
 }
 
 body {
   font-family: var(--font-mont);
-    font-weight: 400;
-    margin: 0;
+  font-weight: 400;
+  margin: 0;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -58,8 +60,10 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 @theme inline {
@@ -144,9 +148,9 @@ body {
     @apply border-border outline-ring/50;
   }
 
- html {
-   scroll-behavior: smooth;
- }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     @apply bg-background text-foreground;
@@ -157,4 +161,37 @@ body {
   .font-mont {
     font-family: var(--font-mont), system-ui, sans-serif;
   }
+}
+
+
+/* For custom pagination in Home for swiper pagination buttlet */
+.custom-pagination .custom-bullet {
+  @apply bg-[#98b9ff] opacity-50 w-[10px] h-[10px] mx-[6px] rounded-full transition-all cursor-pointer;
+}
+
+.custom-pagination .custom-bullet-active {
+  @apply bg-[#0091ff] opacity-100 scale-125;
+}
+
+@media (max-width: 640px) {
+  .custom-pagination .custom-bullet {
+    @apply w-[8px] h-[8px] mx-[3px];
+  }
+}
+
+.bg {
+  background-image: url('/images/bg about us.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.custom-scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.custom-scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* IE & older Edge */
 }
