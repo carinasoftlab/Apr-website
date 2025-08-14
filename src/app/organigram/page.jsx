@@ -1,2233 +1,360 @@
-
-
-
-// "use client";
-
-// import { useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { Button } from "@/components/ui/button";
-// import {
-//   ChevronDown,
-//   ChevronUp,
-//   Users,
-//   Phone,
-//   MapPin,
-//   Building2,
-//   User,
-// } from "lucide-react";
-// import employeesData from "@/components/data/panchayati-raj-employees.json";
-// import Image from "next/image";
-
-// export default function OrganigramPage() {
-//   const [employees] = useState(employeesData.employees);
-//   const [expandedNodes, setExpandedNodes] = useState(new Set([0, 1, 2, 3, 4]));
-//   const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-//   const toggleNode = (employeeId) => {
-//     const newExpanded = new Set(expandedNodes);
-//     if (newExpanded.has(employeeId)) {
-//       newExpanded.delete(employeeId);
-//     } else {
-//       newExpanded.add(employeeId);
-//     }
-//     setExpandedNodes(newExpanded);
-//   };
-
-//   const getSubordinates = (employeeId) => {
-//     const employee = employees.find((emp) => emp.id === employeeId);
-//     if (!employee) return [];
-//     return employees.filter((emp) => employee.subordinates.includes(emp.id));
-//   };
-
-//   const getEmployeesBySection = (subordinates) => {
-//     const sections = {};
-//     subordinates.forEach((emp) => {
-//       if (!sections[emp.section]) {
-//         sections[emp.section] = [];
-//       }
-//       sections[emp.section].push(emp);
-//     });
-//     return sections;
-//   };
-
-//   const OrganigramBox = ({
-//     employee,
-//     isExpanded,
-//     onToggle,
-//     isSection = false,
-//   }) => {
-//     const subordinates = getSubordinates(employee.id);
-//     const hasSubordinates = subordinates.length > 0;
-//     const sectionGroups = hasSubordinates
-//       ? getEmployeesBySection(subordinates)
-//       : {};
-
-//     if (employee.level === 0) {
-//       return (
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.3 }}
-//           className="flex flex-col items-center mb-8"
-//         >
-//           <div className="bg-gradient-to-r from-prime to-olive text-white p-8 rounded-lg shadow-2xl border-4 border-prime min-w-[500px]">
-//             <div className="text-center">
-//               <Building2 className="w-16 h-16 mx-auto mb-4" />
-//               <h1 className="text-4xl font-bold font-mont mb-2 uppercase tracking-wide">
-//                 {employee.name}
-//               </h1>
-//               <div className="text-lg opacity-90 font-medium">
-//                 {employee.designation}
-//               </div>
-//               <div className="text-sm opacity-75 mt-2">
-//                 {employee.placeOfPosting}
-//               </div>
-//             </div>
-//           </div>
-
-//           {hasSubordinates && isExpanded && (
-//             <motion.div
-//               initial={{ height: 0 }}
-//               animate={{ height: 50 }}
-//               className="w-1 bg-prime mt-4"
-//             />
-//           )}
-
-//           <AnimatePresence>
-//             {hasSubordinates && isExpanded && (
-//               <motion.div
-//                 initial={{ opacity: 0, height: 0 }}
-//                 animate={{ opacity: 1, height: "auto" }}
-//                 exit={{ opacity: 0, height: 0 }}
-//                 transition={{ duration: 0.3 }}
-//                 className="mt-4"
-//               >
-//                 <div className="flex flex-col items-center gap-8">
-//                   {subordinates.map((subordinate) => (
-//                     <div key={subordinate.id} className="relative">
-//                       <div className="absolute -top-8 left-1/2 w-1 h-8 bg-prime transform -translate-x-1/2" />
-//                       <OrganigramBox
-//                         employee={subordinate}
-//                         isExpanded={expandedNodes.has(subordinate.id)}
-//                         onToggle={() => toggleNode(subordinate.id)}
-//                       />
-//                     </div>
-//                   ))}
-//                 </div>
-//               </motion.div>
-//             )}
-//           </AnimatePresence>
-//         </motion.div>
-//       );
-//     }
-
-//     return (
-//       <motion.div
-//         initial={{ opacity: 0, y: 20 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.3 }}
-//         className="flex flex-col items-center"
-//       >
-//         <div className="bg-white border-2 border-prime rounded-lg shadow-lg min-w-[350px] max-w-[400px]">
-//           {/* Header with position info */}
-//           <div className="bg-gradient-to-r from-prime to-olive text-white p-4 rounded-t-lg">
-//             <div className="text-center ">
-//               {employee.image ? (
-//                 <div className="w-24 h-24 object-cover rounded-full overflow-hidden mb-2 mx-auto">
-//                   <img
-//                     src={employee.image}
-//                     alt={employee.name}
-//                     className="object-cover w-full h-full"
-//                   />
-//                 </div>
-//               ) : (
-//                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
-//                   {employee.name.charAt(0)}
-//                 </div>
-//               )}
-//               <h3 className="font-bold text-lg mb-1 leading-tight">
-//                 {employee.designation}
-//               </h3>
-//               <div className="text-sm opacity-90">{employee.name}</div>
-//             </div>
-//           </div>
-
-//           {/* Body with details */}
-//           <div className="p-4">
-//             <div className="space-y-2 text-sm mb-4">
-//               <div className="flex items-center gap-2 text-gray-600">
-//                 <MapPin className="w-4 h-4 text-olive flex-shrink-0" />
-//                 <span className="text-xs">{employee.placeOfPosting}</span>
-//               </div>
-//               {employee.contactNo && employee.contactNo !== "N/A" && (
-//                 <div className="flex items-center gap-2 text-gray-600">
-//                   <Phone className="w-4 h-4 text-olive flex-shrink-0" />
-//                   <span className="text-xs">{employee.contactNo}</span>
-//                 </div>
-//               )}
-//               <div className="text-xs text-white font-medium bg-olive px-2 py-1 rounded">
-//                 {employee.section}
-//               </div>
-//             </div>
-
-//             {hasSubordinates && (
-//               <Button
-//                 variant="outline"
-//                 size="sm"
-//                 onClick={() => onToggle()}
-//                 className="w-full border-prime text-prime hover:bg-prime hover:text-white"
-//               >
-//                 <Users className="w-4 h-4 mr-2" />
-//                 {subordinates.length} Position
-//                 {subordinates.length > 1 ? "s" : ""} Under This
-//                 {isExpanded ? (
-//                   <ChevronUp className="w-4 h-4 ml-2" />
-//                 ) : (
-//                   <ChevronDown className="w-4 h-4 ml-2" />
-//                 )}
-//               </Button>
-//             )}
-//           </div>
-//         </div>
-
-//         {hasSubordinates && isExpanded && (
-//           <motion.div
-//             initial={{ height: 0 }}
-//             animate={{ height: 40 }}
-//             className="w-1 bg-olive mt-4"
-//           />
-//         )}
-
-//         <AnimatePresence>
-//           {hasSubordinates && isExpanded && (
-//             <motion.div
-//               initial={{ opacity: 0, height: 0 }}
-//               animate={{ opacity: 1, height: "auto" }}
-//               exit={{ opacity: 0, height: 0 }}
-//               transition={{ duration: 0.3 }}
-//               className="mt-4"
-//             >
-//               {Object.keys(sectionGroups).length > 1 ? (
-//                 <div className="flex flex-wrap justify-center gap-12">
-//                   {Object.entries(sectionGroups).map(
-//                     ([sectionName, sectionEmployees]) => (
-//                       <div
-//                         key={sectionName}
-//                         className="flex flex-col items-center"
-//                       >
-//                         {/* Section Header */}
-//                         <div className="bg-gradient-to-r from-olive to-second text-white p-3 rounded-lg mb-6 min-w-[280px] text-center shadow-lg">
-//                           <h4 className="font-bold text-lg">{sectionName}</h4>
-//                           <div className="text-sm opacity-90">
-//                             {sectionEmployees.length} Position
-//                             {sectionEmployees.length > 1 ? "s" : ""}
-//                           </div>
-//                         </div>
-
-//                         {/* Connection line */}
-//                         <div className="w-1 h-6 bg-olive mb-4" />
-
-//                         {/* Employees in this section */}
-//                         <div className="flex flex-col gap-6">
-//                           {sectionEmployees.map((subordinate) => (
-//                             <div key={subordinate.id} className="relative">
-//                               <div className="absolute -top-6 left-1/2 w-1 h-6 bg-olive transform -translate-x-1/2" />
-//                               <OrganigramBox
-//                                 employee={subordinate}
-//                                 isExpanded={expandedNodes.has(subordinate.id)}
-//                                 onToggle={() => toggleNode(subordinate.id)}
-//                               />
-//                             </div>
-//                           ))}
-//                         </div>
-//                       </div>
-//                     )
-//                   )}
-//                 </div>
-//               ) : (
-//                 <div className="flex flex-col items-center gap-6">
-//                   {subordinates.map((subordinate) => (
-//                     <div key={subordinate.id} className="relative">
-//                       <div className="absolute -top-6 left-1/2 w-1 h-6 bg-olive transform -translate-x-1/2" />
-//                       <OrganigramBox
-//                         employee={subordinate}
-//                         isExpanded={expandedNodes.has(subordinate.id)}
-//                         onToggle={() => toggleNode(subordinate.id)}
-//                       />
-//                     </div>
-//                   ))}
-//                 </div>
-//               )}
-//             </motion.div>
-//           )}
-//         </AnimatePresence>
-//       </motion.div>
-//     );
-//   };
-
-//   const rootEmployee = employees.find((emp) => emp.level === 0);
-
-//   return (
-//     <div className="min-h-screen bg-prime-bg">
-//       <div className="bg-gradient-to-r from-prime via-olive to-second text-white py-16">
-//         <div className="container mx-auto px-4 text-center">
-//           <motion.div
-//             initial={{ opacity: 0, y: -30 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             className="mb-6"
-//           >
-//             <Building2 className="w-20 h-20 mx-auto mb-4" />
-//           </motion.div>
-//           <motion.h1
-//             initial={{ opacity: 0, y: -20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             className="text-5xl md:text-7xl font-bold font-mont uppercase tracking-wider mb-4"
-//           >
-//             Organigram
-//           </motion.h1>
-//           <motion.p
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.2 }}
-//             className="text-2xl md:text-3xl font-mont opacity-90 mb-2"
-//           >
-//             Panchayati Raj Department
-//           </motion.p>
-//           <motion.p
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.3 }}
-//             className="text-lg opacity-75"
-//           >
-//             Government of Arunachal Pradesh
-//           </motion.p>
-//         </div>
-//       </div>
-
-//       <div className="container mx-auto px-4 py-16">
-//         <div className="flex flex-col items-center">
-//           {rootEmployee && (
-//             <OrganigramBox
-//               employee={rootEmployee}
-//               isExpanded={expandedNodes.has(rootEmployee.id)}
-//               onToggle={() => toggleNode(rootEmployee.id)}
-//             />
-//           )}
-//         </div>
-//       </div>
-
-//       <AnimatePresence>
-//         {selectedEmployee && (
-//           <motion.div
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             exit={{ opacity: 0 }}
-//             className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50"
-//             onClick={() => setSelectedEmployee(null)}
-//           >
-//             <motion.div
-//               initial={{ scale: 0.8, opacity: 0 }}
-//               animate={{ scale: 1, opacity: 1 }}
-//               exit={{ scale: 0.8, opacity: 0 }}
-//               className="bg-white rounded-xl p-8 max-w-lg w-full shadow-2xl"
-//               onClick={(e) => e.stopPropagation()}
-//             >
-//               <div className="text-center">
-//                 {selectedEmployee.image ? (
-//                   <img
-//                     src={selectedEmployee.image}
-//                     alt={selectedEmployee.name}
-//                     className="w-24 h-24 object-cover rounded-full mx-auto mb-6"
-//                   />
-//                 ) : (
-//                   <div className="w-24 h-24 bg-gradient-to-r from-prime to-olive rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
-//                     {selectedEmployee.name.charAt(0)}
-//                   </div>
-//                 )}
-//                 <h2 className="text-3xl font-bold text-prime mb-2">
-//                   {selectedEmployee.name}
-//                 </h2>
-//                 <p className="text-xl text-gray-600 mb-6">
-//                   {selectedEmployee.designation}
-//                 </p>
-//                 <div className="space-y-4 text-left bg-gray-50 p-6 rounded-lg">
-//                   <div className="flex items-center gap-3">
-//                     <MapPin className="w-5 h-5 text-olive" />
-//                     <span className="text-gray-700">
-//                       {selectedEmployee.placeOfPosting}
-//                     </span>
-//                   </div>
-//                   {selectedEmployee.contactNo &&
-//                     selectedEmployee.contactNo !== "N/A" && (
-//                       <div className="flex items-center gap-3">
-//                         <Phone className="w-5 h-5 text-olive" />
-//                         <span className="text-gray-700">
-//                           {selectedEmployee.contactNo}
-//                         </span>
-//                       </div>
-//                     )}
-//                   <div className="flex items-center gap-3">
-//                     <User className="w-5 h-5 text-olive" />
-//                     <span className="text-gray-700">
-//                       {selectedEmployee.section}
-//                     </span>
-//                   </div>
-//                 </div>
-//                 <Button
-//                   onClick={() => setSelectedEmployee(null)}
-//                   className="mt-8 bg-prime hover:bg-prime/90 px-8 py-3 text-lg"
-//                 >
-//                   Close Details
-//                 </Button>
-//               </div>
-//             </motion.div>
-//           </motion.div>
-//         )}
-//       </AnimatePresence>
-//     </div>
-//   );
-// }
-
-
-// "use client";
-
-// import { useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { Button } from "@/components/ui/button";
-// import {
-//   ChevronDown,
-//   ChevronUp,
-//   Users,
-//   Phone,
-//   MapPin,
-//   Building2,
-//   User,
-// } from "lucide-react";
-// import employeesData from "@/components/data/panchayati-raj-employees.json";
-// import Image from "next/image";
-
-// export default function OrganigramPage() {
-//   const [employees] = useState(employeesData.employees);
-//   const [expandedNodes, setExpandedNodes] = useState(new Set([0, 1, 2, 3, 4]));
-//   const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-//   const toggleNode = (employeeId) => {
-//     const newExpanded = new Set(expandedNodes);
-//     if (newExpanded.has(employeeId)) {
-//       newExpanded.delete(employeeId);
-//     } else {
-//       newExpanded.add(employeeId);
-//     }
-//     setExpandedNodes(newExpanded);
-//   };
-
-//   const getSubordinates = (employeeId) => {
-//     const employee = employees.find((emp) => emp.id === employeeId);
-//     if (!employee) return [];
-//     return employees.filter((emp) => employee.subordinates.includes(emp.id));
-//   };
-
-//   const getEmployeesBySection = (subordinates) => {
-//     const sections = {};
-//     subordinates.forEach((emp) => {
-//       if (!sections[emp.section]) {
-//         sections[emp.section] = [];
-//       }
-//       sections[emp.section].push(emp);
-//     });
-//     return sections;
-//   };
-
-//   const OrganigramBox = ({
-//     employee,
-//     isExpanded,
-//     onToggle,
-//     isSection = false,
-//   }) => {
-//     const subordinates = getSubordinates(employee.id);
-//     const hasSubordinates = subordinates.length > 0;
-//     const sectionGroups = hasSubordinates
-//       ? getEmployeesBySection(subordinates)
-//       : {};
-
-//     if (employee.level === 0) {
-//       return (
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.3 }}
-//           className="flex flex-col items-center mb-8"
-//         >
-//           <div className="bg-gradient-to-r from-prime to-olive text-white p-8 rounded-lg shadow-2xl border-4 border-prime min-w-[500px]">
-//             <div className="text-center">
-//               <Building2 className="w-16 h-16 mx-auto mb-4" />
-//               <h1 className="text-4xl font-bold font-mont mb-2 uppercase tracking-wide">
-//                 {employee.name}
-//               </h1>
-//               <div className="text-lg opacity-90 font-medium">
-//                 {employee.designation}
-//               </div>
-//               <div className="text-sm opacity-75 mt-2">
-//                 {employee.placeOfPosting}
-//               </div>
-//             </div>
-//           </div>
-
-//           {hasSubordinates && isExpanded && (
-//             <motion.div
-//               initial={{ height: 0 }}
-//               animate={{ height: 50 }}
-//               className="w-1 bg-prime mt-4"
-//             />
-//           )}
-
-//           <AnimatePresence>
-//             {hasSubordinates && isExpanded && (
-//               <motion.div
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 exit={{ opacity: 0, y: -20 }}
-//                 transition={{ duration: 0.3 }}
-//                 className="mt-4"
-//               >
-//                 <div className="flex flex-col items-center gap-8">
-//                   {subordinates.map((subordinate) => (
-//                     <div key={subordinate.id} className="relative">
-//                       <div className="absolute -top-8 left-1/2 w-1 h-8 bg-prime transform -translate-x-1/2" />
-//                       <OrganigramBox
-//                         employee={subordinate}
-//                         isExpanded={expandedNodes.has(subordinate.id)}
-//                         onToggle={() => toggleNode(subordinate.id)}
-//                       />
-//                     </div>
-//                   ))}
-//                 </div>
-//               </motion.div>
-//             )}
-//           </AnimatePresence>
-//         </motion.div>
-//       );
-//     }
-
-//     return (
-//       <motion.div
-//         initial={{ opacity: 0, y: 20 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.3 }}
-//         className="flex flex-col items-center"
-//       >
-//         <div className="bg-white border-2 border-prime rounded-lg shadow-lg min-w-[350px] max-w-[400px]">
-//           {/* Header with position info */}
-//           <div className="bg-gradient-to-r from-prime to-olive text-white p-4 rounded-t-lg">
-//             <div className="text-center ">
-//               {employee.image ? (
-//                 <div className="w-24 h-24 object-cover rounded-full overflow-hidden mb-2 mx-auto">
-//                   <img
-//                     src={employee.image}
-//                     alt={employee.name}
-//                     className="object-cover w-full h-full"
-//                   />
-//                 </div>
-//               ) : (
-//                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
-//                   {employee.name.charAt(0)}
-//                 </div>
-//               )}
-//               <h3 className="font-bold text-lg mb-1 leading-tight">
-//                 {employee.designation}
-//               </h3>
-//               <div className="text-sm opacity-90">{employee.name}</div>
-//             </div>
-//           </div>
-
-//           {/* Body with details */}
-//           <div className="p-4">
-//             <div className="space-y-2 text-sm mb-4">
-//               <div className="flex items-center gap-2 text-gray-600">
-//                 <MapPin className="w-4 h-4 text-olive flex-shrink-0" />
-//                 <span className="text-xs">{employee.placeOfPosting}</span>
-//               </div>
-//               {employee.contactNo && employee.contactNo !== "N/A" && (
-//                 <div className="flex items-center gap-2 text-gray-600">
-//                   <Phone className="w-4 h-4 text-olive flex-shrink-0" />
-//                   <span className="text-xs">{employee.contactNo}</span>
-//                 </div>
-//               )}
-//               <div className="text-xs text-white font-medium bg-olive px-2 py-1 rounded">
-//                 {employee.section}
-//               </div>
-//             </div>
-
-//             {hasSubordinates && (
-//               <Button
-//                 variant="outline"
-//                 size="sm"
-//                 onClick={() => onToggle()}
-//                 className="w-full border-prime text-prime hover:bg-prime hover:text-white"
-//               >
-//                 <Users className="w-4 h-4 mr-2" />
-//                 {subordinates.length} Position
-//                 {subordinates.length > 1 ? "s" : ""} Under This
-//                 {isExpanded ? (
-//                   <ChevronUp className="w-4 h-4 ml-2" />
-//                 ) : (
-//                   <ChevronDown className="w-4 h-4 ml-2" />
-//                 )}
-//               </Button>
-//             )}
-//           </div>
-//         </div>
-
-//         {hasSubordinates && isExpanded && (
-//           <motion.div
-//             initial={{ height: 0 }}
-//             animate={{ height: 40 }}
-//             className="w-1 bg-olive mt-4"
-//           />
-//         )}
-
-//         <AnimatePresence>
-//           {hasSubordinates && isExpanded && (
-//             <motion.div
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               exit={{ opacity: 0, y: -20 }}
-//               transition={{ duration: 0.3 }}
-//               className="mt-4"
-//             >
-//               {Object.keys(sectionGroups).length > 1 ? (
-//                 <div className="flex flex-wrap justify-center gap-12">
-//                   {Object.entries(sectionGroups).map(
-//                     ([sectionName, sectionEmployees]) => (
-//                       <div
-//                         key={sectionName}
-//                         className="flex flex-col items-center"
-//                       >
-//                         {/* Section Header */}
-//                         <div className="bg-gradient-to-r from-olive to-second text-white p-3 rounded-lg mb-6 min-w-[280px] text-center shadow-lg">
-//                           <h4 className="font-bold text-lg">{sectionName}</h4>
-//                           <div className="text-sm opacity-90">
-//                             {sectionEmployees.length} Position
-//                             {sectionEmployees.length > 1 ? "s" : ""}
-//                           </div>
-//                         </div>
-
-//                         {/* Connection line */}
-//                         <div className="w-1 h-6 bg-olive" />
-
-//                         {/* Employees in this section */}
-//                         <div className="relative mt-2">
-//                           {sectionEmployees.length > 1 && (
-//                             <div className="absolute -top-6 left-0 right-0 h-1 bg-olive" />
-//                           )}
-//                           <div className="flex flex-row justify-center gap-12">
-//                             {sectionEmployees.map((subordinate) => (
-//                               <div
-//                                 key={subordinate.id}
-//                                 className="flex flex-col items-center"
-//                               >
-//                                 {sectionEmployees.length > 1 && (
-//                                   <div className="w-1 h-6 bg-olive" />
-//                                 )}
-//                                 <OrganigramBox
-//                                   employee={subordinate}
-//                                   isExpanded={expandedNodes.has(subordinate.id)}
-//                                   onToggle={() => toggleNode(subordinate.id)}
-//                                 />
-//                               </div>
-//                             ))}
-//                           </div>
-//                         </div>
-//                       </div>
-//                     )
-//                   )}
-//                 </div>
-//               ) : (
-//                 <div className="relative">
-//                   {subordinates.length > 1 && (
-//                     <div className="absolute -top-6 left-0 right-0 h-1 bg-olive" />
-//                   )}
-//                   <div className="flex flex-row justify-center gap-12 mt-6">
-//                     {subordinates.map((subordinate) => (
-//                       <div
-//                         key={subordinate.id}
-//                         className="flex flex-col items-center"
-//                       >
-//                         {subordinates.length > 1 && (
-//                           <div className="w-1 h-6 bg-olive" />
-//                         )}
-//                         <OrganigramBox
-//                           employee={subordinate}
-//                           isExpanded={expandedNodes.has(subordinate.id)}
-//                           onToggle={() => toggleNode(subordinate.id)}
-//                         />
-//                       </div>
-//                     ))}
-//                   </div>
-//                 </div>
-//               )}
-//             </motion.div>
-//           )}
-//         </AnimatePresence>
-//       </motion.div>
-//     );
-//   };
-
-//   const rootEmployee = employees.find((emp) => emp.level === 0);
-
-//   return (
-//     <div className="min-h-screen bg-prime-bg">
-//       <div className="bg-gradient-to-r from-prime via-olive to-second text-white py-16">
-//         <div className="container mx-auto px-4 text-center">
-//           <motion.div
-//             initial={{ opacity: 0, y: -30 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             className="mb-6"
-//           >
-//             <Building2 className="w-20 h-20 mx-auto mb-4" />
-//           </motion.div>
-//           <motion.h1
-//             initial={{ opacity: 0, y: -20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             className="text-5xl md:text-7xl font-bold font-mont uppercase tracking-wider mb-4"
-//           >
-//             Organigram
-//           </motion.h1>
-//           <motion.p
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.2 }}
-//             className="text-2xl md:text-3xl font-mont opacity-90 mb-2"
-//           >
-//             Panchayati Raj Department
-//           </motion.p>
-//           <motion.p
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.3 }}
-//             className="text-lg opacity-75"
-//           >
-//             Government of Arunachal Pradesh
-//           </motion.p>
-//         </div>
-//       </div>
-
-//       <div className="container mx-auto px-4 py-16">
-//         <div className="flex flex-col items-center">
-//           {rootEmployee && (
-//             <OrganigramBox
-//               employee={rootEmployee}
-//               isExpanded={expandedNodes.has(rootEmployee.id)}
-//               onToggle={() => toggleNode(rootEmployee.id)}
-//             />
-//           )}
-//         </div>
-//       </div>
-
-//       <AnimatePresence>
-//         {selectedEmployee && (
-//           <motion.div
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             exit={{ opacity: 0 }}
-//             className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50"
-//             onClick={() => setSelectedEmployee(null)}
-//           >
-//             <motion.div
-//               initial={{ scale: 0.8, opacity: 0 }}
-//               animate={{ scale: 1, opacity: 1 }}
-//               exit={{ scale: 0.8, opacity: 0 }}
-//               className="bg-white rounded-xl p-8 max-w-lg w-full shadow-2xl"
-//               onClick={(e) => e.stopPropagation()}
-//             >
-//               <div className="text-center">
-//                 {selectedEmployee.image ? (
-//                   <img
-//                     src={selectedEmployee.image}
-//                     alt={selectedEmployee.name}
-//                     className="w-24 h-24 object-cover rounded-full mx-auto mb-6"
-//                   />
-//                 ) : (
-//                   <div className="w-24 h-24 bg-gradient-to-r from-prime to-olive rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
-//                     {selectedEmployee.name.charAt(0)}
-//                   </div>
-//                 )}
-//                 <h2 className="text-3xl font-bold text-prime mb-2">
-//                   {selectedEmployee.name}
-//                 </h2>
-//                 <p className="text-xl text-gray-600 mb-6">
-//                   {selectedEmployee.designation}
-//                 </p>
-//                 <div className="space-y-4 text-left bg-gray-50 p-6 rounded-lg">
-//                   <div className="flex items-center gap-3">
-//                     <MapPin className="w-5 h-5 text-olive" />
-//                     <span className="text-gray-700">
-//                       {selectedEmployee.placeOfPosting}
-//                     </span>
-//                   </div>
-//                   {selectedEmployee.contactNo &&
-//                     selectedEmployee.contactNo !== "N/A" && (
-//                       <div className="flex items-center gap-3">
-//                         <Phone className="w-5 h-5 text-olive" />
-//                         <span className="text-gray-700">
-//                           {selectedEmployee.contactNo}
-//                         </span>
-//                       </div>
-//                     )}
-//                   <div className="flex items-center gap-3">
-//                     <User className="w-5 h-5 text-olive" />
-//                     <span className="text-gray-700">
-//                       {selectedEmployee.section}
-//                     </span>
-//                   </div>
-//                 </div>
-//                 <Button
-//                   onClick={() => setSelectedEmployee(null)}
-//                   className="mt-8 bg-prime hover:bg-prime/90 px-8 py-3 text-lg"
-//                 >
-//                   Close Details
-//                 </Button>
-//               </div>
-//             </motion.div>
-//           </motion.div>
-//         )}
-//       </AnimatePresence>
-//     </div>
-//   );
-// }
-
-
-
-// "use client";
-
-// import { useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { Button } from "@/components/ui/button";
-// import {
-//   ChevronDown,
-//   ChevronUp,
-//   Users,
-//   Phone,
-//   MapPin,
-//   Building2,
-//   User,
-// } from "lucide-react";
-// import employeesData from "@/components/data/panchayati-raj-employees-updated.json";
-// // import Image from "next/image";
-
-// export default function OrganigramPage() {
-//   const [employees] = useState(employeesData.employees);
-//   const [expandedNodes, setExpandedNodes] = useState(new Set([0, 1, 2, 3, 4]));
-//   const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-//   const toggleNode = (employeeId) => {
-//     const newExpanded = new Set(expandedNodes);
-//     if (newExpanded.has(employeeId)) {
-//       newExpanded.delete(employeeId);
-//     } else {
-//       newExpanded.add(employeeId);
-//     }
-//     setExpandedNodes(newExpanded);
-//   };
-
-//   const getSubordinates = (employeeId) => {
-//     return employees.filter((emp) => emp.parentId.includes(employeeId));
-//   };
-
-//   const getEmployeesBySection = (subordinates) => {
-//     const sections = {};
-//     subordinates.forEach((emp) => {
-//       if (!sections[emp.section]) {
-//         sections[emp.section] = [];
-//       }
-//       sections[emp.section].push(emp);
-//     });
-//     return sections;
-//   };
-
-//   const OrganigramBox = ({
-//     employee,
-//     isExpanded,
-//     onToggle,
-//     isSection = false,
-//   }) => {
-//     const subordinates = getSubordinates(employee.id);
-//     const hasSubordinates = subordinates.length > 0;
-//     const sectionGroups = hasSubordinates
-//       ? getEmployeesBySection(subordinates)
-//       : {};
-//     const isGroupBySection = employee.level === 4;
-
-//     if (employee.level === 0) {
-//       return (
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.3 }}
-//           className="flex flex-col items-center mb-8"
-//         >
-//           <div className="bg-gradient-to-r from-prime to-olive text-white p-8 rounded-lg shadow-2xl border-4 border-prime min-w-[500px]">
-//             <div className="text-center">
-//               <Building2 className="w-16 h-16 mx-auto mb-4" />
-//               <h1 className="text-4xl font-bold font-mont mb-2 uppercase tracking-wide">
-//                 {employee.name}
-//               </h1>
-//               <div className="text-lg opacity-90 font-medium">
-//                 {employee.designation}
-//               </div>
-//               <div className="text-sm opacity-75 mt-2">
-//                 {employee.placeOfPosting}
-//               </div>
-//             </div>
-//           </div>
-
-//           {hasSubordinates && isExpanded && (
-//             <motion.div
-//               initial={{ height: 0 }}
-//               animate={{ height: 50 }}
-//               className="w-1 bg-prime mt-4"
-//             />
-//           )}
-
-//           <AnimatePresence>
-//             {hasSubordinates && isExpanded && (
-//               <motion.div
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 exit={{ opacity: 0, y: -20 }}
-//                 transition={{ duration: 0.3 }}
-//                 className="mt-4"
-//               >
-//                 <div className="flex flex-col items-center gap-8">
-//                   {subordinates.map((subordinate) => (
-//                     <div key={subordinate.id} className="relative">
-//                       <div className="absolute -top-8 left-1/2 w-1 h-8 bg-prime transform -translate-x-1/2" />
-//                       <OrganigramBox
-//                         employee={subordinate}
-//                         isExpanded={expandedNodes.has(subordinate.id)}
-//                         onToggle={() => toggleNode(subordinate.id)}
-//                       />
-//                     </div>
-//                   ))}
-//                 </div>
-//               </motion.div>
-//             )}
-//           </AnimatePresence>
-//         </motion.div>
-//       );
-//     }
-
-//     return (
-//       <motion.div
-//         initial={{ opacity: 0, y: 20 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.3 }}
-//         className="flex flex-col items-center"
-//       >
-//         <div
-//           className="bg-white border-2 border-prime rounded-lg shadow-lg min-w-[350px] max-w-[400px] cursor-pointer"
-//           onClick={() => setSelectedEmployee(employee)}
-//         >
-//           {/* Header with position info */}
-//           <div className="bg-gradient-to-r from-prime to-olive text-white p-4 rounded-t-lg">
-//             <div className="text-center ">
-//               {employee.image ? (
-//                 <div className="w-24 h-24 object-cover rounded-full overflow-hidden mb-2 mx-auto">
-//                   <img
-//                     src={employee.image}
-//                     alt={employee.name}
-//                     className="object-cover w-full h-full rounded-full"
-//                   />
-//                 </div>
-//               ) : (
-//                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
-//                   {employee.name.charAt(0)}
-//                 </div>
-//               )}
-//               <h3 className="font-bold text-lg mb-1 leading-tight">
-//                 {employee.designation}
-//               </h3>
-//               <div className="text-sm opacity-90">{employee.name}</div>
-//             </div>
-//           </div>
-
-//           {/* Body with details */}
-//           <div className="p-4">
-//             <div className="space-y-2 text-sm mb-4">
-//               <div className="flex items-center gap-2 text-gray-600">
-//                 <MapPin className="w-4 h-4 text-olive flex-shrink-0" />
-//                 <span className="text-xs">{employee.placeOfPosting}</span>
-//               </div>
-//               {employee.contactNo && employee.contactNo !== "N/A" && (
-//                 <div className="flex items-center gap-2 text-gray-600">
-//                   <Phone className="w-4 h-4 text-olive flex-shrink-0" />
-//                   <span className="text-xs">{employee.contactNo}</span>
-//                 </div>
-//               )}
-//               <div className="text-xs text-white font-medium bg-olive px-2 py-1 rounded">
-//                 {employee.section}
-//               </div>
-//             </div>
-
-//             {hasSubordinates && (
-//               <Button
-//                 variant="outline"
-//                 size="sm"
-//                 onClick={(e) => {
-//                   e.stopPropagation();
-//                   onToggle();
-//                 }}
-//                 className="w-full border-prime text-prime hover:bg-prime hover:text-white"
-//               >
-//                 <Users className="w-4 h-4 mr-2" />
-//                 {subordinates.length} Position
-//                 {subordinates.length > 1 ? "s" : ""} Under This
-//                 {isExpanded ? (
-//                   <ChevronUp className="w-4 h-4 ml-2" />
-//                 ) : (
-//                   <ChevronDown className="w-4 h-4 ml-2" />
-//                 )}
-//               </Button>
-//             )}
-//           </div>
-//         </div>
-
-//         {hasSubordinates && isExpanded && (
-//           <motion.div
-//             initial={{ height: 0 }}
-//             animate={{ height: 50 }}
-//             className="w-1 bg-olive mt-4"
-//           />
-//         )}
-
-//         <AnimatePresence>
-//           {hasSubordinates && isExpanded && (
-//             <motion.div
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               exit={{ opacity: 0, y: -20 }}
-//               transition={{ duration: 0.3 }}
-//               className="mt-4"
-//             >
-//               {isGroupBySection ? (
-//                 <div className="relative mt-6">
-//                   <div
-//                     className={`absolute top-0 left-0 right-0 h-1 bg-olive ${
-//                       Object.keys(sectionGroups).length > 1 ? "" : "hidden"
-//                     }`}
-//                   />
-//                   <div className="flex flex-row flex-nowrap justify-center gap-12">
-//                     {Object.entries(sectionGroups).map(
-//                       ([sectionName, sectionEmployees]) => (
-//                         <div
-//                           key={sectionName}
-//                           className="flex flex-col items-center"
-//                         >
-//                           <div
-//                             className={`w-1 h-6 bg-olive ${
-//                               Object.keys(sectionGroups).length > 1
-//                                 ? ""
-//                                 : "hidden"
-//                             }`}
-//                           />
-//                           {/* Section Header */}
-//                           <div className="bg-gradient-to-r from-olive to-second text-white p-3 rounded-lg mb-6 min-w-[280px] text-center shadow-lg">
-//                             <h4 className="font-bold text-lg">{sectionName}</h4>
-//                             <div className="text-sm opacity-90">
-//                               {sectionEmployees.length} Position
-//                               {sectionEmployees.length > 1 ? "s" : ""}
-//                             </div>
-//                           </div>
-
-//                           {/* Connection line from header to employees */}
-//                           <div className="w-1 h-6 bg-olive mb-4" />
-
-//                           {/* Employees in this section */}
-//                           <div className="relative">
-//                             <div
-//                               className={`absolute -top-6 left-0 right-0 h-1 bg-olive ${
-//                                 sectionEmployees.length > 1 ? "" : "hidden"
-//                               }`}
-//                             />
-//                             <div className="flex flex-row flex-nowrap justify-center gap-12 mt-6">
-//                               {sectionEmployees.map((subordinate) => (
-//                                 <div
-//                                   key={subordinate.id}
-//                                   className="flex flex-col items-center"
-//                                 >
-//                                   <div
-//                                     className={`w-1 h-6 bg-olive ${
-//                                       sectionEmployees.length > 1
-//                                         ? ""
-//                                         : "hidden"
-//                                     }`}
-//                                   />
-//                                   <OrganigramBox
-//                                     employee={subordinate}
-//                                     isExpanded={expandedNodes.has(
-//                                       subordinate.id
-//                                     )}
-//                                     onToggle={() => toggleNode(subordinate.id)}
-//                                   />
-//                                 </div>
-//                               ))}
-//                             </div>
-//                           </div>
-//                         </div>
-//                       )
-//                     )}
-//                   </div>
-//                 </div>
-//               ) : (
-//                 <div className="relative mt-6">
-//                   <div
-//                     className={`absolute top-0 left-0 right-0 h-1 bg-olive ${
-//                       subordinates.length > 1 ? "" : "hidden"
-//                     }`}
-//                   />
-//                   <div className="flex flex-row flex-nowrap justify-center gap-12">
-//                     {subordinates.map((subordinate) => (
-//                       <div
-//                         key={subordinate.id}
-//                         className="flex flex-col items-center"
-//                       >
-//                         <div
-//                           className={`w-1 h-6 bg-olive ${
-//                             subordinates.length > 1 ? "" : "hidden"
-//                           }`}
-//                         />
-//                         <OrganigramBox
-//                           employee={subordinate}
-//                           isExpanded={expandedNodes.has(subordinate.id)}
-//                           onToggle={() => toggleNode(subordinate.id)}
-//                         />
-//                       </div>
-//                     ))}
-//                   </div>
-//                 </div>
-//               )}
-//             </motion.div>
-//           )}
-//         </AnimatePresence>
-//       </motion.div>
-//     );
-//   };
-
-//   const roots = employees
-//     .filter((emp) => emp.parentId.length === 0)
-//     .sort((a, b) => a.id - b.id);
-
-//   return (
-//     <div className="min-h-screen bg-prime-bg">
-//       <div className="bg-gradient-to-r from-prime via-olive to-second text-white py-16">
-//         <div className="container mx-auto px-4 text-center">
-//           <motion.div
-//             initial={{ opacity: 0, y: -30 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             className="mb-6"
-//           >
-//             <Building2 className="w-20 h-20 mx-auto mb-4" />
-//           </motion.div>
-//           <motion.h1
-//             initial={{ opacity: 0, y: -20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             className="text-5xl md:text-7xl font-bold font-mont uppercase tracking-wider mb-4"
-//           >
-//             Organigram
-//           </motion.h1>
-//           <motion.p
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.2 }}
-//             className="text-2xl md:text-3xl font-mont opacity-90 mb-2"
-//           >
-//             Panchayati Raj Department
-//           </motion.p>
-//           <motion.p
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.3 }}
-//             className="text-lg opacity-75"
-//           >
-//             Government of Arunachal Pradesh
-//           </motion.p>
-//         </div>
-//       </div>
-
-//       <div className="container mx-auto px-4 py-16">
-//         <div className="overflow-x-auto">
-//           <div className="flex flex-row justify-center gap-12 min-w-max">
-//             {roots.map((root) => (
-//               <div key={root.id} className="flex flex-col items-center">
-//                 <OrganigramBox
-//                   employee={root}
-//                   isExpanded={expandedNodes.has(root.id)}
-//                   onToggle={() => toggleNode(root.id)}
-//                 />
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-
-//       <AnimatePresence>
-//         {selectedEmployee && (
-//           <motion.div
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             exit={{ opacity: 0 }}
-//             className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50"
-//             onClick={() => setSelectedEmployee(null)}
-//           >
-//             <motion.div
-//               initial={{ scale: 0.8, opacity: 0 }}
-//               animate={{ scale: 1, opacity: 1 }}
-//               exit={{ scale: 0.8, opacity: 0 }}
-//               className="bg-white rounded-xl p-8 max-w-lg w-full shadow-2xl"
-//               onClick={(e) => e.stopPropagation()}
-//             >
-//               <div className="text-center">
-//                 {selectedEmployee.image ? (
-//                   <img
-//                     src={selectedEmployee.image}
-//                     alt={selectedEmployee.name}
-//                     className="w-24 h-24 object-cover rounded-full mx-auto mb-6"
-//                   />
-//                 ) : (
-//                   <div className="w-24 h-24 bg-gradient-to-r from-prime to-olive rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
-//                     {selectedEmployee.name.charAt(0)}
-//                   </div>
-//                 )}
-//                 <h2 className="text-3xl font-bold text-prime mb-2">
-//                   {selectedEmployee.name}
-//                 </h2>
-//                 <p className="text-xl text-gray-600 mb-6">
-//                   {selectedEmployee.designation}
-//                 </p>
-//                 <div className="space-y-4 text-left bg-gray-50 p-6 rounded-lg">
-//                   <div className="flex items-center gap-3">
-//                     <MapPin className="w-5 h-5 text-olive" />
-//                     <span className="text-gray-700">
-//                       {selectedEmployee.placeOfPosting}
-//                     </span>
-//                   </div>
-//                   {selectedEmployee.contactNo &&
-//                     selectedEmployee.contactNo !== "N/A" && (
-//                       <div className="flex items-center gap-3">
-//                         <Phone className="w-5 h-5 text-olive" />
-//                         <span className="text-gray-700">
-//                           {selectedEmployee.contactNo}
-//                         </span>
-//                       </div>
-//                     )}
-//                   <div className="flex items-center gap-3">
-//                     <User className="w-5 h-5 text-olive" />
-//                     <span className="text-gray-700">
-//                       {selectedEmployee.section}
-//                     </span>
-//                   </div>
-//                 </div>
-//                 <Button
-//                   onClick={() => setSelectedEmployee(null)}
-//                   className="mt-8 bg-prime hover:bg-prime/90 px-8 py-3 text-lg"
-//                 >
-//                   Close Details
-//                 </Button>
-//               </div>
-//             </motion.div>
-//           </motion.div>
-//         )}
-//       </AnimatePresence>
-//     </div>
-//   );
-// }
-
-
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import {
-  ChevronDown,
-  ChevronUp,
-  Users,
-  Phone,
-  MapPin,
-  Building2,
-  User,
-} from "lucide-react";
+import React, { useEffect, useMemo } from "react";
+import ReactFlow, {
+  Background,
+  Controls,
+  MiniMap,
+  useEdgesState,
+  useNodesState,
+  ReactFlowProvider,
+  useReactFlow,
+} from "reactflow";
+import "reactflow/dist/style.css";
+import dagre from "dagre";
 import employeesData from "@/components/data/panchayati-raj-employees-updated-clean.json";
+import Footer from "@/components/footer/page";
+import Header from "@/components/Header/Header";
 
+// ---- Dagre auto-layout ----
+const NODE_W = 240;
+const NODE_H = 120;
+const dagreGraph = new dagre.graphlib.Graph();
+dagreGraph.setDefaultEdgeLabel(() => ({}));
+function layout(nodes, edges, dir = "TB") {
+  const g = dagreGraph;
+  g.setGraph({ rankdir: dir, nodesep: 60, ranksep: 100 });
+  nodes.forEach((n) => g.setNode(n.id, { width: NODE_W, height: NODE_H }));
+  edges.forEach((e) => g.setEdge(e.source, e.target));
+  dagre.layout(g);
+  const layouted = nodes.map((n) => {
+    const p = g.node(n.id);
+    return {
+      ...n,
+      position: { x: p.x - NODE_W / 2, y: p.y - NODE_H / 2 },
+      draggable: true,
+    };
+  });
+  return { nodes: layouted, edges };
+}
 
-export default function OrganigramPage() {
-  const [employees] = useState(employeesData.employees);
-  const [expandedNodes, setExpandedNodes] = useState(new Set([0, 1, 2, 3, 4]));
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
+// ---- Color palette for parent edges ----
+const colors = [
+  "#EF4444",
+  "#3B82F6",
+  "#10B981",
+  "#F59E0B",
+  "#8B5CF6",
+  "#EC4899",
+  "#14B8A6",
+  "#F97316",
+  "#6366F1",
+  "#84CC16",
+];
+function getColorByParentId(parentId) {
+  const index = parseInt(parentId, 10) % colors.length;
+  return colors[index];
+}
 
-  const toggleNode = (employeeId) => {
-    const newExpanded = new Set(expandedNodes);
-    if (newExpanded.has(employeeId)) {
-      newExpanded.delete(employeeId);
-    } else {
-      newExpanded.add(employeeId);
-    }
-    setExpandedNodes(newExpanded);
-  };
+const placeholderImage = "images/organigram/placeholder.png"; // <-- put your placeholder image path here
 
-  const getSubordinates = (employeeId) => {
-    const employee = employees.find((emp) => emp.id === employeeId);
-    if (!employee) return [];
-    return employees.filter((emp) => employee.childId.includes(emp.id));
-  };
-
-  const getEmployeesBySection = (subordinates) => {
-    const sections = {};
-    subordinates.forEach((emp) => {
-      if (!sections[emp.section]) {
-        sections[emp.section] = [];
-      }
-      sections[emp.section].push(emp);
-    });
-    return sections;
-  };
-
-  const OrganigramBox = ({
-    employee,
-    isExpanded,
-    onToggle,
-    isSection = false,
-  }) => {
-    const subordinates = getSubordinates(employee.id);
-    const hasSubordinates = subordinates.length > 0;
-    const sectionGroups = hasSubordinates
-      ? getEmployeesBySection(subordinates)
-      : {};
-    const isGroupBySection = employee.level === 4;
-
-    if (employee.level === 0) {
-      return (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex flex-col items-center mb-8"
-        >
-          <div className="bg-gradient-to-r from-prime to-olive text-white p-8 rounded-lg shadow-2xl border-4 border-prime min-w-[500px]">
-            <div className="text-center">
-              <Building2 className="w-16 h-16 mx-auto mb-4" />
-              <h1 className="text-4xl font-bold font-mont mb-2 uppercase tracking-wide">
-                {employee.name}
-              </h1>
-              <div className="text-lg opacity-90 font-medium">
-                {employee.designation}
-              </div>
-              <div className="text-sm opacity-75 mt-2">
-                {employee.placeOfPosting}
-              </div>
-            </div>
-          </div>
-
-          {hasSubordinates && isExpanded && (
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{ height: 50 }}
-              className="w-1 bg-prime mt-4"
-            />
-          )}
-
-          <AnimatePresence>
-            {hasSubordinates && isExpanded && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="mt-4"
-              >
-                <div className="flex flex-col items-center gap-8">
-                  {subordinates.map((subordinate) => (
-                    <div key={subordinate.id} className="relative">
-                      <div className="absolute -top-8 left-1/2 w-1 h-8 bg-prime transform -translate-x-1/2" />
-                      <OrganigramBox
-                        employee={subordinate}
-                        isExpanded={expandedNodes.has(subordinate.id)}
-                        onToggle={() => toggleNode(subordinate.id)}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      );
-    }
-
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        className="flex flex-col items-center"
-      >
-        <div
-          className="bg-white border-2 border-prime rounded-lg shadow-lg min-w-[350px] max-w-[400px] cursor-pointer"
-          onClick={() => setSelectedEmployee(employee)}
-        >
-          {/* Header with position info */}
-          <div className="bg-gradient-to-r from-prime to-olive text-white p-4 rounded-t-lg">
-            <div className="text-center ">
-              {employee.image ? (
-                <div className="w-24 h-24 object-cover rounded-full overflow-hidden mb-2 mx-auto">
-                  <img
-                    src={employee.image}
-                    alt={employee.name}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-              ) : (
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
-                  {employee.name.charAt(0)}
-                </div>
-              )}
-              <h3 className="font-bold text-lg mb-1 leading-tight">
-                {employee.designation}
-              </h3>
-              <div className="text-sm opacity-90">{employee.name}</div>
-            </div>
-          </div>
-
-          {/* Body with details */}
-          <div className="p-4">
-            <div className="space-y-2 text-sm mb-4">
-              <div className="flex items-center gap-2 text-gray-600">
-                <MapPin className="w-4 h-4 text-olive flex-shrink-0" />
-                <span className="text-xs">{employee.placeOfPosting}</span>
-              </div>
-              {employee.contactNo && employee.contactNo !== "N/A" && (
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Phone className="w-4 h-4 text-olive flex-shrink-0" />
-                  <span className="text-xs">{employee.contactNo}</span>
-                </div>
-              )}
-              <div className="text-xs text-white font-medium bg-olive px-2 py-1 rounded">
-                {employee.section}
-              </div>
-            </div>
-
-            {hasSubordinates && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onToggle();
-                }}
-                className="w-full border-prime text-prime hover:bg-prime hover:text-white"
-              >
-                <Users className="w-4 h-4 mr-2" />
-                {subordinates.length} Position
-                {subordinates.length > 1 ? "s" : ""} Under This
-                {isExpanded ? (
-                  <ChevronUp className="w-4 h-4 ml-2" />
-                ) : (
-                  <ChevronDown className="w-4 h-4 ml-2" />
-                )}
-              </Button>
-            )}
-          </div>
-        </div>
-
-        {hasSubordinates && isExpanded && (
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: 50 }}
-            className="w-1 bg-olive mt-4"
+// ---- Convert JSON to nodes & edges ----
+function buildFromData() {
+  const nodes = employeesData.employees.map((emp) => ({
+    id: emp.id.toString(),
+    data: {
+      label: (
+        <div className="flex flex-col items-center p-3 bg-white rounded-lg shadow-md border border-gray-200">
+          <img
+            src={
+              emp.image && emp.image.trim() !== ""
+                ? emp.image
+                : placeholderImage
+            }
+            alt={emp.name}
+            className="w-12 h-12 rounded-full object-cover border border-gray-300 mb-2"
           />
-        )}
-
-        <AnimatePresence>
-          {hasSubordinates && isExpanded && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="mt-4"
-            >
-              {isGroupBySection ? (
-                <div className="relative mt-6">
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-1 bg-olive ${
-                      Object.keys(sectionGroups).length > 1 ? "" : "hidden"
-                    }`}
-                  />
-                  <div className="flex flex-row flex-nowrap justify-center gap-12">
-                    {Object.entries(sectionGroups).map(
-                      ([sectionName, sectionEmployees]) => (
-                        <div
-                          key={sectionName}
-                          className="flex flex-col items-center"
-                        >
-                          <div
-                            className={`w-1 h-6 bg-olive ${
-                              Object.keys(sectionGroups).length > 1
-                                ? ""
-                                : "hidden"
-                            }`}
-                          />
-                          {/* Section Header */}
-                          <div className="bg-gradient-to-r from-olive to-second text-white p-3 rounded-lg mb-6 min-w-[280px] text-center shadow-lg">
-                            <h4 className="font-bold text-lg">{sectionName}</h4>
-                            <div className="text-sm opacity-90">
-                              {sectionEmployees.length} Position
-                              {sectionEmployees.length > 1 ? "s" : ""}
-                            </div>
-                          </div>
-
-                          {/* Connection line from header to employees */}
-                          <div className="w-1 h-6 bg-olive mb-4" />
-
-                          {/* Employees in this section */}
-                          <div className="relative">
-                            <div
-                              className={`absolute -top-6 left-0 right-0 h-1 bg-olive ${
-                                sectionEmployees.length > 1 ? "" : "hidden"
-                              }`}
-                            />
-                            <div className="flex flex-row flex-nowrap justify-center gap-12 mt-6">
-                              {sectionEmployees.map((subordinate) => (
-                                <div
-                                  key={subordinate.id}
-                                  className="flex flex-col items-center"
-                                >
-                                  <div
-                                    className={`w-1 h-6 bg-olive ${
-                                      sectionEmployees.length > 1
-                                        ? ""
-                                        : "hidden"
-                                    }`}
-                                  />
-                                  <OrganigramBox
-                                    employee={subordinate}
-                                    isExpanded={expandedNodes.has(
-                                      subordinate.id
-                                    )}
-                                    onToggle={() => toggleNode(subordinate.id)}
-                                  />
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <div className="relative mt-6">
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-1 bg-olive ${
-                      subordinates.length > 1 ? "" : "hidden"
-                    }`}
-                  />
-                  <div className="flex flex-row flex-nowrap justify-center gap-12">
-                    {subordinates.map((subordinate) => (
-                      <div
-                        key={subordinate.id}
-                        className="flex flex-col items-center"
-                      >
-                        <div
-                          className={`w-1 h-6 bg-olive ${
-                            subordinates.length > 1 ? "" : "hidden"
-                          }`}
-                        />
-                        <OrganigramBox
-                          employee={subordinate}
-                          isExpanded={expandedNodes.has(subordinate.id)}
-                          onToggle={() => toggleNode(subordinate.id)}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </motion.div>
+          <div className="font-semibold text-sm text-gray-900 text-center leading-tight">
+            {emp.name}
+          </div>
+          <div className="text-xs text-gray-600 text-center leading-snug">
+            {emp.designation}
+          </div>
+          {emp.placeOfPosting && (
+            <div className="mt-1 text-[10px] text-gray-500 italic">
+              {emp.placeOfPosting}
+            </div>
           )}
-        </AnimatePresence>
-      </motion.div>
-    );
-  };
+        </div>
+      ),
+    },
+    position: { x: 0, y: 0 },
+    draggable: true,
+    style: {
+      width: NODE_W,
+      background: "transparent",
+      border: "none",
+      padding: 0,
+    },
+    type: "default",
+  }));
 
-  const allChildren = new Set();
-  employees.forEach((emp) =>
-    emp.childId.forEach((child) => allChildren.add(child))
+  const edges = employeesData.employees.flatMap((emp) =>
+    (emp.childId || []).map((child) => {
+      const color = getColorByParentId(emp.id);
+      return {
+        id: `e${emp.id}-${child}`,
+        source: emp.id.toString(),
+        target: child.toString(),
+        type: "smoothstep",
+        style: { stroke: color, strokeWidth: 2 },
+        animated: true,
+      };
+    })
   );
-  const roots = employees
-    .filter((emp) => !allChildren.has(emp.id))
-    .sort((a, b) => a.id - b.id);
+
+  return { nodes, edges };
+}
+
+function OrgChartInner() {
+  const raw = useMemo(() => buildFromData(), []);
+  const [nodes, setNodes, onNodesChange] = useNodesState(raw.nodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(raw.edges);
+  const { setCenter } = useReactFlow();
+
+  useEffect(() => {
+    const { nodes: layoutedNodes, edges: layoutedEdges } = layout(
+      raw.nodes,
+      raw.edges,
+      "TB"
+    );
+    setNodes(layoutedNodes);
+    setEdges(layoutedEdges);
+
+    // Center view on node with id '0'
+    const rootNode = layoutedNodes.find((n) => n.id === "1");
+    if (rootNode) {
+      setTimeout(() => {
+        setCenter(
+          rootNode.position.x + NODE_W / 2,
+          rootNode.position.y + NODE_H / 2,
+          {
+            zoom: 1.5,
+            duration: 800,
+          }
+        );
+      }, 100);
+    }
+  }, [raw.nodes, raw.edges, setNodes, setEdges, setCenter]);
 
   return (
-    <div className="min-h-screen bg-prime-bg">
-      <div className="bg-gradient-to-r from-prime via-olive to-second text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6"
-          >
-            <Building2 className="w-20 h-20 mx-auto mb-4" />
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-bold font-mont uppercase tracking-wider mb-4"
-          >
-            Organigram
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-2xl md:text-3xl font-mont opacity-90 mb-2"
-          >
-            Panchayati Raj Department
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-lg opacity-75"
-          >
-            Government of Arunachal Pradesh
-          </motion.p>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 py-16">
-        <div className="overflow-x-auto">
-          <div className="flex flex-row justify-center gap-12 min-w-max">
-            {roots.map((root) => (
-              <div key={root.id} className="flex flex-col items-center">
-                <OrganigramBox
-                  employee={root}
-                  isExpanded={expandedNodes.has(root.id)}
-                  onToggle={() => toggleNode(root.id)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {selectedEmployee && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50"
-            onClick={() => setSelectedEmployee(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white rounded-xl p-8 max-w-lg w-full shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="text-center">
-                {selectedEmployee.image ? (
-                  <img
-                    src={selectedEmployee.image}
-                    alt={selectedEmployee.name}
-                    className="w-24 h-24 object-cover rounded-full mx-auto mb-6"
-                  />
-                ) : (
-                  <div className="w-24 h-24 bg-gradient-to-r from-prime to-olive rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
-                    {selectedEmployee.name.charAt(0)}
-                  </div>
-                )}
-                <h2 className="text-3xl font-bold text-prime mb-2">
-                  {selectedEmployee.name}
-                </h2>
-                <p className="text-xl text-gray-600 mb-6">
-                  {selectedEmployee.designation}
-                </p>
-                <div className="space-y-4 text-left bg-gray-50 p-6 rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-olive" />
-                    <span className="text-gray-700">
-                      {selectedEmployee.placeOfPosting}
-                    </span>
-                  </div>
-                  {selectedEmployee.contactNo &&
-                    selectedEmployee.contactNo !== "N/A" && (
-                      <div className="flex items-center gap-3">
-                        <Phone className="w-5 h-5 text-olive" />
-                        <span className="text-gray-700">
-                          {selectedEmployee.contactNo}
-                        </span>
-                      </div>
-                    )}
-                  <div className="flex items-center gap-3">
-                    <User className="w-5 h-5 text-olive" />
-                    <span className="text-gray-700">
-                      {selectedEmployee.section}
-                    </span>
-                  </div>
-                </div>
-                <Button
-                  onClick={() => setSelectedEmployee(null)}
-                  className="mt-8 bg-prime hover:bg-prime/90 px-8 py-3 text-lg"
-                >
-                  Close Details
-                </Button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="h-[90vh] w-full bg-gray-50 rounded-lg border border-gray-200">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        fitView
+        nodesDraggable={true}
+        panOnScroll
+        zoomOnScroll
+        proOptions={{ hideAttribution: true }}
+      >
+        <MiniMap pannable zoomable nodeStrokeColor={(n) => "#4B5563"} />
+        <Controls showInteractive={true} />
+        <Background gap={20} color="#E5E7EB" />
+      </ReactFlow>
     </div>
+  );
+}
+
+export default function OrgChartPage() {
+  return (
+    <>
+      <Header />
+      <div className="h-screen  w-full bg-gradient-to-t from-prime-bg to-white text-gray-900 mt-7 mb-[20vh]">
+        <div className=" mx-auto p-6">
+          <div className="mb-12 lg:mb-16 flex flex-col items-center justify-center px-4">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-bold text-gray-800 leading-tight mb-6 uppercase">
+              Panchayati Raj Department – Organigram
+            </h1>
+            <p className="text-sm text-center md:text-base lg:text-lg 2xl:text-xl 2xl:leading-relaxed text-gray-700 max-w-7xl">
+              Visual representation of the hierarchy
+            </p>
+          </div>
+          <ReactFlowProvider>
+            <OrgChartInner />
+          </ReactFlowProvider>
+        </div>
+      </div>
+      <Footer />
+    </>
   );
 }
 
 // "use client";
 
-// import { useState, useMemo } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { Button } from "@/components/ui/button";
-// import {
-//   ChevronDown,
-//   ChevronUp,
-//   Users,
-//   Phone,
-//   MapPin,
-//   Building2,
-//   User,
-// } from "lucide-react";
+// import React, { useEffect, useMemo, useState, useCallback } from "react";
+// import ReactFlow, {
+//   Background,
+//   Controls,
+//   MiniMap,
+//   useEdgesState,
+//   useNodesState,
+//   ReactFlowProvider,
+//   useReactFlow,
+// } from "reactflow";
+// import dagre from "dagre";
+// import "reactflow/dist/style.css";
 // import employeesData from "@/components/data/panchayati-raj-employees-updated-clean.json";
 
-// export default function OrganigramPage() {
-//   const [employees] = useState(employeesData.employees);
-//   const [expandedNodes, setExpandedNodes] = useState(new Set([0, 1, 2, 3, 4]));
-//   const [selectedEmployee, setSelectedEmployee] = useState(null);
+// const NODE_W = 240;
+// const NODE_H = 120;
+// const dagreGraph = new dagre.graphlib.Graph();
+// dagreGraph.setDefaultEdgeLabel(() => ({}));
 
-//   const childToParentsMap = useMemo(() => {
-//     const map = new Map();
-//     employees.forEach((emp) => {
-//       emp.childId.forEach((childId) => {
-//         if (!map.has(childId)) {
-//           map.set(childId, []);
-//         }
-//         map.get(childId).push(emp.id);
-//       });
-//     });
-//     return map;
-//   }, [employees]);
+// function layout(nodes, edges, dir = "TB") {
+//   const g = dagreGraph;
+//   g.setGraph({ rankdir: dir, nodesep: 60, ranksep: 100 });
+//   nodes.forEach((n) => g.setNode(n.id, { width: NODE_W, height: NODE_H }));
+//   edges.forEach((e) => g.setEdge(e.source, e.target));
+//   dagre.layout(g);
+//   return nodes.map((n) => {
+//     const p = g.node(n.id);
+//     return { ...n, position: { x: p.x - NODE_W / 2, y: p.y - NODE_H / 2 } };
+//   });
+// }
 
-//   const processedHierarchy = useMemo(() => {
-//     const processed = new Map();
-//     const sharedChildren = new Set();
+// const placeholderImage = "images/organigram/placeholder.png";
 
-//     // Identify shared children
-//     childToParentsMap.forEach((parents, childId) => {
-//       if (parents.length > 1) {
-//         sharedChildren.add(childId);
-//       }
-//     });
-
-//     employees.forEach((emp) => {
-//       const uniqueChildren = [];
-//       const sharedChildrenForThisParent = [];
-
-//       emp.childId.forEach((childId) => {
-//         if (sharedChildren.has(childId)) {
-//           // Only add shared child to the first parent in the list
-//           const parents = childToParentsMap.get(childId);
-//           if (parents[0] === emp.id) {
-//             sharedChildrenForThisParent.push(childId);
-//           }
-//         } else {
-//           uniqueChildren.push(childId);
-//         }
-//       });
-
-//       processed.set(emp.id, {
-//         ...emp,
-//         uniqueChildren,
-//         sharedChildren: sharedChildrenForThisParent,
-//         allParents:
-//           emp.childId.length > 0
-//             ? childToParentsMap.get(emp.childId[0]) || [emp.id]
-//             : [emp.id],
-//       });
-//     });
-
-//     return processed;
-//   }, [employees, childToParentsMap]);
-
-//   const toggleNode = (employeeId) => {
-//     const newExpanded = new Set(expandedNodes);
-//     if (newExpanded.has(employeeId)) {
-//       newExpanded.delete(employeeId);
-//     } else {
-//       newExpanded.add(employeeId);
-//     }
-//     setExpandedNodes(newExpanded);
-//   };
-
-//   const getSubordinates = (employeeId) => {
-//     const processedEmployee = processedHierarchy.get(employeeId);
-//     if (!processedEmployee) return [];
-
-//     const allChildIds = [
-//       ...processedEmployee.uniqueChildren,
-//       ...processedEmployee.sharedChildren,
-//     ];
-//     return employees.filter((emp) => allChildIds.includes(emp.id));
-//   };
-
-//   const getParentsForChild = (childId) => {
-//     const parents = childToParentsMap.get(childId) || [];
-//     return employees.filter((emp) => parents.includes(emp.id));
-//   };
-
-//   const getEmployeesBySection = (subordinates) => {
-//     const sections = {};
-//     subordinates.forEach((emp) => {
-//       if (!sections[emp.section]) {
-//         sections[emp.section] = [];
-//       }
-//       sections[emp.section].push(emp);
-//     });
-//     return sections;
-//   };
-
-//   const OrganigramBox = ({
-//     employee,
-//     isExpanded,
-//     onToggle,
-//     isSection = false,
-//   }) => {
-//     const subordinates = getSubordinates(employee.id);
-//     const hasSubordinates = subordinates.length > 0;
-//     const sectionGroups = hasSubordinates
-//       ? getEmployeesBySection(subordinates)
-//       : {};
-//     const isGroupBySection = employee.level === 4;
-
-//     const parents = getParentsForChild(employee.id);
-//     const isSharedChild = parents.length > 1;
-
-//     if (employee.level === 0) {
-//       return (
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.3 }}
-//           className="flex flex-col items-center mb-8"
-//         >
-//           <div className="bg-gradient-to-r from-prime to-olive text-white p-8 rounded-lg shadow-2xl border-4 border-prime min-w-[500px]">
-//             <div className="text-center">
-//               <Building2 className="w-16 h-16 mx-auto mb-4" />
-//               <h1 className="text-4xl font-bold font-mont mb-2 uppercase tracking-wide">
-//                 {employee.name}
-//               </h1>
-//               <div className="text-lg opacity-90 font-medium">
-//                 {employee.designation}
-//               </div>
-//               <div className="text-sm opacity-75 mt-2">
-//                 {employee.placeOfPosting}
-//               </div>
-//             </div>
+// function createNode(emp) {
+//   return {
+//     id: emp.id.toString(),
+//     data: {
+//       label: (
+//         <div className="flex flex-col items-center p-3 bg-white rounded-lg shadow-md border border-gray-200">
+//           <img
+//             src={emp.image?.trim() ? emp.image : placeholderImage}
+//             alt={emp.name}
+//             className="w-12 h-12 rounded-full object-cover border border-gray-300 mb-2"
+//           />
+//           <div className="font-semibold text-sm text-gray-900 text-center leading-tight">
+//             {emp.name}
 //           </div>
-
-//           {hasSubordinates && isExpanded && (
-//             <motion.div
-//               initial={{ height: 0 }}
-//               animate={{ height: 50 }}
-//               className="w-1 bg-prime mt-4"
-//             />
-//           )}
-
-//           <AnimatePresence>
-//             {hasSubordinates && isExpanded && (
-//               <motion.div
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 exit={{ opacity: 0, y: -20 }}
-//                 transition={{ duration: 0.3 }}
-//                 className="mt-4"
-//               >
-//                 <div className="flex flex-col items-center gap-8">
-//                   {subordinates.map((subordinate) => (
-//                     <div key={subordinate.id} className="relative">
-//                       <div className="absolute -top-8 left-1/2 w-1 h-8 bg-prime transform -translate-x-1/2" />
-//                       <OrganigramBox
-//                         employee={subordinate}
-//                         isExpanded={expandedNodes.has(subordinate.id)}
-//                         onToggle={() => toggleNode(subordinate.id)}
-//                       />
-//                     </div>
-//                   ))}
-//                 </div>
-//               </motion.div>
-//             )}
-//           </AnimatePresence>
-//         </motion.div>
-//       );
-//     }
-
-//     return (
-//       <motion.div
-//         initial={{ opacity: 0, y: 20 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.3 }}
-//         className="flex flex-col items-center"
-//       >
-//         <div
-//           className={`bg-white border-2 rounded-lg shadow-lg min-w-[350px] max-w-[400px] cursor-pointer ${
-//             isSharedChild
-//               ? "border-orange-500 ring-2 ring-orange-200"
-//               : "border-prime"
-//           }`}
-//           onClick={() => setSelectedEmployee(employee)}
-//         >
-//           <div
-//             className={`bg-gradient-to-r text-white p-4 rounded-t-lg ${
-//               isSharedChild
-//                 ? "from-orange-500 to-red-500"
-//                 : "from-prime to-olive"
-//             }`}
-//           >
-//             <div className="text-center">
-//               {employee.image ? (
-//                 <div className="w-24 h-24 object-cover rounded-full overflow-hidden mb-2 mx-auto">
-//                   <img
-//                     src={employee.image || "/placeholder.svg"}
-//                     alt={employee.name}
-//                     className="object-cover w-full h-full"
-//                   />
-//                 </div>
-//               ) : (
-//                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
-//                   {employee.name.charAt(0)}
-//                 </div>
-//               )}
-//               <h3 className="font-bold text-lg mb-1 leading-tight">
-//                 {employee.designation}
-//               </h3>
-//               <div className="text-sm opacity-90">{employee.name}</div>
-//               {isSharedChild && (
-//                 <div className="text-xs bg-white/20 px-2 py-1 rounded mt-2">
-//                   Reports to {parents.length} managers
-//                 </div>
-//               )}
-//             </div>
-//           </div>
-
-//           {/* Body with details */}
-//           <div className="p-4">
-//             <div className="space-y-2 text-sm mb-4">
-//               <div className="flex items-center gap-2 text-gray-600">
-//                 <MapPin className="w-4 h-4 text-olive flex-shrink-0" />
-//                 <span className="text-xs">{employee.placeOfPosting}</span>
-//               </div>
-//               {employee.contactNo && employee.contactNo !== "N/A" && (
-//                 <div className="flex items-center gap-2 text-gray-600">
-//                   <Phone className="w-4 h-4 text-olive flex-shrink-0" />
-//                   <span className="text-xs">{employee.contactNo}</span>
-//                 </div>
-//               )}
-//               <div className="text-xs text-white font-medium bg-olive px-2 py-1 rounded">
-//                 {employee.section}
-//               </div>
-//               {isSharedChild && (
-//                 <div className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">
-//                   <strong>Reports to:</strong>{" "}
-//                   {parents.map((p) => p.name).join(", ")}
-//                 </div>
-//               )}
-//             </div>
-
-//             {hasSubordinates && (
-//               <Button
-//                 variant="outline"
-//                 size="sm"
-//                 onClick={(e) => {
-//                   e.stopPropagation();
-//                   onToggle();
-//                 }}
-//                 className="w-full border-prime text-prime hover:bg-prime hover:text-white"
-//               >
-//                 <Users className="w-4 h-4 mr-2" />
-//                 {subordinates.length} Position
-//                 {subordinates.length > 1 ? "s" : ""} Under This
-//                 {isExpanded ? (
-//                   <ChevronUp className="w-4 h-4 ml-2" />
-//                 ) : (
-//                   <ChevronDown className="w-4 h-4 ml-2" />
-//                 )}
-//               </Button>
-//             )}
+//           <div className="text-xs text-gray-600 text-center leading-snug">
+//             {emp.designation}
 //           </div>
 //         </div>
-
-//         {hasSubordinates && isExpanded && (
-//           <motion.div
-//             initial={{ height: 0 }}
-//             animate={{ height: 50 }}
-//             className="w-1 bg-olive mt-4"
-//           />
-//         )}
-
-//         <AnimatePresence>
-//           {hasSubordinates && isExpanded && (
-//             <motion.div
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               exit={{ opacity: 0, y: -20 }}
-//               transition={{ duration: 0.3 }}
-//               className="mt-4"
-//             >
-//               {isGroupBySection ? (
-//                 <div className="relative mt-6">
-//                   <div
-//                     className={`absolute top-0 left-0 right-0 h-1 bg-olive ${
-//                       Object.keys(sectionGroups).length > 1 ? "" : "hidden"
-//                     }`}
-//                   />
-//                   <div className="flex flex-row flex-nowrap justify-center gap-12">
-//                     {Object.entries(sectionGroups).map(
-//                       ([sectionName, sectionEmployees]) => (
-//                         <div
-//                           key={sectionName}
-//                           className="flex flex-col items-center"
-//                         >
-//                           <div
-//                             className={`w-1 h-6 bg-olive ${
-//                               Object.keys(sectionGroups).length > 1
-//                                 ? ""
-//                                 : "hidden"
-//                             }`}
-//                           />
-//                           {/* Section Header */}
-//                           <div className="bg-gradient-to-r from-olive to-second text-white p-3 rounded-lg mb-6 min-w-[280px] text-center shadow-lg">
-//                             <h4 className="font-bold text-lg">{sectionName}</h4>
-//                             <div className="text-sm opacity-90">
-//                               {sectionEmployees.length} Position
-//                               {sectionEmployees.length > 1 ? "s" : ""}
-//                             </div>
-//                           </div>
-
-//                           {/* Connection line from header to employees */}
-//                           <div className="w-1 h-6 bg-olive mb-4" />
-
-//                           {/* Employees in this section */}
-//                           <div className="relative">
-//                             <div
-//                               className={`absolute -top-6 left-0 right-0 h-1 bg-olive ${
-//                                 sectionEmployees.length > 1 ? "" : "hidden"
-//                               }`}
-//                             />
-//                             <div className="flex flex-row flex-nowrap justify-center gap-12 mt-6">
-//                               {sectionEmployees.map((subordinate) => (
-//                                 <div
-//                                   key={subordinate.id}
-//                                   className="flex flex-col items-center"
-//                                 >
-//                                   <div
-//                                     className={`w-1 h-6 bg-olive ${
-//                                       sectionEmployees.length > 1
-//                                         ? ""
-//                                         : "hidden"
-//                                     }`}
-//                                   />
-//                                   <OrganigramBox
-//                                     employee={subordinate}
-//                                     isExpanded={expandedNodes.has(
-//                                       subordinate.id
-//                                     )}
-//                                     onToggle={() => toggleNode(subordinate.id)}
-//                                   />
-//                                 </div>
-//                               ))}
-//                             </div>
-//                           </div>
-//                         </div>
-//                       )
-//                     )}
-//                   </div>
-//                 </div>
-//               ) : (
-//                 <div className="relative mt-6">
-//                   <div
-//                     className={`absolute top-0 left-0 right-0 h-1 bg-olive ${
-//                       subordinates.length > 1 ? "" : "hidden"
-//                     }`}
-//                   />
-//                   <div className="flex flex-row flex-nowrap justify-center gap-12">
-//                     {subordinates.map((subordinate) => (
-//                       <div
-//                         key={subordinate.id}
-//                         className="flex flex-col items-center"
-//                       >
-//                         <div
-//                           className={`w-1 h-6 bg-olive ${
-//                             subordinates.length > 1 ? "" : "hidden"
-//                           }`}
-//                         />
-//                         <OrganigramBox
-//                           employee={subordinate}
-//                           isExpanded={expandedNodes.has(subordinate.id)}
-//                           onToggle={() => toggleNode(subordinate.id)}
-//                         />
-//                       </div>
-//                     ))}
-//                   </div>
-//                 </div>
-//               )}
-//             </motion.div>
-//           )}
-//         </AnimatePresence>
-//       </motion.div>
-//     );
+//       ),
+//     },
+//     position: { x: 0, y: 0 },
+//     type: "default",
 //   };
+// }
 
-//   const allChildren = new Set();
-//   employees.forEach((emp) =>
-//     emp.childId.forEach((child) => allChildren.add(child))
-//   );
-//   const roots = employees
-//     .filter((emp) => !allChildren.has(emp.id))
-//     .sort((a, b) => a.id - b.id);
+// function OrgChartInner() {
+//   const { setCenter } = useReactFlow();
+//   const [expanded, setExpanded] = useState(new Set(["0"])); // root expanded
+//   const [nodes, setNodes] = useNodesState([]);
+//   const [edges, setEdges] = useEdgesState([]);
+//   const [firstLoad, setFirstLoad] = useState(true);
+//   const toggleNode = useCallback((id) => {
+//     setExpanded((prev) => {
+//       const newSet = new Set(prev);
+//       if (newSet.has(id)) {
+//         newSet.delete(id);
+//       } else {
+//         newSet.add(id);
+//       }
+//       return newSet;
+//     });
+//   }, []);
+
+//   useEffect(() => {
+//     const buildGraph = () => {
+//       const shownNodes = new Map();
+//       const shownEdges = [];
+
+//       const addNodeRecursively = (id) => {
+//         const emp = employeesData.employees.find((e) => e.id.toString() === id);
+//         if (!emp) return;
+//         shownNodes.set(id, createNode(emp));
+
+//         if (expanded.has(id)) {
+//           (emp.childId || []).forEach((childId) => {
+//             shownEdges.push({
+//               id: `e${id}-${childId}`,
+//               source: id,
+//               target: childId.toString(),
+//               type: "smoothstep",
+//               animated: true,
+//               style: { stroke: "#3B82F6", strokeWidth: 2 },
+//             });
+//             addNodeRecursively(childId.toString());
+//           });
+//         }
+//       };
+
+//       addNodeRecursively("0");
+
+//       const layoutedNodes = layout(Array.from(shownNodes.values()), shownEdges);
+//       return { nodes: layoutedNodes, edges: shownEdges };
+//     };
+
+//     const { nodes: builtNodes, edges: builtEdges } = buildGraph();
+//     setNodes(builtNodes);
+//     setEdges(builtEdges);
+
+//     // Only center on first load
+//     if (firstLoad) {
+//       const rootNode = builtNodes.find((n) => n.id === "0");
+//       if (rootNode) {
+//         setTimeout(() => {
+//           setCenter(
+//             rootNode.position.x + NODE_W / 2,
+//             rootNode.position.y + NODE_H / 2,
+//             {
+//               zoom: 1.2,
+//               duration: 600,
+//             }
+//           );
+//         }, 100);
+//       }
+//       setFirstLoad(false);
+//     }
+//   }, [expanded, setNodes, setEdges, setCenter, firstLoad]);
 
 //   return (
-//     <div className="min-h-screen bg-prime-bg">
-//       <div className="bg-gradient-to-r from-prime via-olive to-second text-white py-16">
-//         <div className="container mx-auto px-4 text-center">
-//           <motion.div
-//             initial={{ opacity: 0, y: -30 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             className="mb-6"
-//           >
-//             <Building2 className="w-20 h-20 mx-auto mb-4" />
-//           </motion.div>
-//           <motion.h1
-//             initial={{ opacity: 0, y: -20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             className="text-5xl md:text-7xl font-bold font-mont uppercase tracking-wider mb-4"
-//           >
-//             Organigram
-//           </motion.h1>
-//           <motion.p
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.2 }}
-//             className="text-2xl md:text-3xl font-mont opacity-90 mb-2"
-//           >
-//             Panchayati Raj Department
-//           </motion.p>
-//           <motion.p
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.3 }}
-//             className="text-lg opacity-75"
-//           >
-//             Government of Arunachal Pradesh
-//           </motion.p>
-//         </div>
-//       </div>
-
-//       <div className="container mx-auto px-4 py-16">
-//         <div className="overflow-x-auto">
-//           <div className="flex flex-row justify-center gap-12 min-w-max">
-//             {roots.map((root) => (
-//               <div key={root.id} className="flex flex-col items-center">
-//                 <OrganigramBox
-//                   employee={root}
-//                   isExpanded={expandedNodes.has(root.id)}
-//                   onToggle={() => toggleNode(root.id)}
-//                 />
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-
-//       <AnimatePresence>
-//         {selectedEmployee && (
-//           <motion.div
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             exit={{ opacity: 0 }}
-//             className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50"
-//             onClick={() => setSelectedEmployee(null)}
-//           >
-//             <motion.div
-//               initial={{ scale: 0.8, opacity: 0 }}
-//               animate={{ scale: 1, opacity: 1 }}
-//               exit={{ scale: 0.8, opacity: 0 }}
-//               className="bg-white rounded-xl p-8 max-w-lg w-full shadow-2xl"
-//               onClick={(e) => e.stopPropagation()}
-//             >
-//               <div className="text-center">
-//                 {selectedEmployee.image ? (
-//                   <img
-//                     src={selectedEmployee.image || "/placeholder.svg"}
-//                     alt={selectedEmployee.name}
-//                     className="w-24 h-24 object-cover rounded-full mx-auto mb-6"
-//                   />
-//                 ) : (
-//                   <div className="w-24 h-24 bg-gradient-to-r from-prime to-olive rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
-//                     {selectedEmployee.name.charAt(0)}
-//                   </div>
-//                 )}
-//                 <h2 className="text-3xl font-bold text-prime mb-2">
-//                   {selectedEmployee.name}
-//                 </h2>
-//                 <p className="text-xl text-gray-600 mb-6">
-//                   {selectedEmployee.designation}
-//                 </p>
-//                 <div className="space-y-4 text-left bg-gray-50 p-6 rounded-lg">
-//                   <div className="flex items-center gap-3">
-//                     <MapPin className="w-5 h-5 text-olive" />
-//                     <span className="text-gray-700">
-//                       {selectedEmployee.placeOfPosting}
-//                     </span>
-//                   </div>
-//                   {selectedEmployee.contactNo &&
-//                     selectedEmployee.contactNo !== "N/A" && (
-//                       <div className="flex items-center gap-3">
-//                         <Phone className="w-5 h-5 text-olive" />
-//                         <span className="text-gray-700">
-//                           {selectedEmployee.contactNo}
-//                         </span>
-//                       </div>
-//                     )}
-//                   <div className="flex items-center gap-3">
-//                     <User className="w-5 h-5 text-olive" />
-//                     <span className="text-gray-700">
-//                       {selectedEmployee.section}
-//                     </span>
-//                   </div>
-//                 </div>
-//                 <Button
-//                   onClick={() => setSelectedEmployee(null)}
-//                   className="mt-8 bg-prime hover:bg-prime/90 px-8 py-3 text-lg"
-//                 >
-//                   Close Details
-//                 </Button>
-//               </div>
-//             </motion.div>
-//           </motion.div>
-//         )}
-//       </AnimatePresence>
+//     <div className="h-[90vh] w-full bg-gray-50 rounded-lg border border-gray-200">
+//       <ReactFlow
+//         nodes={nodes}
+//         edges={edges}
+//         onNodeClick={(event, node) => toggleNode(node.id)}
+//         fitView
+//         proOptions={{ hideAttribution: true }}
+//       >
+//         <MiniMap pannable zoomable />
+//         <Controls showInteractive />
+//         <Background gap={20} color="#E5E7EB" />
+//       </ReactFlow>
 //     </div>
 //   );
 // }
 
-
-
+// export default function OrgChartPage() {
+//   return (
+//     <div className="h-screen w-full bg-gray-100 text-gray-900">
+//       <div className="max-w-[1400px] mx-auto p-6">
+//         <h1 className="text-3xl font-bold mb-3 text-center">
+//           Panchayati Raj Department – Organigram
+//         </h1>
+//         <p className="text-sm text-gray-600 mb-6 text-center">
+//           Click a card to expand/collapse its children.
+//         </p>
+//         <ReactFlowProvider>
+//           <OrgChartInner />
+//         </ReactFlowProvider>
+//       </div>
+//     </div>
+//   );
+// }

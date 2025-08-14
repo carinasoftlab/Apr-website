@@ -18,7 +18,7 @@ export default function Header() {
       hasDropdown: true,
       dropdownItems: [
         { name: "About Panchayat", href: "/about-us" },
-        { name: "Organogram", href: "flow" },
+        { name: "Organigram", href: "/organigram" },
       ],
     },
     {
