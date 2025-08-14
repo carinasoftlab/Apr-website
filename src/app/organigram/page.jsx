@@ -32,7 +32,7 @@ function layout(nodes, edges, dir = "TB") {
     return {
       ...n,
       position: { x: p.x - NODE_W / 2, y: p.y - NODE_H / 2 },
-      draggable: true,
+      draggable: false,
     };
   });
   return { nodes: layouted, edges };
@@ -89,7 +89,7 @@ function buildFromData() {
       ),
     },
     position: { x: 0, y: 0 },
-    draggable: true,
+    draggable: false,
     style: {
       width: NODE_W,
       background: "transparent",
@@ -155,13 +155,14 @@ function OrgChartInner() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         fitView
-        nodesDraggable={true}
+        nodesDraggable={true}   // stop dragging cards
         panOnScroll
         zoomOnScroll
         proOptions={{ hideAttribution: true }}
       >
         <MiniMap pannable zoomable nodeStrokeColor={(n) => "#4B5563"} />
-        <Controls showInteractive={true} />
+        <Controls showInteractive={true}  style={{ top: 20, left: 20, height: 0 }} />
+
         <Background gap={20} color="#E5E7EB" />
       </ReactFlow>
     </div>
