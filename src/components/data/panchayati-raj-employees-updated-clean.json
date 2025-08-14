@@ -1,20 +1,10 @@
 {
   "employees": [
-    {
-      "id": 0,
-      "name": "Establishment Section",
-      "designation": "Panchayati Raj Department",
-      "placeOfPosting": "Government of Arunachal Pradesh",
-      "contactNo": "N/A",
-      "image": "",
-      "level": 0,
-      "section": "Root",
-      "childId": [1]
-    },
+   
     {
       "id": 1,
-      "name": "Minister, HM(PR)",
-      "designation": "Minister, HM(PR) \u2013 Government of Arunachal Pradesh",
+      "name": "Minister (PR)",
+      "designation": "Minister(PR) \u2013 Government of Arunachal Pradesh",
       "placeOfPosting": "Itanagar HQ",
       "contactNo": "N/A",
       "image": "",
@@ -60,34 +50,13 @@
       "name": "Akom Gaat Ligu",
       "designation": "Deputy Director",
       "placeOfPosting": "Itanagar HQ",
-      "contactNo": "9612826993",
+      "contactNo": "9436222178",
       "image": "images/organigram/003.jpeg",
       "level": 5,
       "section": "Establishment Section",
       "childId": [70]
     },
-    {
-      "id": 6,
-      "name": "Finance Support Staff",
-      "designation": "Finance Support Team",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/004.jpeg",
-      "level": 6,
-      "section": "Finance Department",
-      "childId": []
-    },
-    {
-      "id": 7,
-      "name": "Administrative Support",
-      "designation": "Administrative Team",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/005.jpeg",
-      "level": 6,
-      "section": "Administration",
-      "childId": []
-    },
+  
     {
       "id": 8,
       "name": "Admin Officer",
@@ -119,7 +88,7 @@
       "image": "images/organigram/004.jpeg",
       "level": 5,
       "section": "Rural Establishment Wing",
-      "childId": [11, 12, 13, 14]
+      "childId": [11]
     },
     {
       "id": 69,
@@ -179,48 +148,48 @@
     },
     {
       "id": 11,
-      "name": "Assistant Engineer",
+      "name": "Takam Taniang",
       "designation": "Assistant Engineer",
       "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/012.jpeg",
+      "contactNo": "9436633706",
+      "image": "images/organigram/008.jpeg",
       "level": 6,
       "section": "Engineering",
-      "childId": [53, 54, 55]
+      "childId": [12]
     },
     {
       "id": 12,
-      "name": "Assistant Architect",
+      "name": "H.C. Tok",
       "designation": "Assistant Architect",
       "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/013.jpeg",
+      "contactNo": "9402454406",
+      "image": "images/organigram/015.jpeg",
       "level": 6,
       "section": "Planning",
-      "childId": [56, 57]
+      "childId": [13,14, 65]
     },
     {
       "id": 13,
-      "name": "Planning and Research Officer",
+      "name": "Mameh Dada Welly",
       "designation": "Planning and Research Officer",
       "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/014.jpeg",
+      "contactNo": "9463898149",
+      "image": "images/organigram/019.jpeg",
       "level": 6,
       "section": "Research & Planning",
 
-      "childId": [58, 59, 60]
+      "childId": [ 53 , 45, 46, 79, 47, 63, 64, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92]
     },
     {
       "id": 14,
-      "name": "Senior Data Analyst",
+      "name": "Mani Tiwari",
       "designation": "Senior Data Analyst",
       "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/015.jpeg",
+      "contactNo": "9706622477",
+      "image": "images/organigram/046.jpeg",
       "level": 6,
       "section": "Data Management",
-      "childId": [61, 62, 63, 64]
+      "childId": [61]
     },
     {
       "id": 42,
@@ -243,7 +212,7 @@
       "image": "images/organigram/018.jpeg",
       "level": 6,
       "section": "Documentation",
-      "childId": [ 45, 46, 79, 63]
+      "childId": [ 45, 46, 79, 63, 47,64,63,80, 81,82,83,84,85,86,87,88,89,90,91,92]
     },
   
     {
@@ -255,7 +224,7 @@
       "image": "",
       "level": 6,
       "section": "Documentation",
-      "childId": [45, 46, 79, 63]
+      "childId": [ 45, 46, 79, 63, 47,64,63,80, 81,82,83,84,85,86,87,88,89,90,91,92]
     },
     {
       "id": 44,
@@ -266,7 +235,7 @@
       "image": "images/organigram/016.jpeg",
       "level": 6,
       "section": "Clerical",
-      "childId": []
+      "childId": [48, 93, 94, 95, 96, 97]
     },
     {
       "id": 45,
@@ -277,7 +246,7 @@
       "image": "images/organigram/021.jpeg",
       "level": 6,
       "section": "Data Entry",
-      "childId": []
+      "childId": [48, 93, 94, 95, 96, 97]
     },
     {
       "id": 46,
@@ -288,7 +257,7 @@
       "image": "images/organigram/022.jpeg",
       "level": 7,
       "section": "Data Entry",
-      "childId": []
+      "childId": [48, 93, 94, 95, 96, 97]
     },
     {
       "id": 79,
@@ -299,7 +268,7 @@
       "image": "images/organigram/023.jpeg",
       "level": 7,
       "section": "Data Entry",
-      "childId": []
+      "childId": [48, 93, 94, 95, 96, 97]
     },
     {
       "id": 47,
@@ -310,171 +279,260 @@
       "image": "images/organigram/024.jpeg",
       "level": 7,
       "section": "IT Support",
-      "childId": []
+      "childId": [48, 93, 94, 95, 96, 97]
     },
     {
       "id": 48,
-      "name": "Driver",
+      "name": "Rikchol Lombi",
       "designation": "Driver",
       "placeOfPosting": "Itanagar HQ",
       "contactNo": "N/A",
-      "image": "images/organigram/022.jpeg",
+      "image": "",
       "level": 7,
       "section": "Transport",
-      "childId": []
+      "childId": [49,98,99,100,101,102,103,104,105,106,107,108,109,110,111]
     },
     {
+      "id": 93,
+      "name": "Tumbom Lendo",
+      "designation": "Driver",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "Transport",
+      "childId": [49,98,99,100,101,102,103,104,105,106,107,108,109,110,111]
+    },
+    {
+      "id": 94,
+      "name": "Bokio Ekke",
+      "designation": "Driver",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7628926135",
+      "image": "images/organigram/035.jpeg",
+      "level": 7,
+      "section": "Transport",
+      "childId": [49,98,99,100,101,102,103,104,105,106,107,108,109,110,111]
+    },
+    {
+      "id": 95,
+      "name": "Mohadev Mochahary",
+      "designation": "Driver",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8794318020",
+      "image": "images/organigram/036.jpeg",
+      "level": 7,
+      "section": "Transport",
+      "childId": [49,98,99,100,101,102,103,104,105,106,107,108,109,110,111]
+    },
+    {
+      "id": 96,
+      "name": "Nabam Pada",
+      "designation": "Driver",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "Transport",
+      "childId": [49,98,99,100,101,102,103,104,105,106,107,108,109,110,111]
+    },
+    {
+      "id": 97,
+      "name": "Toko Tara",
+      "designation": "Driver",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "Transport",
+      "childId": [49,98,99,100,101,102,103,104,105,106,107,108,109,110,111]
+    },
+    
+    {
       "id": 49,
-      "name": "MTS/Peon",
+      "name": "Pormila Gosai",
       "designation": "MTS/Peon",
       "placeOfPosting": "Itanagar HQ",
       "contactNo": "N/A",
-      "image": "images/organigram/023.jpeg",
+      "image": "",
       "level": 7,
       "section": "Support Staff",
       "childId": []
     },
     {
-      "id": 50,
-      "name": "Contingency Staff",
-      "designation": "Contingency",
+      "id": 98,
+      "name": "Yashi Chader",
+      "designation": "MTS/Peon",
       "placeOfPosting": "Itanagar HQ",
       "contactNo": "N/A",
-      "image": "images/organigram/024.jpeg",
+      "image": "",
       "level": 7,
-      "section": "Temporary Staff",
+      "section": "Support Staff",
       "childId": []
     },
     {
-      "id": 51,
-      "name": "Office Assistant",
-      "designation": "Office Assistant",
+      "id": 99,
+      "name": "Toko Nania",
+      "designation": "MTS/Peon",
       "placeOfPosting": "Itanagar HQ",
       "contactNo": "N/A",
-      "image": "images/organigram/025.jpeg",
+      "image": "",
       "level": 7,
-      "section": "General Support",
+      "section": "Support Staff",
       "childId": []
     },
     {
-      "id": 52,
-      "name": "Security Guard",
-      "designation": "Security Guard",
+      "id": 100,
+      "name": "Debahuti Kutum",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8119090806",
+      "image": "images/organigram/037.jpeg",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 101,
+      "name": "Yatok Pada",
+      "designation": "MTS/Peon",
       "placeOfPosting": "Itanagar HQ",
       "contactNo": "N/A",
-      "image": "images/organigram/026.jpeg",
+      "image": "",
       "level": 7,
-      "section": "Security",
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 102,
+      "name": "Tem Chocha Bagang",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 103,
+      "name": "Bamang Yagi",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8837323868",
+      "image": "images/organigram/038.jpeg",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 104,
+      "name": "Tame Yarang",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "images/organigram/039.jpeg",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 105,
+      "name": "Yanam Ringling",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7005817389",
+      "image": "images/organigram/040.jpeg",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 106,
+      "name": "Yapi Bui",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8119088388",
+      "image": "images/organigram/041.jpeg",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 107,
+      "name": "Roshmi Welly",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "images/organigram/042.jpeg",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 108,
+      "name": "Gocham Niju",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 109,
+      "name": "Tadar Yatok",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8132097022",
+      "image": "images/organigram/043.jpeg",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 110,
+      "name": "Likha yapa",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "6009619897",
+      "image": "images/organigram/044.jpeg",
+      "level": 7,
+      "section": "Support Staff",
+      "childId": []
+    },
+    {
+      "id": 111,
+      "name": "Purnima Pradhan",
+      "designation": "MTS/Peon",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7085974648",
+      "image": "images/organigram/052.jpeg",
+      "level": 7,
+      "section": "Support Staff",
       "childId": []
     },
     {
       "id": 53,
-      "name": "Technical Assistant",
+      "name": "Md. Hassan Khan",
       "designation": "Technical Assistant",
       "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/027.jpeg",
+      "contactNo": "9089461086",
+      "image": "images/organigram/020.jpeg",
       "level": 7,
       "section": "Technical Support",
       "childId": []
     },
     {
-      "id": 54,
-      "name": "Junior Engineer",
-      "designation": "Junior Engineer",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/028.jpeg",
-      "level": 7,
-      "section": "Engineering Support",
-      "childId": []
-    },
-    {
-      "id": 55,
-      "name": "Draftsman",
-      "designation": "Draftsman",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/029.jpeg",
-      "level": 7,
-      "section": "Design Support",
-      "childId": []
-    },
-    {
-      "id": 56,
-      "name": "Planning Assistant",
-      "designation": "Planning Assistant",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/030.jpeg",
-      "level": 7,
-      "section": "Planning Support",
-      "childId": []
-    },
-    {
-      "id": 57,
-      "name": "Design Assistant",
-      "designation": "Design Assistant",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/031.jpeg",
-      "level": 7,
-      "section": "Design Support",
-      "childId": []
-    },
-    {
-      "id": 58,
-      "name": "Research Assistant",
-      "designation": "Research Assistant",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/032.jpeg",
-      "level": 7,
-      "section": "Research Support",
-      "childId": []
-    },
-    {
-      "id": 59,
-      "name": "Survey Assistant",
-      "designation": "Survey Assistant",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/033.jpeg",
-      "level": 7,
-      "section": "Survey Support",
-      "childId": []
-    },
-    {
-      "id": 60,
-      "name": "Field Assistant",
-      "designation": "Field Assistant",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/034.jpeg",
-      "level": 7,
-      "section": "Field Support",
-      "childId": []
-    },
-    {
       "id": 61,
-      "name": "Junior Data Analyst",
+      "name": "Mito Karga",
       "designation": "Junior Data Analyst",
       "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/035.jpeg",
+      "contactNo": "8413985923",
+      "image": "images/organigram/047.jpeg",
       "level": 7,
       "section": "Data Analysis",
-      "childId": []
-    },
-    {
-      "id": 62,
-      "name": "Database Administrator",
-      "designation": "Database Administrator",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "images/organigram/036.jpeg",
-      "level": 7,
-      "section": "Database Management",
       "childId": []
     },
     {
@@ -486,7 +544,161 @@
       "image": "images/organigram/025.jpeg",
       "level": 7,
       "section": "IT Support",
-      "childId": []
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 63,
+      "name": "Charu Jagath",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "images/organigram/026.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 80,
+      "name": "Yango Tadeng",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 81,
+      "name": "Gayatri Khutum",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9678522657",
+      "image": "",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 82,
+      "name": "Anju Bini",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7005202386",
+      "image": "images/organigram/027.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 83,
+      "name": "Tarh Gagung",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 84,
+      "name": "Tongam Padu",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 85,
+      "name": "Mobi Doji",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9366275481",
+      "image": "images/organigram/028.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 86,
+      "name": "Taba Ane",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7005249996",
+      "image": "images/organigram/029.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 87,
+      "name": "Pinky Mepo",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7005887987",
+      "image": "images/organigram/030.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 88,
+      "name": "Lipi Tashi",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "9612116060",
+      "image": "images/organigram/031.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 89,
+      "name": "Apung Tana Doka",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8794302742",
+      "image": "images/organigram/032.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 90,
+      "name": "Geyir Potom",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "N/A",
+      "image": "",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 91,
+      "name": "Talin Eru",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "7005866537",
+      "image": "images/organigram/033.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
+    },
+    {
+      "id": 92,
+      "name": "Yapa Doka",
+      "designation": "Computer Assistant",
+      "placeOfPosting": "Itanagar HQ",
+      "contactNo": "8794264294",
+      "image": "images/organigram/034.jpeg",
+      "level": 7,
+      "section": "IT Support",
+      "childId": [48, 93, 94, 95, 96, 97]
     },
     {
       "id": 65,
@@ -494,10 +706,10 @@
       "designation": "Senior Accountant",
       "placeOfPosting": "Itanagar HQ",
       "contactNo": "8787345994",
-      "image": "images/organigram/039.jpeg",
+      "image": "images/organigram/048.jpeg",
       "level": 6,
       "section": "Accounts",
-      "childId": []
+      "childId": [66]
     },
     {
       "id": 66,
@@ -505,55 +717,13 @@
       "designation": "Junior Accountant",
       "placeOfPosting": "Itanagar HQ",
       "contactNo": "8259083684",
-      "image": "images/organigram/040.jpeg",
+      "image": "images/organigram/049.jpeg",
       "level": 6,
       "section": "Accounts",
       "childId": []
     },
-    {
-      "id": 67,
-      "name": "Ratna Acharyee",
-      "designation": "Training Consultant (LSDG&MIS)",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "6009383910",
-      "image": "images/organigram/041.jpeg",
-      "level": 6,
-      "section": "Training & Development",
-      "childId": []
-    },
-    {
-      "id": 68,
-      "name": "Vikram Das",
-      "designation": "Account & MIS Assistant",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "9862690302",
-      "image": "images/organigram/042.jpeg",
-      "level": 6,
-      "section": "MIS",
-      "childId": []
-    },
-    {
-      "id": 72,
-      "name": "Tada Natung",
-      "designation": "DPDO",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "N/A",
-      "image": "",
-      "level": null,
-      "section": "",
-      "childId": []
-    },
-    {
-      "id": 73,
-      "name": "Takam Taniang",
-      "designation": "AE",
-      "placeOfPosting": "Itanagar HQ",
-      "contactNo": "9436633706",
-      "image": "",
-      "level": null,
-      "section": "",
-      "childId": []
-    },
+   
+  
     {
       "id": 74,
       "name": "Tame Yape",
@@ -578,3 +748,5 @@
     }
   ]
 }
+
+
