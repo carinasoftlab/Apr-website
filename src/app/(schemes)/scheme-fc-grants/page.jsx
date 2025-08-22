@@ -4,7 +4,7 @@ import SchemeRelatedLinks from "@/components/scheme-fc-grants/SchemeRelatedLinks
 import TiedFunds from "@/components/scheme-fc-grants/TiedFunds";
 import UnitedFunds from "@/components/scheme-fc-grants/UnitedFunds";
 import SchemeTab from "@/components/scheme-sor/SchemeTab";
-import Dropdown from "@/components/ui/dropdown/Dropdown";
+import Dropdown from "@/components/ui/dropdown/dropdown";
 import TiedFundsPagination from "@/components/ui/pagination/TiedFundsPagination";
 import ImportantLinks from "@/components/implink/ImportantLinks";
 import Footer from "@/components/footer/page";
