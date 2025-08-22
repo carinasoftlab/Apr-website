@@ -5,6 +5,7 @@ import { Mail, MapPin } from "lucide-react";
 import ImportantLinks from "@/components/implink/ImportantLinks";
 import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -96,7 +97,8 @@ export default function Page() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               {/* <ArunachalMap /> */}
-              <img className="w-[120%]" src="/images/map-img.png" alt="" />
+              <Image width={700} height={700} src="/images/map-img.png" alt=""  />
+              {/* <img className="w-[120%]" src="images/map-img.png" alt="" /> */}
             </motion.div>
           </div>
         </div>
