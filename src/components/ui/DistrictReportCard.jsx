@@ -84,8 +84,8 @@ export default function DistrictReportCard({ districtData, onClose }) {
             </div>
             <div className="p-4 space-y-3">
               {[
-                ["Score", 50],
-                ["Rank", 16],
+                // ["Score", 50],
+                // ["Rank", 16],
                 ["Total Schemes", 24],
                 ["Complete Schemes", 12],
                 ["On Going Schemes", 8],

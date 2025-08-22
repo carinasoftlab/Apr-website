@@ -61,7 +61,6 @@ const Scheme = () => {
       router.push(`/scheme-sor?tab=${sorTabMap[item]}`);
     } else if (schemeTitle === "FC GRANTS" && fcGrantsTabMap[item]) {
       router.push(`/scheme-fc-grants?tab=${fcGrantsTabMap[item]}`);
-      
     }
   };
 

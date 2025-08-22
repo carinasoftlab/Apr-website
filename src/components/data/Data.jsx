@@ -82,13 +82,13 @@ export default function LiveData() {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-[#00CD85] opacity-80" />
-            <div className="relative z-10 flex flex-col just-center items-center py-8 mt-4 xl:mt-0">
-              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
-                50+
-              </h3>
+            <div className="relative z-10 flex flex-col justify-center items-center py-8 mt-8 md:mt-4 lg:mt-6 xl:mt-4">
               <p className="bg-[#1E4C30] font-bold px-4 py-4 rounded-xl text-white text-xl md:text-2xl">
                 Gram Sabhas
               </p>
+              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
+                2108+
+              </h3>
             </div>
           </motion.div>
 
@@ -106,13 +106,13 @@ export default function LiveData() {
             />
             <div className="absolute inset-0 bg-[#F4AC1A] opacity-80" />
             <div className="relative z-10 flex flex-col just-center items-center py-8 mt-4 xl:mt-0">
-              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
-                2700+
-              </h3>
               <p className="font-bold px-4 py-4 rounded-xl text-white text-xl md:text-xl bg-[#59460F]">
                 Women Friendly <br />
                 Gram Panchayat
               </p>
+              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
+                27+
+              </h3>
             </div>
           </motion.div>
 
@@ -130,14 +130,14 @@ export default function LiveData() {
             />
             <div className="absolute inset-0 bg-[#1C71F0] opacity-70" />
             <div className="relative z-10 flex flex-col just-center items-center py-8 mt-4 xl:mt-0">
-              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
-                24+
-              </h3>
               <p className="font-bold px-4 py-4 text-center rounded-xl text-white text-xl md:text-xl bg-[#1D4070]">
                 E-Enable
                 <br />
                 Gram Panchayat
               </p>
+              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
+                634+
+              </h3>
             </div>
           </motion.div>
 
@@ -155,12 +155,14 @@ export default function LiveData() {
             />
             <div className="absolute inset-0 bg-[#00CD85] opacity-70" />
             <div className="relative z-10 flex flex-col just-center items-center py-8 mt-4 xl:mt-0">
-              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
-                18+
-              </h3>
               <p className="font-bold px-4 py-4 text-center rounded-xl text-white text-xl md:text-xl bg-[#1E4C30]">
-                Baal And<br/>Mahila Sabha
+                Baal And
+                <br />
+                Mahila Sabha
               </p>
+              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
+                78+
+              </h3>
             </div>
           </motion.div>
         </motion.div>

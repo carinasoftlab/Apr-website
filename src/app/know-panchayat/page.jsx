@@ -1,0 +1,20 @@
+import ImportantLinks from "@/components/implink/ImportantLinks";
+import Footer from "@/components/footer/page";
+import Header from "@/components/Header/Header";
+import { Suspense } from "react";
+import ClientWrapper from "./ClientWrapper";
+
+export default function KnowPanchayatPage() {
+  return (
+    <>
+      <Header />
+      <main className=" items-center justify-center min-h-screen w-full">
+        <Suspense fallback={<div>Loading...</div>}>
+          <ClientWrapper />
+        </Suspense>
+      </main>
+      <ImportantLinks />
+      <Footer />
+    </>
+  );
+}

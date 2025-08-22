@@ -3,37 +3,19 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { SCHEME_SOR_DATA } from "@/constants/scheme-sor.data";
-import Image from "next/image";
+import {
+  SCHEME_SOR_DATA,
+  SCHEME_UNDER_SOR_DATA,
+} from "@/constants/scheme-sor.data";
 
 /**
  * Renders a single accordion item.
- * @param {object} props - Component props.
- * @param {string} props.title - The title of the accordion item (for header).
- * @param {string} props.mainTitle - The main title inside the accordion content.
- * @param {string} props.description - The descriptive text inside the accordion content.
- * @param {string} props.image1Url - URL for the first image.
- * @param {string} props.image2Url - URL for the second image.
- * @param {string} props.address - Address information.
- * @param {string} props.villageName - Village name information.
- * @param {string} props.date - Date information.
- * @param {string} props.pinCode - Pin code information.
- * @param {boolean} props.isOpen - Whether the accordion item is open.
- * @param {() => void} props.onClick - Callback function when the item is clicked.
  */
-function AccordionItem({
-  title,
-  mainTitle,
-  description,
-  image1Url,
-  image2Url,
-  address,
-  villageName,
-  date,
-  pinCode,
-  isOpen,
-  onClick,
-}) {
+function AccordionItem({ title, districtData, isOpen, onClick }) {
+  const districtSchemeData = SCHEME_UNDER_SOR_DATA.find(
+    (district) => district.districtName === title
+  );
+
   return (
     <div className="rounded-3xl lg:p-1 lg:px-4 bg-prime-bg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
       <button
@@ -49,7 +31,7 @@ function AccordionItem({
         <motion.div
           initial={false}
           animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="flex-shrink-0"
         >
           <ChevronDown className="h-5 w-5 text-gray-500 dark:text-gray-400 transition-colors duration-200" />
@@ -63,76 +45,128 @@ function AccordionItem({
             aria-labelledby={`accordion-header-${title
               .replace(/\s/g, "-")
               .toLowerCase()}`}
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
             className="overflow-hidden p-2 px-4 lg:p-6 lg:pt-3"
           >
-            <div className="p-5 lg:p-6  rounded-3xl bg-white border border-gray-100 dark:border-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300 space-y-5">
-              <h2 className="text-sm  sm:text-xl font-bold text-prime dark:text-green-400">
-                {mainTitle}
-              </h2>
-              <p className="leading-relaxed text-xs lg:text-base">{description}</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {image1Url && (
-                  <div className="relative w-full aspect-video rounded-3xl overflow-hidden  hover:shadow-lg transition-shadow duration-300 group">
-                    <Image
-                      src={image1Url}
-                      alt="Building exterior"
-                      fill
-                      className="rounded-3xl transition-transform duration-300 object-cover"
-                    />
-                  </div>
-                )}
-                {image2Url && (
-                  <div className="relative w-full aspect-video rounded-3xl overflow-hidden  hover:shadow-lg transition-shadow duration-300 group">
-                    <Image
-                      src={image2Url}
-                      alt="Inauguration plaque"
-                      fill
-                      className="rounded-3xl transition-transform duration-300 object-cover"
-                    />
-                  </div>
-                )}
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm lg:mt-3">
-                <div className="flex  items-center space-x-2">
-                  <span className="font-semibold text-xs lg:text-base text-gray-800 dark:text-gray-200">
-                    Address:
-                  </span>
-                  <span className="text-gray-600 text-[10px] lg:text-base dark:text-gray-400">
-                    {address}
-                  </span>
-                </div>
+            <div className="p-5 lg:p-6 rounded-3xl bg-white border border-gray-100 dark:border-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300 space-y-5">
+              {districtSchemeData ? (
+                <div className="space-y-6">
+                  {/* Zilla Parishad Table */}
+                  {districtSchemeData.ZillaParishadSegment && (
+                    <div>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full table-auto">
+                          <thead>
+                            <tr className="bg-gray-100 dark:bg-gray-800 rounded-lg justify-between">
+                              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                                Scheme Name
+                              </th>
+                              {/* <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                                Complition Date
+                              </th> */}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {districtSchemeData.ZillaParishadData &&
+                              districtSchemeData.ZillaParishadData.map(
+                                (segment) => (
+                                  <tr
+                                    key={segment.id}
+                                    className="border-b dark:border-gray-700"
+                                  >
+                                    <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
+                                      {segment.schemeName ? (
+                                        <ul className="list-disc pl-5 space-y-1">
+                                          {/* Always render schemeName */}
+                                          <li>{segment.schemeName}</li>
 
-                <div className="flex items-center space-x-2">
-                  <span className="font-semibold text-xs lg:text-base text-gray-800 dark:text-gray-200">
-                    Village Name:
-                  </span>
-                  <span className="text-gray-600 text-[10px] lg:text-base dark:text-gray-400">
-                    {villageName}
-                  </span>
-                </div>
+                                          {/* Render locations if present */}
+                                          {segment.locations &&
+                                            segment.locations.length > 0 && (
+                                              <ul className="list-disc pl-8 space-y-1">
+                                                {segment.locations.map(
+                                                  (location, locIdx) => (
+                                                    <li key={locIdx}>
+                                                      {location}
+                                                    </li>
+                                                  )
+                                                )}
+                                              </ul>
+                                            )}
+                                        </ul>
+                                      ) : (
+                                        "No schemes available"
+                                      )}
+                                    </td>
+                                    {/* <td className="px-4 py-3 text-center align-middle text-sm text-gray-700 dark:text-gray-300">
+                                      {segment.complitionDate || "N/A"}
+                                    </td> */}
+                                  </tr>
+                                )
+                              )}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
 
-                <div className="flex items-center space-x-2">
-                  <span className="font-semibold text-xs lg:text-base text-gray-800 dark:text-gray-200">
-                    Date:
-                  </span>
-                  <span className="text-gray-600 text-[10px] lg:text-base dark:text-gray-400">
-                    {date}
-                  </span>
+                  {/* Gram Panchayat Table */}
+                  {districtSchemeData.GramPanchayatSegment && (
+                    <div>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full table-auto">
+                          <thead>
+                            <tr className="bg-gray-100 dark:bg-gray-800">
+                              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                                Scheme Name
+                              </th>
+                              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                                End Date
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {districtSchemeData.GramPanchayatData &&
+                              districtSchemeData.GramPanchayatData.map(
+                                (segment) => (
+                                  <tr
+                                    key={segment.id}
+                                    className="border-b dark:border-gray-700"
+                                  >
+                                    <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
+                                      {segment.schemeName &&
+                                      segment.schemeName.length > 0 ? (
+                                        <ul className="list-disc pl-5 space-y-1">
+                                          {segment.schemeName.map(
+                                            (scheme, idx) => (
+                                              <li key={idx}>{scheme}</li>
+                                            )
+                                          )}
+                                        </ul>
+                                      ) : (
+                                        "No schemes available"
+                                      )}
+                                    </td>
+                                    <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
+                                      {segment.endDate || "N/A"}
+                                    </td>
+                                  </tr>
+                                )
+                              )}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
                 </div>
-
-                <div className="flex items-center space-x-2">
-                  <span className="font-semibold text-xs lg:text-base text-gray-800 dark:text-gray-200">
-                    Pin Code:
-                  </span>
-                  <span className="text-gray-600 text-[10px] lg:text-base dark:text-gray-400">
-                    {pinCode}
-                  </span>
+              ) : (
+                <div className="text-center py-4">
+                  <p>No scheme data available for this district.</p>
                 </div>
-              </div>
+              )}
             </div>
           </motion.div>
         )}
@@ -162,27 +196,39 @@ function AccordionSkeleton() {
 
 export function Skeleton({ className }) {
   return (
-    <div className={`bg-gray-300 dark:bg-white/10 rounded-md animate-pulse ${className || ''}`} />
+    <div
+      className={`bg-gray-300 dark:bg-white/10 rounded-md animate-pulse ${
+        className || ""
+      }`}
+    />
   );
 }
 
 /**
  * Main Accordion component for Scheme of Arrangement (SoR) data.
- * Displays a list of questions and answers in an expandable format.
  */
-export function SchemeSorAccordion() {
+export function SchemeSorAccordion({
+  selectedDistrict,
+  selectedYear,
+  data = SCHEME_SOR_DATA,
+}) {
   const [openItem, setOpenItem] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [districtData, setDistrictData] = useState([]);
 
   useEffect(() => {
-    // Simulate data fetching
     const timer = setTimeout(() => {
-      setData(SCHEME_SOR_DATA);
       setIsLoading(false);
     }, 500);
-
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const districts = SCHEME_UNDER_SOR_DATA.map((district) => ({
+      id: district.id.toString(),
+      title: district.districtName,
+    }));
+    setDistrictData(districts);
   }, []);
 
   const handleToggle = (id) => {
@@ -194,19 +240,14 @@ export function SchemeSorAccordion() {
   }
 
   return (
-    <div className="w-full space-y-4 mx-auto dark:bg-gray-900 rounded-3xl overflow-hidden">
-      {data.map((item) => (
+    <div className="w-full space-y-4 mx-auto dark:bg-gray-900 overflow-hidden">
+      {districtData.map((item) => (
         <AccordionItem
           key={item.id}
+          districtData={SCHEME_UNDER_SOR_DATA.find(
+            (d) => d.id.toString() === item.id
+          )}
           title={item.title}
-          mainTitle={item.mainTitle}
-          description={item.description}
-          image1Url={item.image1Url}
-          image2Url={item.image2Url}
-          address={item.address}
-          villageName={item.villageName}
-          date={item.date}
-          pinCode={item.pinCode}
           isOpen={openItem === item.id}
           onClick={() => handleToggle(item.id)}
         />

@@ -1,5 +1,4 @@
 "use client";
-// import Image from "next/images";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -17,7 +16,7 @@ export default function Header() {
       href: "#",
       hasDropdown: true,
       dropdownItems: [
-        { name: "About Panchayat", href: "/about-us" },
+        { name: "About Panchayati Raaj", href: "/about-us" },
         { name: "Organigram", href: "/organigram" },
       ],
     },
@@ -32,7 +31,7 @@ export default function Header() {
         { name: "ASSETS", href: "" },
       ],
     },
-    { name: "know your panchayat", href: "#about" },
+    { name: "know your panchayat", href: "/know-panchayat" },
     { name: "Important Links", href: "#links" },
     { name: "Contact Us", href: "/contact-us" },
   ];
@@ -55,19 +54,16 @@ export default function Header() {
               src="/images/LOGO PANCHAYAT.png"
               alt="Arunachal-logo"
             />
-            {/* <h3 className="font-semibold text-[0.8rem] sm:text-sm md:text-base lg:text-[0.6rem] xl:text-sm">
-            PANCHAYATI RAAJ
-          </h3> */}
           </div>
 
-          <div className="hidden lg:flex  absolute left-1/2 -translate-1/2 top-[75%]">
+          <div className="hidden lg:flex  absolute lg:left-1/2 xl:left-[48%] 2xl:left-1/2 -translate-1/2 top-[75%]">
             <div className="bg-green-900 w-max lg:h-10 xl:h-auto rounded-tl-xl rounded-bl-xl flex items-center gap-6 lg:gap-2 px-4 lg:py-1 xl:py-2">
               {navigationItems.map((item) => (
                 <div key={item.name} className="relative">
                   {item.hasDropdown ? (
                     <>
                       <button
-                        className={`flex items-center gap-1 px-2 py-2 font-semibold text-sm lg:text-[0.6rem] xl:text-sm uppercase rounded-lg outline-offset-[-1px] transition-colors ${
+                        className={`flex items-center gap-1 px-2 py-2 font-semibold text-sm lg:text-[0.6rem] xl:text-xs 2xl:text-sm uppercase rounded-lg outline-offset-[-1px] transition-colors ${
                           isSchemeDropdownOpen === item.name
                             ? "bg-white/10 text-white"
                             : "text-white hover:bg-white/10"
@@ -95,7 +91,7 @@ export default function Header() {
                             <Link
                               key={dropdownItem.name}
                               href={dropdownItem.href}
-                              className={`block w-full px-4 py-2 text-sm font-semibold transition-colors first:rounded-t-lg last:rounded-b-lg
+                              className={`block px-4 py-2 text-sm font-semibold transition-colors first:rounded-t-lg last:rounded-b-lg
                                 ${
                                   pathname === dropdownItem.href
                                     ? "bg-[#FAEFDD] text-[#1e4c30] font-semibold"
@@ -110,9 +106,10 @@ export default function Header() {
                       )}
                     </>
                   ) : (
+                    // Navbar items
                     <Link
                       href={item.href}
-                      className={`px-2 py-2 font-semibold text-sm lg:text-[0.6rem] xl:text-sm uppercase tracking-wide rounded-lg outline-offset-[-1px] transition-colors
+                      className={`px-2 py-2 font-semibold text-sm lg:text-[0.6rem] xl:text-xs 2xl:text-sm uppercase tracking-wide rounded-lg outline-offset-[-1px] transition-colors
                     ${
                       pathname === item.href
                         ? "bg-white text-green-900"
@@ -125,10 +122,10 @@ export default function Header() {
                 </div>
               ))}
             </div>
-            <div className="bg-amber-500 rounded-tr-2xl text-center rounded-br-2xl px-6 lg:h-10 xl:h-auto lg:py-[0.5rem] 2xl:py-[0.95rem]">
+            <div className="bg-amber-500 rounded-tr-2xl text-center rounded-br-2xl px-6 lg:px-3 2xl:px-6 lg:h-10 xl:h-auto lg:py-[0.5rem] 2xl:py-[0.95rem] flex items-center justify-center">
               <Link
                 href="/login"
-                className={`font-semiboldtext-sm lg:text-[0.6rem] xl:text-sm font-semibold uppercase tracking-wide
+                className={`font-semiboldtext-sm  lg:text-[0.6rem] xl:text-sm font-semibold uppercase tracking-wide
                   ${
                     pathname === "/login"
                       ? "text-gray-200"
@@ -142,13 +139,10 @@ export default function Header() {
 
           <div className="hidden lg:flex flex-col items-center justify-center">
             <img
-              className="h-24 lg:h-16 xl:h-30"
+              className="h-24 lg:h-16 2xl:h-30 xl:h-28"
               src="/images/PANCHAYATI RAJ.png"
               alt="Arunachal-logo"
             />
-            {/* <h3 className="font-semibold text-[0.8rem] sm:text-sm md:text-base lg:text-[0.6rem] xl:text-sm">
-            GOVT.OF ARUNACHAL PRADESH
-          </h3> */}
           </div>
 
           <div className="lg:hidden flex items-center bg-[#1e4c30] rounded-[12px] px-3 py-2">

@@ -31,16 +31,7 @@ export default function Page() {
               Message from Hon'ble Chief Minister
             </h2>
             <p className="mt-5 max-w-4xl text-sm  text-justify leading-relaxed text-zinc-800 md:text-sm xl:text-[1rem]">
-              The Department of Panchayati Raj was established in the Year 1985.
-              Since then, the functions of the Department as per Allocation of
-              Business Rules were limited with the conduct of Panchayati Raj
-              Election and promulgation of Acts, Laws, Bye-Laws, Guidelines etc.
-              of Panchayati Raj Department and Its relevant matters. The work
-              load of the Department has increased manifold and despite shortage
-              of man power the department of Panchayati Raj had to implement the
-              various flagship programmes in mission mode with limited man
-              powers. As per implementation strategy of the Department, in all
-              the respective.
+              Hon'ble Chief Minister message comming soon
             </p>
           </article>
         </div>
@@ -54,12 +45,7 @@ export default function Page() {
               Message from Hon'ble Minister
             </h2>
             <p className="mt-5 max-w-3xl text-sm text-justify leading-relaxed text-zinc-800 md:text-sm xl:text-[1rem]">
-              The Department of Panchayati Raj was established in the year 1985.
-              Since then, the functions of the Department as per Allocation of
-              Business Rules were limited to the conduct of Panchayati Raj
-              Election and promulgation of Acts, Laws, Bye-Laws, and Guidelines
-              of Panchayati Raj Department and its relevant matters. The work
-              load of the Department has increased manifold.
+              Hon'ble Minister message comming soon
             </p>
           </article>
 
@@ -92,7 +78,7 @@ export default function Page() {
           <div className="flex justify-center lg:justify-start gap-12">
             {/* Card 1 */}
             <div className="flex flex-col items-center">
-              <div className="relative h-24 w-24 overflow-hidden rounded-full ring-4 ring-[#87541D] md:h-32 md:w-32 lg:h-40 lg:w-40 xl:h-48 xl:w-48">
+              <div className="relative h-24 w-24 overflow-hidden rounded-full ring-4 ring-[#87541D] md:h-32 md:w-32 lg:h-40 lg:w-40 xl:h-32 xl:w-32">
                 <Image
                   src="/images/img3.svg"
                   alt="Portrait of the Hon'ble Chief Minister"
@@ -102,29 +88,29 @@ export default function Page() {
                 />
               </div>
               <div className="mt-3 text-center">
-                <p className="text-xs lg:text-sm font-extrabold uppercase tracking-wide text-neutral-900">
+                <p className="text-xs lg:text-xs font-extrabold uppercase tracking-wide text-neutral-900">
                   Shri Manish K Gupta
                 </p>
-                <p className="text-sm text-black">Chief Secretary</p>
+                <p className="text-xs text-black">Chief Secretary</p>
               </div>
             </div>
 
             {/* Card 2 */}
             <div className="flex flex-col items-center">
-              <div className="relative h-24 w-24 overflow-hidden rounded-full ring-5 ring-[#87541D] md:h-32 md:w-32 lg:h-40 lg:w-40 xl:h-48 xl:w-48">
+              <div className="relative h-24 w-24 overflow-hidden rounded-full ring-5 ring-[#87541D] md:h-32 md:w-32 lg:h-40 lg:w-40 xl:h-32 xl:w-32">
                 <Image
                   src="/images/img4.svg"
                   alt="Portrait of the Hon'ble Chief Minister"
-                  className="object-cover h-full w-full"
+                  className="object-cover"
                   priority
                   fill
                 />
               </div>
               <div className="mt-3 text-center">
-                <p className="text-xs lg:text-sm font-extrabold uppercase tracking-wide text-neutral-900">
+                <p className="text-xs lg:text-xs font-extrabold uppercase tracking-wide text-neutral-900">
                   Dr. Sonal Swaroop, IAS
                 </p>
-                <p className="text-sm text-black">Secretary Panchayati Raj</p>
+                <p className="text-xs text-black">Secretary Panchayati Raj</p>
               </div>
             </div>
           </div>

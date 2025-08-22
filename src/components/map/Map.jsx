@@ -30,6 +30,7 @@ export default function Map() {
 
   const handleDistrictClick = (meshName) => {
     const found = DISTRICT_DATA.find((d) => d.modelId === meshName);
+    console.log(found);
     setSelectedDistrict(found || null);
   };
 
@@ -73,8 +74,8 @@ export default function Map() {
           <Canvas
             className="map-canvas"
             camera={{
-              position: [0, 120, 0],
-              fov: 35,
+              position: [0, 800, 0],
+              fov: 45,
               near: 0.1,
               far: 1000,
             }}

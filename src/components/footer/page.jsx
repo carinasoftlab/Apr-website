@@ -6,11 +6,10 @@ import { MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f3fcff] pt-12 px-8 pb-8">
-      <div className="flex flex-col xl:flex-row gap-18 lg:flex-col xl:gap-38 justify-center items-center px-4 py-8 mx-auto">
-        
+    <footer className="bg-[#f3fcff] pt-8 px-8 pb-8">
+      <div className="flex flex-col xl:flex-row gap-18 lg:flex-col xl:gap-38 justify-center items-center px-4 py-4 mx-auto">
         {/* Left Section: Logo and Social Media */}
-        <div className="flex flex-col items-center justify-center gap-6">
+        <div className="flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center gap-2">
             <Image
               src="/images/footerlogo.svg"
@@ -28,8 +27,8 @@ export default function Footer() {
               <Image
                 src="/images/facebook.svg"
                 alt="Facebook"
-                width={24}
-                height={24}
+                width={34}
+                height={34}
               />
             </Link>
 
@@ -37,8 +36,8 @@ export default function Footer() {
               <Image
                 src="/images/x.svg"
                 alt="X (formerly Twitter)"
-                width={24}
-                height={24}
+                width={34}
+                height={34}
               />
             </Link>
           </div>
@@ -47,22 +46,35 @@ export default function Footer() {
         {/* Other Links Section */}
         <div className="flex flex-col md:flex-col lg:flex-row gap-8 lg:gap-18 xl:gap-36 items-center">
           <div className="flex flex-col sm:flex-row gap-12 lg:gap-18 xl:gap-36">
-            <div className="flex flex-col gap-4 font-montserrat items-start w-[15vw] lg:w-[10vw]">
+            <div className="flex flex-col gap-4 font-montserrat items-start w-[20vw] lg:w-[10vw]">
               <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 OTHER LINK
               </h3>
-              <nav className="flex flex-col gap-2">
+              <nav className="flex flex-col gap-2 w-max">
                 <Link
-                  href="#"
-                  className="text-sm sm:text-sm text-gray-700 font-medium hover:underline"
+                  href="/"
+                  className="text-sm sm:text-sm text-gray-700 font-medium hover:underline hover:text-green-800"
                 >
                   Home
                 </Link>
                 <Link
-                  href="#"
-                  className="text-sm sm:text-sm text-gray-700 font-medium hover:underline"
+                  href="/about-us"
+                  className="text-sm sm:text-sm text-gray-700 font-medium hover:underline hover:text-green-800"
                 >
                   About Us
+                </Link>
+
+                <Link
+                  href="#"
+                  className="text-sm sm:text-sm text-gray-700 font-medium hover:underline hover:text-green-800"
+                >
+                  Scheme
+                </Link>
+                <Link
+                  href="#links"
+                  className="text-sm sm:text-sm text-gray-700 font-medium hover:underline hover:text-green-800"
+                >
+                  Important Links
                 </Link>
               </nav>
             </div>
@@ -76,7 +88,7 @@ export default function Footer() {
                   height={15}
                   className="text-green-600 -ml-8 mt-1 shrink-0"
                 /> */}
-                <p className="font-montserrat text-justify">
+                <p className="font-montserrat text-justify lg:text-start 2xl:text-justify">
                   Directorate of Panchayati Raj, <br />
                   ESS Sector, Itanagar,
                   <br />
@@ -103,7 +115,7 @@ export default function Footer() {
 
       <div className="border-t border-gray-200 pt-4 md:pt-6 text-center font-medium text-sm mt-4">
         <p>
-          copyright 2025, Department of Panchayati Raaj, Govt. of Arunachal
+          Copyright © 2025, Department of Panchayati Raaj, Govt. of Arunachal
           Pradesh
         </p>
       </div>

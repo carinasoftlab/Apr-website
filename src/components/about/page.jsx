@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { PlayCircle, ArrowRight } from "lucide-react";
 import "./About.css";
+import Link from "next/link";
 
 export default function PanchayatPortal() {
   return (
@@ -28,27 +29,33 @@ export default function PanchayatPortal() {
         <div className="portal-grid">
           {/* Left Column */}
           <div className="relative bg-prime-bg rounded-4xl p-7 pt-0 max-h-[50vh] lg:max-h-[60vh] w-full overflow-y-scroll custom-scrollbar">
-            <div className="bg-prime-bg sticky top-0  z-10  pb-6 lg:pb-9 w-full  pt-8 items-center">
-              <div className=" bg-olive  rounded-[19px] py-5 text-white text-center font-semibold text-lg xl:text-xl mb-6">
-                Know Your Panchayat
-              </div>
+            <div className="bg-prime-bg sticky top-0 z-10 pb-6 lg:pb-9 w-full pt-8 items-center">
+              <Link
+                href="/know-panchayat?tab=panchayat-videos"
+                className="bg-olive relative rounded-[19px] flex items-center justify-center py-5 text-white text-center font-semibold text-lg xl:text-xl mb-6 hover:bg-olive/90 transition"
+              >
+                <p className="mx-auto">Panchayat Videos</p>
+                <p className="absolute right-4 text-4xl top-3">›</p>
+              </Link>
             </div>
             <div className="card-list">
               {[1, 2, 3, 4, 5, 6].map((_, index) => (
                 <div
                   key={index}
-                  className="bg-white flex flex-col md:flex-row items-center rounded-3xl w-full gap-5 md:gap-8"
+                  className="bg-white flex 2xl:py-4 flex-col   md:px-4 md:flex-row items-center rounded-3xl w-full gap-5 md:gap-8 lg:gap-2"
                 >
-                  <div className="video-thumbnail rounded-4xl overflow-hidden mt-4 md:mt-0 px-3 md:px-0">
+                  <div className="video-thumbnail rounded-3xl overflow-hidden mt-4 md:mt-0 px-3 md:px-0">
                     <Image
                       src="/images/videolink.png"
                       alt="Panchayat Bhavan inauguration"
                       width={250}
                       height={200}
-                      className="object-cover w-full h-full rounded-3xl  md:rounded-none"
+                      className="object-cover w-full h-full rounded-3xl md:rounded-2xl"
                     />
-                    <div className="video-overlay rounded-3xl md:rounded-none mx-3 md:mx-0">
-                      <PlayCircle className="icon-white" />
+                    <div className="video-overlay  mx-3 md:mx-0">
+                      <a href="/know-panchayat?tab=panchayat-videos">
+                        <PlayCircle className="icon-white" />
+                      </a>
                     </div>
                   </div>
                   <div className="card-content-1  flex flex-col gap-2.5 px-6 mb-6 md:mt-6">
@@ -56,9 +63,8 @@ export default function PanchayatPortal() {
                       Panchayat Bhavan inaugurated
                     </h3>
                     <p className="text-xs md:text-sm lg:text-base text-[#555555] leading-5 font-medium">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting. Lorem Ipsum is simply dummy text of the
-                      printing and typesetting.
+                      Description of the Panchayat Bhavan inauguration event,
+                      coming soon
                     </p>
                   </div>
                 </div>
@@ -67,11 +73,17 @@ export default function PanchayatPortal() {
           </div>
 
           {/* Right Column */}
-          <div className="relative portal-section rounded-4xl p-7 pt-0 max-h-[50vh] lg:max-h-[60vh] w-full overflow-y-scroll">
-            <div className="bg-prime-bg sticky lg:top-[-2rem] xl:top-0 top-0  md:z-10  pb-6 lg:pb-9 w-full  pt-8 items-center">
-              <div className="bg-second rounded-[19px] py-5 text-white text-center font-semibold text-lg xl:text-xl mb-6">
-                Orders / Circular
-              </div>
+          <div className="relative bg-prime-bg rounded-4xl p-7 pt-0 max-h-[50vh] lg:max-h-[60vh] w-full overflow-y-scroll custom-scrollbar">
+            <div className="bg-prime-bg sticky top-0 z-10 pb-6 lg:pb-9 w-full pt-8 items-center">
+              <Link
+                href="/know-panchayat?tab=orders-circulars"
+                className="bg-second relative rounded-[19px] flex items-center justify-center py-5 text-white text-center font-semibold text-lg xl:text-xl mb-6 hover:bg-second/90 transition"
+              >
+                {/* Centered text */}
+                <p className="mx-auto">Orders / Circulars</p>
+                {/* Arrow on right */}
+                <p className="absolute right-4 text-4xl top-3">›</p>
+              </Link>
             </div>
             <div className="card-list">
               {[1, 2, 3, 4, 5, 6].map((_, index) => (
@@ -83,12 +95,11 @@ export default function PanchayatPortal() {
                     Panchayat Bhavan inaugurated
                   </h3>
                   <p className="text-xs md:text-sm lg:text-base text-[#555555] leading-5 font-medium">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting. Lorem Ipsum is simply dummy text of the
-                    printing and typesetting.
+                    Description of the Panchayat Bhavan inauguration event,
+                    coming soon
                   </p>
                   <a
-                    href="#"
+                    href="/know-panchayat?tab=orders-circulars"
                     className="text-prime font-medium text-xs md:text-sm lg:text-base flex items-center gap-1"
                   >
                     Read More <ArrowRight className="font-medium" />

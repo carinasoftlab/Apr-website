@@ -72,6 +72,11 @@ export default function LinksSlider({
       href: "https://www.digitalindia.gov.in",
       logoSrc: "/images/logo9.svg",
     },
+    {
+      name: "Ministry of Panchayati Raj",
+      href: "https://panchayat.gov.in/en/",
+      logoSrc: "/images/logo10.png",
+    },
   ],
 }) {
   const viewportRef = useRef(null);

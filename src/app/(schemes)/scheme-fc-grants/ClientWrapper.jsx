@@ -7,7 +7,7 @@ import SchemeRelatedLinks from "@/components/scheme-fc-grants/SchemeRelatedLinks
 import TiedFunds from "@/components/scheme-fc-grants/TiedFunds";
 import UnitedFunds from "@/components/scheme-fc-grants/UnitedFunds";
 import SchemeTab from "@/components/scheme-sor/SchemeTab";
-import Dropdown from "@/components/ui/dropdown/dropdown";
+import Dropdown from "@/components/ui/dropdown/Dropdown";
 import TiedFundsPagination from "@/components/ui/pagination/TiedFundsPagination";
 
 const DEFAULT_TABS = [
@@ -48,6 +48,12 @@ export default function ClientWrapper({ tabQuery }) {
     }
   };
 
+const tabTitles = {
+  "tied-funds": "Tied Funds",
+  "untied-funds": "Untied Funds",
+  faq: "FAQ",
+  "scheme-related-links": "Scheme Related Links",
+};
   return (
     <div className="w-full mx-auto space-y-4">
       <SchemeFcGrantsHeader />
@@ -73,28 +79,30 @@ export default function ClientWrapper({ tabQuery }) {
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-center md:text-left uppercase text-[#778933]">
-              {activeTab === "tied-funds" ? "Tied Funds" : "Untied Funds"}
+              {tabTitles[activeTab]}
             </h1>
           </div>
-          <div className="flex items-center w-[19rem]">
-            <span className="font-semibold w-full">Select District</span>
-            <Dropdown
-              selectedDistrict={selectedDistrict}
-              onDistrictChange={setSelectedDistrict}
-            />
-          </div>
+          {activeTab !== "scheme-related-links" && (
+            <div className="flex items-center w-[19rem]">
+              <span className="font-semibold w-full">Select District</span>
+              <Dropdown
+                selectedDistrict={selectedDistrict}
+                onDistrictChange={setSelectedDistrict}
+              />
+            </div>
+          )}
         </div>
       </div>
 
       <div className="max-w-11/12 mx-auto">{renderTabContent(activeTab)}</div>
 
-      <div className="max-w-11/12 mx-auto flex justify-center md:justify-end">
+      {/* <div className="max-w-11/12 mx-auto flex justify-center md:justify-end">
         <TiedFundsPagination
           currentPage={1}
           totalPages={3}
           onPageChange={() => {}}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

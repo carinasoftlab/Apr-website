@@ -45,7 +45,7 @@ export function SchemeRgsaHeader() {
           <h1 className="text-2xl md:text-3xl text-center lg:text-[52px] font-bold text-gray-800 leading-tight mb-6 uppercase">
             Revamped Rashtriya Gram Swaraj Abhiyan (RGSA)
           </h1>
-          <p className="text-sm text-justify md:text-base lg:text-lg 2xl:text-xl 2xl:leading-relaxed text-gray-700 max-w-7xl">
+          <p className="text-sm text-justify md:text-base lg:text-lg 2xl:text-xl 2xl:leading-relaxed text-gray-700 lg:w-full 2xl:w-[95%]">
             The Rashtriya Gram Swaraj Abhiyan (RGSA) scheme was launched by the
             Hon’ble Prime Minister on National Panchayati Raj Diwas (24th April
             2018). It aims to strengthen Gram Sabha functions effectively as the
@@ -58,7 +58,7 @@ export function SchemeRgsaHeader() {
         </div>
 
         {/* Content Section */}
-        <div className="grid gap-y-8 lg:grid-cols-2 lg:gap-y-12 items-start">
+        <div className="grid gap-y-8 lg:grid-cols-2 lg:gap-y-12 px-4 2xl:px-18 lg:px-4  justify-center items-start">
           {/* Left Column: SOP List or Skeleton */}
           <div className="space-y-6">
             <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-prime">
@@ -122,7 +122,7 @@ export function SchemeRgsaHeader() {
                 <div className="w-full aspect-video bg-gray-300 rounded-[42px] animate-pulse" />
               ) : (
                 <Image
-                  src="/images/scheme-sor/sor_grants_landscape.svg"
+                  src="/images/scheme-sor/img1.jpg"
                   alt="SOR Grants Landscape"
                   className="w-full h-auto rounded-[42px] object-cover object-center shadow-lg"
                   priority

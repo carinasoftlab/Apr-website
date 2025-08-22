@@ -8,7 +8,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Arunchal-web",
+  title: "Arunachal Panchayati Raaj",
   description: "",
 };
 

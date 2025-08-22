@@ -80,7 +80,6 @@
     width: 45vw;
     padding: 0px 30px;
     flex-direction: column;
-    gap: 12px;
 }
 
 .portal-heading {
@@ -140,6 +139,7 @@
 .video-overlay {
     position: absolute;
     inset: 0;
+    border-radius: 18px;
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
@@ -261,7 +261,7 @@
         width: auto;
         padding: 0px 26px;
         flex-direction: column;
-        gap: 12px;
+
     }
 
     /* .main-heading-section h1 {
@@ -377,7 +377,7 @@
         width: 100%;
         padding: 1rem;
         flex-direction: column;
-        gap: 12px;
+
     }
 
     .portal-heading {
@@ -410,7 +410,7 @@
     .video-thumbnail {
         position: relative;
         width: 50vw;
-        height: 10vh;
+        height: 15vh;
         border-radius: 16px 0px 0px 16px;
         overflow: hidden;
         display: flex;
@@ -479,7 +479,7 @@
         width: auto;
         padding: 1.5rem;
         flex-direction: column;
-        gap: 12px;
+
     }
 
     .main-heading-section p {
@@ -497,7 +497,7 @@
         background: #FFF;
         display: flex;
         width: auto;
-        height: 15 vh;
+        height: 15vh;
         padding-right: 1rem;
         justify-content: center;
         align-items: center;
@@ -507,7 +507,7 @@
     .video-thumbnail {
         position: relative;
         width: 35vw;
-        height: 15 vh;
+        height: 15vh;
         border-radius: 12px 0px 0px 12px;
         overflow: hidden;
         display: flex;
@@ -571,7 +571,7 @@
 
     .video-thumbnail {
         position: relative;
-        width: 100%;
+        width: 60%;
         height: 8vw;
         border-radius: 24px 0px 0px 24px;
         overflow: hidden;

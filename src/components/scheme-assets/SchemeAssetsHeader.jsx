@@ -6,7 +6,7 @@ import Image from "next/image";
 // Step 1: Data Array
 const sorProcedures = [
   {
-    text: "SOR Basic Grants are distributed to 27 Districts based on area and population on a ratio of 50:50 basis.",
+    text: "SOR Basic Grants are distributed to 27 Districts based on area and population on a ratio of 70:30 basis.",
     dotColor: "bg-yellow-400",
   },
   {
@@ -19,7 +19,7 @@ const sorProcedures = [
   },
 ];
 
-export function SchemeSorHeader() {
+export function SchemeAssetsHeader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export function SchemeSorHeader() {
           <h1 className="text-2xl md:text-3xl text-center lg:text-[52px] font-bold text-gray-800 leading-tight mb-6">
             ASSETS
           </h1>
-          <p className="text-sm md:text-base lg:text-lg text-gray-700 text-justify justify-center max-w-6xl">
+          <p className="text-sm text-justify md:text-base lg:text-lg 2xl:text-xl 2xl:leading-relaxed text-gray-700 lg:w-full xl:w-full 2xl:w-[95%]">
             In pursuance of Article 243G of the Constitution of India and
             Articles 243H read with sections 31 & 99 of Arunachal Pradesh
             Panchayati Raj Act 1997 (Amended in 2018), the State Govt. Vide No.
@@ -87,7 +87,7 @@ export function SchemeSorHeader() {
                 <div className="w-full h-full bg-gray-300 rounded-[42px] animate-pulse" />
               ) : (
                 <Image
-                  src="/images/scheme-sor/sor_grants_landscape.svg"
+                  src="/images/scheme-sor/img1.jpg"
                   fill
                   alt="SOR Grants Landscape"
                   className="rounded-[42px] object-cover object-center shadow-lg"

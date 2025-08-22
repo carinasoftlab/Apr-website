@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { SchemeSorAccordion } from "./SchemeSorAccordion";
 import { schemeSorData } from "@/constants/scheme-sor.data";
-import { Button } from "../ui/button";
-import { SearchInput } from "./search-input";
 import SchemeTab from "./SchemeTab";
 import BasiceGrants from "./BasiceGrants";
 import PerformanceGrants from "./PerformanceGrants";
@@ -57,7 +54,7 @@ export function SchemeSorSchemesSection() {
         <div className="mb-8 bg-white lg:p-6 flex flex-col gap-5">
           <div className="flex flex-col lg:flex-row items-center justify-between">
             {/* Heading */}
-            <h2 className="text-3xl  md:text-[52px]  font-bold tracking-tight text-center md:text-left">
+            <h2 className="text-3xl  md:text-[52px] lg:text-4xl xl:text-[52px] font-bold tracking-tight text-center md:text-left">
               SCHEMES UNDER <span className="text-prime">SOR</span>
             </h2>
             {/* Tab Buttons */}

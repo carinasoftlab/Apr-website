@@ -9,7 +9,7 @@ import Header from "@/components/Header/Header";
 export default function Page() {
   return (
     <>
-    <Header />
+      <Header />
       <section className="py-16 px-4 sm:px-6 lg:px-8 xl:py-40 bg-gradient-to-b from-white to-prime-bg font-mont">
         <div className="max-w-[90rem] mx-auto">
           <div className="grid lg:grid-cols-2 gap-y-12 items-center">
@@ -29,22 +29,22 @@ export default function Page() {
                 >
                   CONTACT US
                 </motion.h1>
-                <motion.p
+                {/* <motion.p
                   className="text-gray-600 text-lg xl:text-xl"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
                 >
                   Queries Related to Schemes/Panchayat or for Engagement.
-                </motion.p>
-                <motion.p
+                </motion.p> */}
+                {/* <motion.p
                   className="text-gray-600 text-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
                   write us at :
-                </motion.p>
+                </motion.p> */}
               </div>
 
               <div className="space-y-14">
@@ -60,7 +60,7 @@ export default function Page() {
                   </div>
                   <div>
                     <h3 className="text-xl text-prime ">Email</h3>
-                    <p className="">panchayatiraj@gmail.com</p>
+                    <p className="text-lg">arunachalpanchayati@gmail.com</p>
                   </div>
                 </motion.div>
 
@@ -76,10 +76,12 @@ export default function Page() {
                   </div>
                   <div>
                     <h3 className="text-xl text-prime">Address</h3>
-                    <div className=" space-y-1 font-medium leading-tight">
-                      <p>Revenue Department, Arunachal Pradesh Ground Floor,</p>
-                      <p>Vallabh Bhavan - 2, Ministry, Area Hills,</p>
-                      <p>Arunachal Pradesh - 790104</p>
+                    <div className=" space-y-1 font-medium leading-tight text-lg">
+                      <p className="">
+                        Directorate of Panchayati Raj, Sector, Itanagar,
+                        <br />
+                        Arunachal Pradesh: 791111
+                      </p>
                     </div>
                   </div>
                 </motion.div>

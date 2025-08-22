@@ -6,13 +6,13 @@ import Header from "@/components/Header/Header";
 
 export default function page() {
   const stats = [
-    { label: "Total District", value: "27" },
-    { label: "Panchayat Bhawan", value: "08" },
-    { label: "DPRC Centre", value: "23" },
-    { label: "District Panchayat Development Officer", value: "22" },
+    { label: "Total Districts", value: "27" },
+    { label: "Panchayat Bhawans", value: "08" },
+    { label: "DPRC Centres", value: "23" },
+    { label: "District Panchayat Development Officers", value: "22" },
     { label: "Zila Parishad Members", value: "242" },
-    { label: "Total Zilla Parishad", value: "208" },
-    { label: "Women PRI Leader", value: "2108" },
+    { label: "Total Zilla Parishads", value: "208" },
+    { label: "Women PRI Leaders", value: "2108" },
   ];
   return (
     <>
@@ -86,9 +86,9 @@ export default function page() {
             >
               <div className="relative rounded-[47px] overflow-hidden shadow-2xl">
                 <img
-                  src="/images/About-hero.png"
+                  src="/images/About-hero.jpg"
                   alt="Arunachal Pradesh Landscape"
-                  className="w-full h-[400px] 2xl:h-[55vh] object-cover"
+                  className="w-full h-[400px] 2xl:h-[55vh] object-cover rounded-xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>

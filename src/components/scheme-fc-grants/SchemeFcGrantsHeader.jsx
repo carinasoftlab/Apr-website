@@ -113,7 +113,7 @@ export function SchemeFcGrantsHeader() {
                 <div className="w-full aspect-video bg-gray-300 rounded-[42px] animate-pulse" />
               ) : (
                 <Image
-                  src="/images/scheme-sor/sor_grants_landscape.svg"
+                  src="/images/scheme-sor/img3.jpg"
                   alt="SOR Grants Landscape"
                   className="w-full h-auto rounded-[42px] object-cover object-center shadow-lg"
                   priority

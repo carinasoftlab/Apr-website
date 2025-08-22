@@ -5,15 +5,26 @@ import Pagination from "../Pagination";
 import CardSkeleton from "../CardSkeleton";
 
 // Mock data for Training Imparted
-const mockData = Array.from({ length: 45 }, (_, i) => ({
-  id: i + 1,
-  trainingName: "Training Name",
-  location: "Garung Karbi, Balijan",
-  district: ["Papum Pare", "Mangan", "Namchi", "Gyalshing"][i % 4],
-  participants: 75,
-  image: `/images/scheme-rgsa/training.png`,
-  date: "2024-01-15",
-}));
+const mockData = [
+  {
+    id: 1,
+    trainingName: "Panchayat Advancement Index (PAI)",
+    location: "Yuchli",
+    district: "Keyi Panyor District",
+    participants: 50,
+    image: "/images/scheme-rgsa/training1.png",
+    date: "2024-01-15",
+  },
+  {
+    id: 2,
+    trainingName: "Panchayat Advancement Index (PAI)",
+    location: "Yuchli",
+    district: "Keyi Panyor District",
+    participants: 50,
+    image: "/images/scheme-rgsa/training2.jpeg",
+    date: "2024-01-15",
+  },
+];
 
 export default function TrainingImpartedTab({ selectedDistrict, isLoading }) {
   const [currentPage, setCurrentPage] = useState(1);
