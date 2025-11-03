@@ -15,7 +15,6 @@ export default function PanchayatPortal({ data, loading, error }) {
   } = useApi("/panchayatVideos", "GET");
 
   console.log("check data", data);
-  
 
   const videos = videoData?.data || [];
   const baseImageURL = process.env.NEXT_PUBLIC_IMAGE_URL?.replace(/\/$/, "");
@@ -35,11 +34,16 @@ export default function PanchayatPortal({ data, loading, error }) {
 
   // ✅ Safe thumbnail resolver
   const getThumbnailUrl = (thumbnail) => {
-    if (!thumbnail || thumbnail.trim() === "") {
-      return "/images/videolink.png"; // fallback in /public/images
+    console.log("check thumbnail", thumbnail);
+    if (!thumbnail) {
+      return "/images/videolink.png";
     }
-    if (thumbnail.startsWith("http")) return thumbnail; // already a URL
-    return `${baseImageURL}/${thumbnail.replace(/^\/+/, "")}`;
+    const trimmed = String(thumbnail).trim();
+    if (trimmed === "") return "/images/videolink.png";
+    if (trimmed.startsWith("http")) return trimmed;
+    const clean = trimmed.replace(/^\/+/, "");
+    const path = clean.startsWith("images/") ? clean : `images/${clean}`;
+    return `${baseImageURL}/${path}`;
   };
 
   // ✅ Skeleton card
@@ -127,7 +131,8 @@ export default function PanchayatPortal({ data, loading, error }) {
                         unoptimized
                         onError={(e) => {
                           e.currentTarget.src = "/images/placeholder.png";
-                        }}  />
+                        }}
+                      />
                       <div className="video-overlay absolute inset-0 flex items-center justify-center">
                         <Link
                           href="/know-panchayat?tab=panchayat-videos"
