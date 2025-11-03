@@ -37,7 +37,7 @@ const GramPanchayatCard = ({ selectedDistrict = "all" }) => {
     if (!file) return "/images/placeholder.svg";
     if (/^https?:\/\//i.test(file)) return file;
     const hasUploads = /\/uploads\/(images|assets)\/?$/i.test(baseImageUrl);
-    const prefix = hasUploads ? baseImageUrl : `${baseImageUrl}/uploads/images`;
+    const prefix = hasUploads ? baseImageUrl : `${baseImageUrl}/images`;
     return `${prefix}/${encodeURI(file)}`;
   };
 

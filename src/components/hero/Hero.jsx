@@ -18,6 +18,8 @@ export default function HeroCarousel({ data = [], loading = false }) {
     setImageErrors((prev) => ({ ...prev, [index]: true }));
   };
 
+  console.log(baseImageURL,"this is the urk")
+
   if (loading) {
     return (
       <div id="home" className="flex flex-col items-center relative">
@@ -59,7 +61,7 @@ export default function HeroCarousel({ data = [], loading = false }) {
                   />
                 ) : (
                   <Image
-                    src={`${baseImageURL}/${slide.image}`}
+                    src={`${baseImageURL}/images/${slide.image}`}
                     alt={slide?.heading || "Hero Slide"}
                     fill
                     className="object-cover w-full h-full"

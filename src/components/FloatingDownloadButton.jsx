@@ -35,11 +35,12 @@ export default function FloatingDownloadButton() {
   }, [isOpen]);
 
   return (
-    <div ref={containerRef} className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
+    <div ref={containerRef} className="fixed right-4 bottom-10 z-50">  
+      {/* top-1/2 transform -translate-y-1/2 */}
       {/* Main Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center border border-gray-200 overflow-hidden"
+        className="w-14 h-14 sm:w-20 sm:h-20 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center border border-gray-200 overflow-hidden"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Download App"
@@ -47,9 +48,10 @@ export default function FloatingDownloadButton() {
         <Image
           src="/images/goistats.png"
           alt="Download GoiStats App"
-          width={64}
-          height={64}
-          className="w-full h-full object-cover"
+          title="Download GoiStats App"
+          width={70}
+          height={70}
+          className="w-full h-full object-contain"
         />
       </motion.button>
 

@@ -32,13 +32,21 @@ const TiedFunds = ({ selectedDistrict = "all" }) => {
     );
     const resolveImg = (file) => {
       if (!file) return "/images/placeholder.svg";
+
+      // If full URL (starts with http/https), use it directly
       if (/^https?:\/\//i.test(file)) return file;
-      const hasUploads = /\/uploads\/(images|assets)\/?$/i.test(baseImageUrl);
-      const prefix = hasUploads
-        ? baseImageUrl
-        : `${baseImageUrl}/uploads/images`;
-      return `${prefix}/${encodeURI(file)}`;
+
+      const base = (process.env.NEXT_PUBLIC_IMAGE_URL || "").replace(/\/$/, "");
+
+      // ✅ If it's a PDF or document file
+      if (/\.(pdf|doc|docx|xls|xlsx)$/i.test(file)) {
+        return `${base}/documents/${file}`;
+      }
+
+      // ✅ Corrected: Use `/images/img` instead of `/image/img`
+      return `${base}/images/${file}`;
     };
+
     setAssets(
       arr.map((item) => {
         const gpn = item.gramPanchayat || "--";
@@ -127,7 +135,9 @@ const TiedFunds = ({ selectedDistrict = "all" }) => {
   if (!assets.length) {
     return (
       <>
-        <div className="text-center py-6 text-gray-400">No Tied Funds data found.</div>
+        <div className="text-center py-6 text-gray-400">
+          No Tied Funds data found.
+        </div>
         {totalPages > 1 && (
           <TiedFundsPagination
             currentPage={currentPage}

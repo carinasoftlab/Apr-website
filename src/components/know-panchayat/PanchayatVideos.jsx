@@ -31,7 +31,7 @@ const VIDEOSItem = React.memo(({ videos, isOpen, onToggle, onVideoPlay }) => (
             <img
               src={
                 videos.thumbnail
-                  ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/${videos.thumbnail}`
+                  ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/images/${videos.thumbnail}`
                   : "/images/placeholder.png"
               }
               alt={videos.title || "Video thumbnail"}

@@ -110,7 +110,7 @@ export default function AboutPage() {
                   src={
                     imageError || !heroData?.heroImage
                       ? "/images/placeholder.png"
-                      : `${baseImageURL}/${heroData.heroImage}`
+                      : `${baseImageURL}/images/${heroData.heroImage}`
                   }
                   alt="Hero Image"
                   fill

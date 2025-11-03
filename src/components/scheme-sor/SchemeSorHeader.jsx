@@ -26,7 +26,7 @@ export function SchemeSorHeader() {
   const sorData = data?.data?.[0] || {};
   const description = sorData.description || "";
   const bannerImage = sorData.heroImage
-    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/${sorData.heroImage}`
+    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/images/${sorData.heroImage}`
     : "/images/placeholder.png";
 
   // Update image source when API data comes in

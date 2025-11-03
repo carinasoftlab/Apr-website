@@ -44,7 +44,7 @@ export default function TrainingImpartedTab({ selectedDistrict, isLoading }) {
       if (!img) return "/images/placeholder.svg";
       if (/^https?:\/\//i.test(img)) return img; // already absolute
       const hasUploadsInBase = /\/uploads\/(images|assets)\/?$/i.test(baseImageUrl);
-      const prefix = hasUploadsInBase ? baseImageUrl : `${baseImageUrl}/uploads/images`;
+      const prefix = hasUploadsInBase ? baseImageUrl : `${baseImageUrl}/images`;
       return `${prefix}/${encodeURI(img)}`;
     };
 

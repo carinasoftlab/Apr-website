@@ -22,7 +22,7 @@ export function SchemeFcGrantsHeader() {
   const fcGrantsData = data?.data?.[0] || {};
   const description = fcGrantsData.description || "";
   const bannerImage = fcGrantsData.heroImage
-    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/${fcGrantsData.heroImage}`
+    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/images/${fcGrantsData.heroImage}`
     : "/images/placeholder.png";
 
   // Update image source when API gives data

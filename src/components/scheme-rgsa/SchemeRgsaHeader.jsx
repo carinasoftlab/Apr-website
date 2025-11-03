@@ -22,7 +22,7 @@ export function SchemeRgsaHeader() {
   const schemeData = data?.data?.[0] || {};
   const description = schemeData.description || "";
   const bannerImage = schemeData.heroImage
-    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/${schemeData.heroImage}`
+    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/images/${schemeData.heroImage}`
     : "/images/placeholder.png";
 
   // Update image source when API data comes in

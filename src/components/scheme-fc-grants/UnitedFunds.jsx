@@ -36,7 +36,7 @@ const UnitedFunds = ({ selectedDistrict = "all" }) => {
       const hasUploads = /\/uploads\/(images|assets)\/?$/i.test(baseImageUrl);
       const prefix = hasUploads
         ? baseImageUrl
-        : `${baseImageUrl}/uploads/images`;
+        : `${baseImageUrl}/images`;
       return `${prefix}/${encodeURI(file)}`;
     };
     setAssets(

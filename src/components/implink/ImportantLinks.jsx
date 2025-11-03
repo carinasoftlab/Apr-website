@@ -158,7 +158,7 @@ export default function LinksSlider() {
                       <SafeImage
                         src={
                           item?.logo
-                            ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/${item.logo}`
+                            ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/images/${item.logo}`
                             : "/images/placeholder.png"
                         }
                         alt={item?.name || "Logo"}
