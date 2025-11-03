@@ -155,13 +155,16 @@ function OrgChartInner() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         fitView
-        nodesDraggable={true}   // stop dragging cards
+        nodesDraggable={true} // stop dragging cards
         panOnScroll
         zoomOnScroll
         proOptions={{ hideAttribution: true }}
       >
         <MiniMap pannable zoomable nodeStrokeColor={(n) => "#4B5563"} />
-        <Controls showInteractive={true}  style={{ top: 20, left: 20, height: 0 }} />
+        <Controls
+          showInteractive={true}
+          style={{ top: 20, left: 20, height: 0 }}
+        />
 
         <Background gap={20} color="#E5E7EB" />
       </ReactFlow>

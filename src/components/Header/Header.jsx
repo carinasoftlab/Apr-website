@@ -123,17 +123,15 @@ export default function Header() {
               ))}
             </div>
             <div className="bg-amber-500 rounded-tr-2xl text-center rounded-br-2xl px-6 lg:px-3 2xl:px-6 lg:h-10 xl:h-auto lg:py-[0.5rem] 2xl:py-[0.95rem] flex items-center justify-center">
-              <Link
-                href="/login"
-                className={`font-semiboldtext-sm  lg:text-[0.6rem] xl:text-sm font-semibold uppercase tracking-wide
-                  ${
-                    pathname === "/login"
-                      ? "text-gray-200"
-                      : "text-white hover:text-gray-200"
-                  }`}
+              <a
+                href={process.env.NEXT_PUBLIC_LOGIN_URL}
+                className={`font-semibold text-sm lg:text-[0.6rem] xl:text-sm uppercase tracking-wide
+    ${
+      pathname === "/login" ? "text-gray-200" : "text-white hover:text-gray-200"
+    }`}
               >
                 Login
-              </Link>
+              </a>
             </div>
           </div>
 

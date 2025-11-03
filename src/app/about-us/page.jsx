@@ -1,24 +1,52 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import ImportantLinks from "@/components/implink/ImportantLinks";
 import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAboutData } from "@/store/api/homeSlice";
 
-export default function page() {
+export default function AboutPage() {
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector(
+    (state) => state.home.aboutData
+  );
+  const [imageError, setImageError] = React.useState(false);
+
   const stats = [
     { label: "Total Districts", value: "27" },
     { label: "Panchayat Bhawans", value: "08" },
     { label: "DPRC Centres", value: "23" },
-    { label: "District Panchayat Development Officers", value: "22" },
-    { label: "Zila Parishad Members", value: "242" },
-    { label: "Total Zilla Parishads", value: "208" },
+      
     { label: "Women PRI Leaders", value: "2108" },
   ];
+
+  const heroData = data?.data?.[0];
+  const baseImageURL =
+    process.env.NEXT_PUBLIC_IMAGE_URL?.replace(/\/$/, "") || "";
+
+  // Reset image error when data changes
+  React.useEffect(() => {
+    setImageError(false);
+  }, [heroData?.heroImage]);
+
+  // Fetch data on component mount
+  React.useEffect(() => {
+    dispatch(fetchAboutData());
+  }, [dispatch]);
+
+  if (error)
+    return <p className="text-center text-red-500">Something went wrong</p>;
+
   return (
     <>
       <Header />
+
+      {/* Hero Section */}
       <section className="2xl:py-36 xl:py-32 py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-prime-bg">
-        <div className="max-w-11/12 mx-auto">
+        <div className="max-w-[90%] mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <motion.div
@@ -27,76 +55,78 @@ export default function page() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div>
-                <motion.p
-                  className=" text-lg xl:text-xl mb-2 font-extralight "
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  Arunachal Pradesh
-                </motion.p>
-                <motion.h1
-                  className="text-4xl lg:text-5xl  font-semibold text-prime mb-6 font-mont"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                >
-                  PANCHAYATI RAJ
-                </motion.h1>
-              </div>
+              {loading ? (
+                <div className="space-y-4 animate-pulse">
+                  <div className="h-5 w-40 bg-gray-300 rounded"></div>
+                  <div className="h-10 w-72 bg-gray-300 rounded"></div>
+                  <div className="space-y-2">
+                    <div className="h-4 w-full bg-gray-200 rounded"></div>
+                    <div className="h-4 w-5/6 bg-gray-200 rounded"></div>
+                    <div className="h-4 w-4/6 bg-gray-200 rounded"></div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <motion.p
+                    className="text-lg xl:text-xl mb-2 font-extralight"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    Arunachal Pradesh
+                  </motion.p>
+                  <motion.h1
+                    className="text-4xl lg:text-5xl font-semibold text-prime mb-6 font-mont"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                  >
+                    PANCHAYATI RAJ
+                  </motion.h1>
 
-              <motion.div
-                className="prose prose-lg text-gray-700 lg:leading-8 xl:text-xl lg:text-justify"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <p>
-                  <span className="font-semibold text-prime">
-                    The Department of Panchayati Raj
-                  </span>{" "}
-                  was established in the{" "}
-                  <span className="font-semibold text-prime">Year 1985</span>.
-                  Since then, the functions of the Department as per Allocation
-                  of Business Rules were limited with the conduct of Panchayati
-                  Raj Election and promulgation of Acts, Laws, Bye-Laws,
-                  Guidelines etc. of Panchayati Raj Department and its relevant
-                  matters. The work load of the Department has increased
-                  manifold and despite shortage of man power the department of
-                  Panchayati Raj had to implement the various flagship
-                  programmes in mission mode with limited man powers. As per
-                  implementation strategy of the Department, in all the
-                  respective Programme guidelines, there were provisions of man
-                  power for programme driven engagement on monthly fixed
-                  honorarium/salary basis in order to work with elected PRIs and
-                  smooth implementation of Civil works, base services and to
-                  oversee accounts and establishment matters at District level
-                  as well as at head quarters.
-                </p>
-              </motion.div>
+                  <motion.div
+                    className="prose prose-lg text-gray-700 lg:leading-8 xl:text-xl lg:text-justify"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
+                    <p>{heroData?.content}</p>
+                  </motion.div>
+                </>
+              )}
             </motion.div>
 
             {/* Right Image */}
             <motion.div
-              className="relative"
+              className="relative w-full h-[400px] 2xl:h-[55vh] rounded-[47px] overflow-hidden shadow-2xl"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="relative rounded-[47px] overflow-hidden shadow-2xl">
-                <img
-                  src="/images/About-hero.jpg"
-                  alt="Arunachal Pradesh Landscape"
-                  className="w-full h-[400px] 2xl:h-[55vh] object-cover rounded-xl"
+              {loading ? (
+                <div className="w-full h-full bg-gray-300 animate-pulse rounded-[47px]" />
+              ) : (
+                <Image
+                  src={
+                    imageError || !heroData?.heroImage
+                      ? "/images/placeholder.png"
+                      : `${baseImageURL}/${heroData.heroImage}`
+                  }
+                  alt="Hero Image"
+                  fill
+                  className="object-cover rounded-xl"
+                  onError={() => setImageError(true)}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
+              )}
+              {!loading && (
+                <div className="absolute inset-0 bg-gray-300 opacity-10 pointer-events-none"></div>
+              )}
             </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Stats Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-t from-white to-prime-bg">
         <div className="md:max-w-4/5 mx-auto">
           <motion.h2
@@ -109,11 +139,11 @@ export default function page() {
           </motion.h2>
 
           <div className="bg-white rounded-3xl p-8">
-            <div className="space-y-0.5">
+            <div className="space-y-1">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  className="flex justify-between bg-prime-bg rounded-xl  overflow-hidden flex-col md:flex-row mb-3 md:mb-1"
+                  className="flex justify-between bg-prime-bg rounded-xl overflow-hidden flex-col md:flex-row mb-3 md:mb-1"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -128,7 +158,7 @@ export default function page() {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <span className="text-xl font-bold ">{stat.value}</span>
+                    <span className="text-xl font-bold">{stat.value}</span>
                   </motion.div>
                 </motion.div>
               ))}
@@ -136,6 +166,7 @@ export default function page() {
           </div>
         </div>
       </section>
+
       <ImportantLinks />
       <Footer />
     </>

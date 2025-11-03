@@ -8,7 +8,7 @@ import TiedFunds from "@/components/scheme-fc-grants/TiedFunds";
 import UnitedFunds from "@/components/scheme-fc-grants/UnitedFunds";
 import SchemeTab from "@/components/scheme-sor/SchemeTab";
 import Dropdown from "@/components/ui/dropdown/dropdown";
-import TiedFundsPagination from "@/components/ui/pagination/TiedFundsPagination";
+import DistrictSelector from "@/components/scheme-rgsa/DistrictSelector";
 
 const DEFAULT_TABS = [
   { id: "tied-funds", label: "Tied Funds" },
@@ -34,9 +34,9 @@ export default function ClientWrapper({ tabQuery }) {
   const renderTabContent = (tabId) => {
     switch (tabId) {
       case "tied-funds":
-        return <TiedFunds />;
+        return <TiedFunds selectedDistrict={selectedDistrict} />;
       case "untied-funds":
-        return <UnitedFunds />;
+        return <UnitedFunds selectedDistrict={selectedDistrict} />;
       case "faq":
         return <FCGrandsFaq />;
       case "scheme-related-links":
@@ -83,9 +83,10 @@ const tabTitles = {
             </h1>
           </div>
           {activeTab !== "scheme-related-links" && (
-            <div className="flex items-center w-[19rem]">
+             <div className="flex items-center gap-3">
               <span className="font-semibold w-full">Select District</span>
-              <Dropdown
+           
+               <DistrictSelector
                 selectedDistrict={selectedDistrict}
                 onDistrictChange={setSelectedDistrict}
               />

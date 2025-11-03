@@ -14,7 +14,7 @@ export default function KnowPanchayatMainSection() {
   const [activeTab, setActiveTab] = useState(tabQuery || "panchayat-videos");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // ✅ Sync tab state with query param
+  //  Sync tab state with query param
   useEffect(() => {
     if (tabQuery && tabQuery !== activeTab) {
       setActiveTab(tabQuery);
@@ -41,9 +41,9 @@ export default function KnowPanchayatMainSection() {
   const renderTabContent = (tabId) => {
     switch (tabId) {
       case "panchayat-videos":
-        return <PanchayatVideos data={filteredData} />;
+        return <PanchayatVideos  />;
       case "orders-circulars":
-        return <PanchayatOrders data={filteredData} />;
+        return <PanchayatOrders  />;
       default:
         return null;
     }

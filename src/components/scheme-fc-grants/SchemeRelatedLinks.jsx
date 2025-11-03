@@ -1,25 +1,26 @@
+"use client";
+
 import React from "react";
 
 const SchemeRelatedLinks = () => {
-
-   const relatedLinks = [
-     {
-       title: "Audit Online",
-       url: "https://auditonline.gov.in/",
-     },
-     {
-       title: "E-Gramswaraj",
-       url: "https://egramswaraj.gov.in/",
-     },
-     {
-       title: "PFMS",
-       url: "https://pfms.nic.in/",
-     },
-     {
-       title: "Panchayat Development Plan",
-       url: "https://gpdp.nic.in/",
-     },
-   ];
+  const relatedLinks = [
+    {
+      title: "Audit Online",
+      url: "https://auditonline.gov.in/",
+    },
+    {
+      title: "E-Gramswaraj",
+      url: "https://egramswaraj.gov.in/",
+    },
+    {
+      title: "PFMS",
+      url: "https://pfms.nic.in/",
+    },
+    {
+      title: "Panchayat Development Plan",
+      url: "https://gpdp.nic.in/",
+    },
+  ];
   return (
     <div className="rounded-2xl border border-[#F4AC1A] bg-[#faf0de] p-6 md:p-10 max-w-auto mx-auto shadow-sm">
       <h2 className="text-2xl md:text-3xl font-bold text-prime mb-4">

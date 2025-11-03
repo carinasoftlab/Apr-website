@@ -1,5 +1,7 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
+import AppLayout from "@/components/AppLayout";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -8,14 +10,18 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Arunachal Panchayati Raaj",
+  title: "Arunchal-web",
   description: "",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" >
-      <body>{children}</body>
+      <body className={montserrat.variable}>
+        <Providers>
+          <AppLayout>{children}</AppLayout>
+        </Providers>
+      </body>
     </html>
   );
 }

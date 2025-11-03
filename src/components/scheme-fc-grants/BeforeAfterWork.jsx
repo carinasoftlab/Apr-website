@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 
@@ -7,28 +9,11 @@ const BeforeAfterWork = ({ data }) => {
       {/* heading  */}
       <div>
         <p className="text-[#778933] uppercase font-semibold flex items-center">
-          {data.heading}
+    Scheme category 
         </p>
       </div>
 
-      {/* Subheading if exists */}
-      {data.subheading && (
-        <div className="space-y-2 -mt-3">
-          {data.subheading.point1 && (
-            <p className="text-gray-700 text-sm">
-              1.{" "}
-              <span className="">{data.subheading.point1}</span>
-            </p>
-          )}
-          {data.subheading.point2 && (
-            <p className="text-gray-700 text-sm">
-              2.{" "}
-              <span className="">{data.subheading.point2}</span>
-            </p>
-          )}
-        </div>
-      )}
-
+     
       {/* Card Body */}
       <div className="">
         {/* Fund Details Grid */}
@@ -36,7 +21,7 @@ const BeforeAfterWork = ({ data }) => {
           <div className="rounded-xl  border ">
             <Image
               src={data.image}
-              alt="before"
+              alt="image"
               width={100}
               height={100}
               className="w-full h-full object-contain"
@@ -61,9 +46,9 @@ const BeforeAfterWork = ({ data }) => {
         </p>
         <div>
           <p className="text-prime uppercase font-semibold flex items-center">
-            {data.schemeName}
+          Description
           </p>
-          <p className="font-normal">{data.gramPanchayat}</p>
+          <p className="font-normal text-sm">Description of the work</p>
         </div>
       </div>
     </div>

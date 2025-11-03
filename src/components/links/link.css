@@ -14,12 +14,11 @@
 }
 
 .link-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
+    /* space between items */
     padding: 4rem 2rem;
-    flex-wrap: wrap;
-    /* allows items to wrap on smaller screens */
 }
 
 .content-img {

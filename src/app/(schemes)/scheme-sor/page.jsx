@@ -1,6 +1,3 @@
-
-
-
 import ImportantLinks from "@/components/implink/ImportantLinks";
 import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";

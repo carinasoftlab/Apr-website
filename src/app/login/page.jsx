@@ -56,10 +56,13 @@ export default function LoginPage() {
 
     try {
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Handle successful login here
-      console.log("Login successful:", formData)
+      console.log("Login successful:", formData);
+
+      // Redirect to admin panel
+      // window.location.href = "http://82.180.132.164:6363/login";
     } catch (error) {
       console.error("Login failed:", error)
       setErrors({ submit: "Login failed. Please try again." })

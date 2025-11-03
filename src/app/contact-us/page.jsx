@@ -1,11 +1,9 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { Mail, MapPin } from "lucide-react";
 import ImportantLinks from "@/components/implink/ImportantLinks";
 import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
-import Image from "next/image";
 
 export default function Page() {
   return (
@@ -97,8 +95,7 @@ export default function Page() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               {/* <ArunachalMap /> */}
-              <Image width={700} height={700} src="/images/Map-img.png" alt=""  />
-              {/* <img className="w-[120%]" src="images/map-img.png" alt="" /> */}
+              <img className="w-[120%]" src="/images/mapImg.png" alt="" />
             </motion.div>
           </div>
         </div>

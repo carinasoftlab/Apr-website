@@ -3,170 +3,110 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 // Animation Variants
-const containerVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 2,
-      ease: "easeOut",
-    },
-  },
-};
-
 const itemVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0 },
 };
 
-// Parent container animation (for stagger)
 const cardGridVariants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.3 } },
 };
 
-// Each card animation
 const cardItemVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
-export default function LiveData() {
+// Card styles as an array
+const cardStyles = [
+  { bg: "#00CE5D", image: "/images/scheme.png", labelBg: "#1E4C30" },
+  { bg: "#1C71F0", image: "/images/villages.png", labelBg: "#1D4070" },
+  { bg: "#F59E0B", image: "/images/centre.png", labelBg: "#78350F" },
+  { bg: "#00CD85", image: "/images/bhawan.png", labelBg: "#1E4C30" },
+];
+
+// Fallback style (if more cards than styles)
+const fallbackStyle = {
+  bg: "#1E4C30",
+  image: "/images/centre.png",
+  labelBg: "#ffffff33",
+};
+
+export default function LiveData({ liveDataCards }) {
+ 
+
+  const cards = liveDataCards || [];
+
   return (
-    <section
-      id="data"
-      className="flex flex-col items-center gap-[52.431px] self-stretch bg-[#1E4C30] px-[74px] py-[47.569px] pb-[113px]"
-    >
-      <div className="py-2">
-        <motion.div
-          className="text-center"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 1 }}
-        >
-          <h1 className="text-2xl md:text-4xl lg:text-5xl 2xl:text-[3.3rem] text-center font-bold text-white mb-8 2xl:mb-14">
-            LIVE DATA
-          </h1>
-        </motion.div>
+    <section className="flex flex-col items-center gap-12 bg-[#1E4C30] px-6 md:px-12 py-12 md:py-20">
+      {/* Section Heading */}
+      <motion.div
+        className="text-center"
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 1 }}
+      >
+        <h1 className="text-3xl md:text-5xl font-bold text-white mb-8">
+          LIVE DATA
+        </h1>
+      </motion.div>
 
-        <motion.div
-          className="xl:flex xl:flex-row md:grid md:grid-cols-2 gap-8 flex flex-col"
-          variants={cardGridVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {/* Card 1 */}
-          <motion.div
-            className="relative rounded-[2rem] overflow-hidden shadow-lg  h-[40vh] w-[60vw] md:h-[30vw] md:w-auto md:flex-1 md:max-w-auto md:aspect-[4/3] lg:aspect-[3/4] lg:h-[25vw] xl:h-[15vw] xl:w-[20vw] lg:w-[35vw]  sm:flex-col"
-            variants={cardItemVariants}
-          >
-            <Image
-              src="/images/scheme.png"
-              alt="Schemes Live"
-              layout="fill"
-              objectFit="cover"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-[#00CD85] opacity-80" />
-            <div className="relative z-10 flex flex-col justify-center items-center py-8 mt-8 md:mt-4 lg:mt-6 xl:mt-4">
-              <p className="bg-[#1E4C30] font-bold px-4 py-4 rounded-xl text-white text-xl md:text-2xl">
-                Gram Sabhas
-              </p>
-              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
-                2108+
-              </h3>
-            </div>
-          </motion.div>
+      {/* Cards */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 w-full"
+        variants={cardGridVariants}
+        initial="hidden"
+        animate="visible" // ensure animation always runs
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        {cards.map((card, index) => {
+          // Pick style by index, fallback if not enough styles
+          const style = cardStyles[index] || fallbackStyle;
 
-          {/* Card 2 */}
-          <motion.div
-            className="relative rounded-[2rem] overflow-hidden shadow-lg  h-[40vh] w-[60vw] md:h-[30vw] md:w-auto md:flex-1 md:max-w-auto md:aspect-[4/3] lg:aspect-[3/4] lg:h-[25vw] xl:h-[15vw] xl:w-[20vw] lg:w-[35vw]  sm:flex-col"
-            variants={cardItemVariants}
-          >
-            <Image
-              src="/images/villages.png"
-              alt="Villages Added"
-              layout="fill"
-              objectFit="cover"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-[#F4AC1A] opacity-80" />
-            <div className="relative z-10 flex flex-col just-center items-center py-8 mt-4 xl:mt-0">
-              <p className="font-bold px-4 py-4 rounded-xl text-white text-xl md:text-xl bg-[#59460F]">
-                Women Friendly <br />
-                Gram Panchayat
-              </p>
-              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
-                27+
-              </h3>
-            </div>
-          </motion.div>
+          return (
+            <motion.div
+              key={card._id || index}
+              className="relative rounded-2xl overflow-hidden shadow-lg flex flex-col justify-center items-center h-[300px]" // fixed px height for now
+              variants={cardItemVariants}
+            >
+              {/* Background image */}
+              <Image
+                src={style.image}
+                alt={card.title || "Card"}
+                fill
+                sizes="100vw"
+                priority
+                className="object-cover"
+              />
 
-          {/* Card 3 */}
-          <motion.div
-            className="relative rounded-[2rem] overflow-hidden shadow-lg  h-[40vh] w-[60vw] md:h-[30vw] md:w-auto md:flex-1 md:max-w-auto md:aspect-[4/3] lg:aspect-[3/4] lg:h-[25vw] xl:h-[15vw] xl:w-[20vw] lg:w-[35vw]  sm:flex-col"
-            variants={cardItemVariants}
-          >
-            <Image
-              src="/images/bhawan.png"
-              alt="Panchayat Bhawan"
-              layout="fill"
-              objectFit="cover"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-[#1C71F0] opacity-70" />
-            <div className="relative z-10 flex flex-col just-center items-center py-8 mt-4 xl:mt-0">
-              <p className="font-bold px-4 py-4 text-center rounded-xl text-white text-xl md:text-xl bg-[#1D4070]">
-                E-Enable
-                <br />
-                Gram Panchayat
-              </p>
-              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
-                634+
-              </h3>
-            </div>
-          </motion.div>
+              {/* Color overlay */}
+              <div
+                className="absolute inset-0 z-0"
+                style={{ backgroundColor: style.bg, opacity: 0.85 }}
+              />
 
-          {/* Card 4 */}
-          <motion.div
-            className="relative rounded-[2rem] overflow-hidden shadow-lg  h-[40vh] w-[60vw] md:h-[30vw] md:w-auto md:flex-1 md:max-w-auto md:aspect-[4/3] lg:aspect-[3/4] lg:h-[25vw] xl:h-[15vw] xl:w-[20vw] lg:w-[35vw]  sm:flex-col"
-            variants={cardItemVariants}
-          >
-            <Image
-              src="/images/centre.png"
-              alt="DPRC Centre"
-              layout="fill"
-              objectFit="cover"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-[#00CD85] opacity-70" />
-            <div className="relative z-10 flex flex-col just-center items-center py-8 mt-4 xl:mt-0">
-              <p className="font-bold px-4 py-4 text-center rounded-xl text-white text-xl md:text-xl bg-[#1E4C30]">
-                Baal And
-                <br />
-                Mahila Sabha
-              </p>
-              <h3 className="text-white font-extrabold text-7xl xl:text-7xl">
-                78+
-              </h3>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
+              {/* Card content */}
+              <div className="relative z-10 flex flex-col justify-center items-center text-center space-y-4 px-4">
+                <p
+                  className="font-bold px-6 py-4 rounded-xl text-white text-lg md:text-2xl"
+                  style={{ backgroundColor: style.labelBg }}
+                >
+                  {card.title || "No Title"}
+                </p>
+                <h3 className="text-white font-extrabold text-5xl md:text-6xl">
+                  {card.number ?? 0}+
+                </h3>
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
     </section>
   );
 }

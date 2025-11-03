@@ -1,50 +1,69 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useApi } from "@/lib/useApi";
 import { motion } from "framer-motion";
 import Pagination from "../Pagination";
 import CardSkeleton from "../CardSkeleton";
 
-// Mock data for Training Imparted
-const mockData = [
-  {
-    id: 1,
-    trainingName: "Panchayat Advancement Index (PAI)",
-    location: "Yuchli",
-    district: "Keyi Panyor District",
-    participants: 50,
-    image: "/images/scheme-rgsa/training1.png",
-    date: "2024-01-15",
-  },
-  {
-    id: 2,
-    trainingName: "Panchayat Advancement Index (PAI)",
-    location: "Yuchli",
-    district: "Keyi Panyor District",
-    participants: 50,
-    image: "/images/scheme-rgsa/training2.jpeg",
-    date: "2024-01-15",
-  },
-];
+// Live data fetched from API
 
 export default function TrainingImpartedTab({ selectedDistrict, isLoading }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredData, setFilteredData] = useState([]);
+  const [displayData, setDisplayData] = useState([]);
   const itemsPerPage = 9;
 
+  // Build params for server-side filtering
+  const apiParams = { page: currentPage, limit: itemsPerPage };
+  if (selectedDistrict && selectedDistrict !== "all") {
+    apiParams.district = selectedDistrict; // backend expects district ObjectId
+  }
+
+  // Fetch using shared hook with params
+  const { data, loading, error } = useApi(
+    "/getAllTrainingImparted",
+    "GET",
+    { params: apiParams }
+  );
+
+  // Reset page when district changes
   useEffect(() => {
-    const filtered =
-      selectedDistrict === "all"
-        ? mockData
-        : mockData.filter((item) => item.district === selectedDistrict);
-    setFilteredData(filtered);
     setCurrentPage(1);
   }, [selectedDistrict]);
 
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentData = filteredData.slice(startIndex, startIndex + itemsPerPage);
+  // Map API response into local state when data loads
+  useEffect(() => {
+    const responseArray = Array.isArray(data?.data)
+      ? data.data
+      : Array.isArray(data)
+      ? data
+      : [];
 
-  if (isLoading) {
+    const baseImageUrl = (process.env.NEXT_PUBLIC_IMAGE_URL || "").replace(/\/$/, "");
+
+    const resolveImageUrl = (img) => {
+      if (!img) return "/images/placeholder.svg";
+      if (/^https?:\/\//i.test(img)) return img; // already absolute
+      const hasUploadsInBase = /\/uploads\/(images|assets)\/?$/i.test(baseImageUrl);
+      const prefix = hasUploadsInBase ? baseImageUrl : `${baseImageUrl}/uploads/images`;
+      return `${prefix}/${encodeURI(img)}`;
+    };
+
+    const normalized = responseArray.map((item) => ({
+      id: item._id,
+      trainingName: item.trainingName,
+      location: item.location,
+      district:
+        typeof item.district === "object" ? item.district?.name : item.district,
+      participations: item.participations,
+      image: resolveImageUrl(item.image),
+    }));
+
+    setDisplayData(normalized);
+  }, [data]);
+
+  const totalPages = data?.totalPages || Math.ceil((data?.totalDocuments || displayData.length) / itemsPerPage) || 1;
+
+  if (isLoading || loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {Array.from({ length: 9 }).map((_, i) => (
@@ -57,7 +76,7 @@ export default function TrainingImpartedTab({ selectedDistrict, isLoading }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentData.map((item, index) => (
+        {displayData.map((item, index) => (
           <motion.div
             key={item.id}
             initial={{ opacity: 0, y: 20 }}
@@ -112,8 +131,8 @@ export default function TrainingImpartedTab({ selectedDistrict, isLoading }) {
                 <p className="text-sm text-prime font-medium mb-1">
                   Participations
                 </p>
-                <p className="text-6xl font-bold text-gray-900">
-                  {item.participants}
+                <p className="text-2xl font-bold text-gray-900">
+                  {item.participations}
                 </p>
               </div>
             </div>

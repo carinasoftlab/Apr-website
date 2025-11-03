@@ -1,8 +1,6 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -12,23 +10,20 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center gap-2">
             <Image
-              src="/images/footerlogo.svg"
+              src="/images/footerlogo.png"
               alt="Panchayati Raj Logo"
-              width={200}
-              height={200}
-              className="mb-2 h-auto w-auto"
+              width={500}
+              height={500}
+              className="mb-2 w-[24vw] h-[24vw] object-contain"
             />
-            <h2 className="font-montserrat font-bold text-gray-800 text-xl md:text-[1.8vw]">
-              PANCHAYATI RAJ
-            </h2>
           </div>
-          <div className="flex gap-3 mt-2 lg:mt-4 sm:gap-2">
+          <div className="flex gap-3 mt-2 lg:mt-4 sm:gap-2 items-center align-middle">
             <Link href="#" aria-label="Facebook">
               <Image
                 src="/images/facebook.svg"
                 alt="Facebook"
-                width={34}
-                height={34}
+                width={33}
+                height={33}
               />
             </Link>
 
@@ -101,7 +96,7 @@ export default function Footer() {
           <div className="mt-8 lg:mt-0">
             <p className="font-montserrat text-sm sm:text-sm">
               For RTI and grievance related queries,
-              <br /> mail us at:{" "}
+              <br /> mail us at:
               <Link
                 href="mailto:support@example.com"
                 className="font-semibold  text-[#1E4C30] underline hover:text-[#F4AC1A]"
@@ -115,7 +110,7 @@ export default function Footer() {
 
       <div className="border-t border-gray-200 pt-4 md:pt-6 text-center font-medium text-sm mt-4">
         <p>
-          Copyright © 2025, Department of Panchayati Raaj, Govt. of Arunachal
+          copyright 2025, Department of Panchayati Raaj, Govt. of Arunachal
           Pradesh
         </p>
       </div>

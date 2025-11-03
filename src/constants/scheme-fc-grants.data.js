@@ -35,24 +35,11 @@ export const TiedFundsBeforeAfterWorkData = [
     schemeName: "Scheme Name",
     gramPanchayat: "Gram Panchayat",
   },
-  {
-    id: 2,
-    heading: "After Completion of Work",
-    subheading: {
-      point1:
-        "Name of Work: Construction of CC Footpath from Leya to Mujariang Village",
-      point2: "Construction of CC Footpath from CO Office to Sangripo Village",
-    },
-    image: "/images/scheme-fc-grants/before-work.svg",
-    addedOn: "20 Jan 2022",
-    schemeName: "Scheme Name",
-    gramPanchayat: "Gram Panchayat",
-  },
+
 ];
 export const UnitedFundsBeforeAfterWorkData = [
   {
     id: 1,
-    heading: "Before the Work (FFC 2nd Instalment 2016-17) Ongoing Work",
     image: "/images/scheme-fc-grants/united-funds-1.svg",
     addedOn: "20 Jan 2022",
     schemeName: "Scheme Name",

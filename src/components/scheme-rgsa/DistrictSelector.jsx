@@ -1,43 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useApi } from "@/lib/useApi";
 
-const DISTRICTS = [
-  { id: "1", name: "All Districts" },
-  { id: "2", name: "Tawang" },
-  { id: "3", name: "West Kameng" },
-  { id: "4", name: "East Kameng" },
-  { id: "5", name: "Pakke-Kessang" },
-  { id: "6", name: "Papum Pare" },
-  { id: "7", name: "Kra Daadi" },
-  { id: "8", name: "Kurung Kumey" },
-  { id: "9", name: "Lower Subansiri" },
-  { id: "10", name: "Upper Subansiri" },
-  { id: "11", name: "West Siang" },
-  { id: "12", name: "Leparada" },
-  { id: "13", name: "Shi-Yomi" },
-  { id: "14", name: "East Siang" },
-  { id: "15", name: "Upper Siang" },
-  { id: "16", name: "Lower Siang" },
-  { id: "17", name: "Lower Dibang Valley" },
-  { id: "18", name: "Dibang Valley" },
-  { id: "19", name: "Lohit" },
-  { id: "20", name: "Namsai" },
-  { id: "21", name: "Anjaw" },
-  { id: "22", name: "Changlang" },
-  { id: "23", name: "Tirap" },
-  { id: "24", name: "Longding" },
-];
-
-export default function DistrictSelector({
-  selectedDistrict,
-  onDistrictChange,
-}) {
+export default function DistrictSelector({ selectedDistrict, onDistrictChange }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { data, loading } = useApi("/getAllDistricts", "GET");
+
+  const districts = useMemo(() => {
+    const result = Array.isArray(data?.data)
+      ? data.data
+      : Array.isArray(data)
+      ? data
+      : [];
+    // All District option comes first (mimics original logic)
+    return [
+      { id: "all", name: "All Districts" },
+      ...result.map((d) => ({ id: d._id, name: d.name }))
+    ];
+  }, [data]);
 
   const selectedDistrictName =
-    DISTRICTS.find((d) => d.id === selectedDistrict)?.name || "Select District";
+    districts.find((d) => d.id === selectedDistrict)?.name || "Select District";
 
   return (
     <div className="relative">
@@ -71,7 +56,13 @@ export default function DistrictSelector({
             transition={{ duration: 0.2 }}
             className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto"
           >
-            {DISTRICTS.map((district) => (
+            {loading && (
+              <div className="px-4 py-2 text-sm text-gray-500">Loading...</div>
+            )}
+            {!loading && districts.length === 0 && (
+              <div className="px-4 py-2 text-sm text-gray-500">No districts</div>
+            )}
+            {!loading && districts.map((district) => (
               <button
                 key={district.id}
                 onClick={() => {

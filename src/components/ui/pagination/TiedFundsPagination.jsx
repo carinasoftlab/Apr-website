@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const TiedFundsPagination = ({
@@ -17,7 +19,14 @@ const TiedFundsPagination = ({
       if (currentPage <= 3) {
         pages.push(1, 2, 3, 4, "...", totalPages);
       } else if (currentPage >= totalPages - 2) {
-        pages.push(1, "...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+        pages.push(
+          1,
+          "...",
+          totalPages - 3,
+          totalPages - 2,
+          totalPages - 1,
+          totalPages
+        );
       } else {
         pages.push(
           1,
@@ -43,47 +52,47 @@ const TiedFundsPagination = ({
       className={`flex flex-wrap items-center justify-center gap-2 mt-6 ${className}`}
       aria-label="Pagination"
     >
-        <button
-          onClick={() => onPageChange(currentPage - 1)}
-          disabled={currentPage === 1}
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
         className={`px-3 py-1 rounded-md  text-sm font-medium transition ${
-            currentPage === 1
-              ? "text-gray-400 border-gray-200 cursor-not-allowed"
-              : "text-gray-700 hover:border-gray-400 border-gray-200"
-          }`}
-        >
-          Previous
-        </button>
-          {getPageNumbers().map((page, idx) => (
-            <button
-              key={idx}
-              onClick={() => handlePageClick(page)}
-              disabled={page === "..."}
+          currentPage === 1
+            ? "text-gray-400 border-gray-200 cursor-not-allowed"
+            : "text-gray-700 hover:border-gray-400 border-gray-200"
+        }`}
+      >
+        Previous
+      </button>
+      {getPageNumbers().map((page, idx) => (
+        <button
+          key={idx}
+          onClick={() => handlePageClick(page)}
+          disabled={page === "..."}
           className={`px-3 py-1 rounded-md  text-sm font-medium transition
                 ${
                   page === currentPage
-                ? "bg-[#E3EBF7] text-[#285192"
+                    ? "bg-[#E3EBF7] text-[#285192"
                     : page === "..."
                     ? "text-gray-400 border-gray-200 cursor-default"
                     : "text-gray-700 hover:border-gray-400 border-gray-200"
                 }
               `}
-            >
-              {page}
-            </button>
-          ))}
-        <button
-          onClick={() => onPageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        className={`px-3 py-1 rounded-md  text-sm font-medium transition ${
-            currentPage === totalPages
-              ? "text-gray-400 border-gray-200 cursor-not-allowed"
-              : "text-gray-700 hover:border-gray-400 border-gray-200"
-          }`}
         >
-          Next
+          {page}
         </button>
-      </nav>
+      ))}
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className={`px-3 py-1 rounded-md  text-sm font-medium transition ${
+          currentPage === totalPages
+            ? "text-gray-400 border-gray-200 cursor-not-allowed"
+            : "text-gray-700 hover:border-gray-400 border-gray-200"
+        }`}
+      >
+        Next
+      </button>
+    </nav>
   );
 };
 

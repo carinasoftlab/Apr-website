@@ -1,6 +1,20 @@
-import Image from "next/image";
+"use client";
 
-export default function Page() {
+import Image from "next/image";
+import { useState } from "react";
+
+export default function Page({ data, loading, error, onRetry }) {
+  const [retryCount, setRetryCount] = useState(0);
+
+  // Extract message data from the home page data
+  const homeData = data?.data?.[0];
+  const cmMessage =
+    homeData?.cmMessage || "Hon'ble Chief Minister message coming soon";
+  const ministerMessage =
+    homeData?.ministerMessage || "Hon'ble Minister message coming soon";
+
+
+
   return (
     <main className="min-h-screen w-full bg">
       <section className="mx-auto max-w-full px-4 lg:px-16 py-10 md:py-16">
@@ -31,7 +45,15 @@ export default function Page() {
               Message from Hon'ble Chief Minister
             </h2>
             <p className="mt-5 max-w-4xl text-sm  text-justify leading-relaxed text-zinc-800 md:text-sm xl:text-[1rem]">
-              Hon'ble Chief Minister message comming soon
+              {loading ? (
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-300 rounded animate-pulse"></div>
+                  <div className="h-4 bg-gray-300 rounded animate-pulse w-5/6"></div>
+                  <div className="h-4 bg-gray-300 rounded animate-pulse w-4/6"></div>
+                </div>
+              ) : (
+                cmMessage
+              )}
             </p>
           </article>
         </div>
@@ -45,7 +67,15 @@ export default function Page() {
               Message from Hon'ble Minister
             </h2>
             <p className="mt-5 max-w-3xl text-sm text-justify leading-relaxed text-zinc-800 md:text-sm xl:text-[1rem]">
-              Hon'ble Minister message comming soon
+              {loading ? (
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-300 rounded animate-pulse"></div>
+                  <div className="h-4 bg-gray-300 rounded animate-pulse w-5/6"></div>
+                  <div className="h-4 bg-gray-300 rounded animate-pulse w-4/6"></div>
+                </div>
+              ) : (
+                ministerMessage
+              )}
             </p>
           </article>
 

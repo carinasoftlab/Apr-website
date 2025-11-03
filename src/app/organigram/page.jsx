@@ -1,4 +1,3 @@
-
 // import React, { useEffect, useMemo } from "react";
 // import ReactFlow, {
 //   Background,
@@ -22,8 +21,8 @@
 // dagreGraph.setDefaultEdgeLabel(() => ({}));
 // function layout(nodes, edges, dir = "LR") { // Changed from "TB" to "LR" (Left to Right)
 //   const g = dagreGraph;
-//   g.setGraph({ 
-//     rankdir: dir, 
+//   g.setGraph({
+//     rankdir: dir,
 //     nodesep: 25, // Reduced for horizontal layout
 //     ranksep: 50, // Reduced for horizontal layout
 //     marginx: 15, // Reduced margins
@@ -168,13 +167,13 @@
 //         maxZoom={1.2} // Lower maximum zoom
 //         proOptions={{ hideAttribution: true }}
 //       >
-//         <MiniMap 
-//           pannable 
-//           zoomable 
+//         <MiniMap
+//           pannable
+//           zoomable
 //           nodeStrokeColor={(n) => "#4B5563"}
 //           style={{ width: 120, height: 80 }} // Smaller minimap for horizontal
 //         />
-//         <Controls 
+//         <Controls
 //           style={{ top: 20, left: 20, height: 0 }}
 //           showZoom={true}
 //           showFitView={true}
@@ -210,7 +209,7 @@
 //           </div>
 //           {/* <ReactFlowProvider>
 //             <OrgChartInner />
-           
+
 //           </ReactFlowProvider> */}
 //         </div>
 //         <div className="flex justify-center items-center h-[100vh] w-full bg-white rounded-lg ">
@@ -361,5 +360,3 @@ export default function OrgChartPage() {
     </>
   );
 }
-
-

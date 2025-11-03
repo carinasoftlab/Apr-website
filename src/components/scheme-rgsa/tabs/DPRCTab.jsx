@@ -1,160 +1,109 @@
-import React, { useState } from "react";
-import Image from "next/image";
+"use client";
 
-const GramPanchayatCard = () => {
+import React, { useState, useMemo, useEffect } from "react";
+import Image from "next/image";
+import { useApi } from "@/lib/useApi";
+
+const GramPanchayatCard = ({ selectedDistrict = "all" }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const images = [
-    {
-      id: 1,
-      src: "/images/dprc/dprc1.jpeg",
-      alt: "Gram Panchayat project image 1",
-      title: "Project Phase 1",
-    },
-    {
-      id: 2,
-      src: "/images/dprc/dprc2.jpeg",
-      alt: "Gram Panchayat project image 2",
-      title: "Project Phase 2",
-    },
-    {
-      id: 3,
-      src: "/images/dprc/dprc3.jpeg",
-      alt: "Gram Panchayat project image 3",
-      title: "Project Phase 3",
-    },
-  ];
+  // Build params including district filter
+  const apiParams = {
+    page: 1,
+    limit: 10,
+    scheme: "RGSA",
+    subScheme: "DPRC",
+  };
+  if (selectedDistrict && selectedDistrict !== "all") {
+    apiParams.district = selectedDistrict;
+  }
 
-  const PanchImages = [
-    {
-      id: 1,
-      src: "/images/dprc/dprc4.jpeg",
-      alt: "Gram Panchayat project image 1",
-      title: "Project Phase 1",
-    },
-    {
-      id: 2,
-      src: "/images/dprc/dprc5.jpeg",
-      alt: "Gram Panchayat project image 2",
-      title: "Project Phase 2",
-    },
-    {
-      id: 3,
-      src: "/images/dprc/dprc6.jpeg",
-      alt: "Gram Panchayat project image 3",
-      title: "Project Phase 3",
-    },
-  ];
+  // Fetch DPRC items
+  const { data, loading } = useApi("/getAllSchemeAssets", "GET", {
+    params: apiParams,
+  });
+
+  // When district changes, close modal if open
+  useEffect(() => {
+    setSelectedImage(null);
+  }, [selectedDistrict]);
+
+  // Resolve image URLs against NEXT_PUBLIC_IMAGE_URL
+  const baseImageUrl = useMemo(
+    () => (process.env.NEXT_PUBLIC_IMAGE_URL || "").replace(/\/$/, ""),
+    []
+  );
+  const resolveImg = (file) => {
+    if (!file) return "/images/placeholder.svg";
+    if (/^https?:\/\//i.test(file)) return file;
+    const hasUploads = /\/uploads\/(images|assets)\/?$/i.test(baseImageUrl);
+    const prefix = hasUploads ? baseImageUrl : `${baseImageUrl}/uploads/images`;
+    return `${prefix}/${encodeURI(file)}`;
+  };
+
+  const items = useMemo(() => {
+    const arr = Array.isArray(data?.data) ? data.data : Array.isArray(data) ? data : [];
+    return arr.map((item, idx) => {
+      const districtName =
+        typeof item.district === "object" ? item.district?.name || "--" : item.district || "--";
+      const docs1 = item?.documents?.documentsImg1 || [];
+      const images = (Array.isArray(docs1) ? docs1 : [])
+        .map((d) => resolveImg(d?.file || d))
+        .slice(0, 3);
+      while (images.length < 3) images.push("/images/placeholder.svg");
+      return {
+        id: item._id || idx,
+        districtName,
+        images,
+      };
+    });
+  }, [data, baseImageUrl]);
 
   return (
     <div className="max-w-full mx-auto p-4">
       {/* Main Card */}
       <div className="flex gap-12 flex-col">
-        <div className="rounded-2xl border p-8 md:p-14 border-[#F4AC1A] bg-gradient-to-b from-[#FFF8E1] to-white overflow-hidden space-y-8">
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-800 border-b border-[#F4AC1A] pb-2">
-              Project Images
-            </h3>
+        {(loading ? [1, 2] : items).map((entry, entryIndex) => (
+          <div
+            key={loading ? entryIndex : entry.id}
+            className={`rounded-2xl border p-8 md:p-14 border-[#F4AC1A] bg-gradient-to-b from-[#FFF8E1] to-white overflow-hidden space-y-8 ${
+              loading ? "animate-pulse" : ""
+            }`}
+          >
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-gray-800 border-b border-[#F4AC1A] pb-2">
+                Project Images
+              </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {images.map((image) => (
-                <div
-                  key={image.id}
-                  className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105"
-                  onClick={() => setSelectedImage(image)}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-48 lg:h-60 object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-          {/* Card Header */}
-          <div className="flex flex-col sm:justify-between sm:items-start gap-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#F4AC1A] uppercase tracking-wide">
-              District: Changlang District
-            </h2>
-            {/* <p className="text-black uppercase font-semibold">
-              District: Kurung Kumey
-            </p> */}
-          </div>
-
-          {/* Images Section */}
-
-          {/* Additional Info */}
-          {/* <div className="bg-[#FFF8E1] border border-[#F4AC1A] rounded-lg p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-              <div>
-                <span className="font-semibold text-gray-700">Status:</span>
-                <p className="text-gray-600">Ongoing</p>
-              </div>
-              <div>
-                <span className="font-semibold text-gray-700">Added:</span>
-                <p className="text-gray-600">20 Jan 2022</p>
-              </div>
-              <div>
-                <span className="font-semibold text-gray-700">Scheme:</span>
-                <p className="text-gray-600">Gram Panchayat</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {(loading ? [1, 2, 3] : entry.images).map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105"
+                    onClick={() => !loading && setSelectedImage({ src: img, alt: `DPRC image ${idx + 1}`, title: "Project Image" })}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={loading ? "/images/placeholder.svg" : img}
+                      alt={loading ? "loading" : `DPRC image ${idx + 1}`}
+                      className="w-full h-48 lg:h-60 object-cover"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/images/placeholder.svg";
+                      }}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
-          </div> */}
-        </div>
-
-        <div className="rounded-2xl border p-8 md:p-14 border-[#F4AC1A] bg-gradient-to-b from-[#FFF8E1] to-white overflow-hidden space-y-8">
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-800 border-b border-[#F4AC1A] pb-2">
-              Project Images
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {PanchImages.map((PanchImages) => (
-                <div
-                  key={PanchImages.id}
-                  className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105"
-                  onClick={() => setSelectedImage(PanchImages)}
-                >
-                  <img
-                    src={PanchImages.src}
-                    alt={PanchImages.alt}
-                    className="w-full h-48 lg:h-60 object-cover"
-                  />
-                </div>
-              ))}
+            {/* Card Header */}
+            <div className="flex flex-col sm:justify-between sm:items-start gap-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#F4AC1A] uppercase tracking-wide">
+                District: {loading ? "Loading..." : entry.districtName}
+              </h2>
             </div>
           </div>
-          {/* Card Header */}
-          <div className="flex flex-col sm:justify-between sm:items-start gap-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#F4AC1A] uppercase tracking-wide">
-              District: kurung Kumey district
-            </h2>
-            {/* <p className="text-black uppercase font-semibold">
-              District: Kurung Kumey
-            </p> */}
-          </div>
-
-          {/* Images Section */}
-
-          {/* Additional Info */}
-          {/* <div className="bg-[#FFF8E1] border border-[#F4AC1A] rounded-lg p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-              <div>
-                <span className="font-semibold text-gray-700">Status:</span>
-                <p className="text-gray-600">Ongoing</p>
-              </div>
-              <div>
-                <span className="font-semibold text-gray-700">Added:</span>
-                <p className="text-gray-600">20 Jan 2022</p>
-              </div>
-              <div>
-                <span className="font-semibold text-gray-700">Scheme:</span>
-                <p className="text-gray-600">Gram Panchayat</p>
-              </div>
-            </div>
-          </div> */}
-        </div>
+        ))}
 
         {/* Modal */}
         {selectedImage && (
