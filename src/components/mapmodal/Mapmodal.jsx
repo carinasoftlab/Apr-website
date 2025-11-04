@@ -8,12 +8,26 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
   const { nodes, materials } = useGLTF("/modals/AP_2.glb");
   const [hovered, setHovered] = useState(null);
 
-  console.log(hovered);
   // Map mesh names to dataset modelIds so popup shows correct details
   const SPECIAL_NAME_MAP = {
-    PAKKE_KESSANG: "Pakke- Kessang",
+    PAKKE_KESSANG: "Pakke Kessang",
     PAPUMPARE: "Papum Pare",
-    DIBANG_VALLEY: "Diang Valley",
+    DIBANG_VALLEY: "Dibang Valley",
+    EAST_SIANG: "East Siang",
+    EAST_KAMENG: "East Kameng",
+    KURUNG_KUMEY: "Kurung Kumey",
+    UPPER_SUBANSIRI: "Upper Subansiri",
+    LOWER_SIANG: "Lower Siang",
+    WEST_KAMENG: "West Kameng",
+    KRA_DAADI: "Kra Daadi",
+    SHI_YOMI: "Shi Yomi",
+    UPPER_SIANG: "Upper Siang",
+    LOWER_DIBANG_VALLEY: "Lower Dibang Valley",
+    KEYI_PANYOR: "Keyi Panyor",
+    WEST_SIANG: "West Siang",
+    LEPARADA: "Leparada",
+    LOWER_SUBANSIRI: "Lower Subansiri",
+    KAMLE: "Kamle",
   };
 
   const toDisplayName = (meshName) =>
@@ -22,12 +36,29 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
       .map((p) => p.charAt(0) + p.slice(1).toLowerCase())
       .join(" ");
 
-  const getModelIdForMesh = (meshName) => {
-    const displayName = SPECIAL_NAME_MAP[meshName] || toDisplayName(meshName);
+  const formatDistrictName = (name) => {
+    if (!name) return "";
+    return name
+      .replace(/_/g, " ")
+      .replace(/-/g, " ")
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim();
+  };
+
+  const getDistrictNameForMesh = (meshName) => {
+    if (SPECIAL_NAME_MAP[meshName]) {
+      return formatDistrictName(SPECIAL_NAME_MAP[meshName]);
+    }
+
+    const displayName = toDisplayName(meshName);
     const found = DISTRICT_DATA.find(
       (d) => d.name.toLowerCase() === displayName.toLowerCase()
     );
-    return found?.modelId || meshName;
+    const districtName = found?.name || displayName;
+    return formatDistrictName(districtName);
   };
 
   const meshNames = [
@@ -126,7 +157,7 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
             receiveShadow
             onClick={(e) => {
               e.stopPropagation();
-              onDistrictClick(getModelIdForMesh(name));
+              onDistrictClick(getDistrictNameForMesh(name));
             }}
             onPointerOver={(e) => {
               e.stopPropagation();
@@ -149,7 +180,7 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
         scale={westSiangScale}
         onClick={(e) => {
           e.stopPropagation();
-          onDistrictClick(getModelIdForMesh("WEST_SIANG"));
+          onDistrictClick(getDistrictNameForMesh("WEST_SIANG"));
         }}
         onPointerOver={(e) => {
           e.stopPropagation();
@@ -182,7 +213,7 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
         scale={leparadaScale}
         onClick={(e) => {
           e.stopPropagation();
-          onDistrictClick(getModelIdForMesh("LEPARADA"));
+          onDistrictClick(getDistrictNameForMesh("LEPARADA"));
         }}
         onPointerOver={(e) => {
           e.stopPropagation();
@@ -211,7 +242,7 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
         scale={lowerSubansiriScale}
         onClick={(e) => {
           e.stopPropagation();
-          onDistrictClick(getModelIdForMesh("LOWER_SUBANSIRI"));
+          onDistrictClick(getDistrictNameForMesh("LOWER_SUBANSIRI"));
         }}
         onPointerOver={(e) => {
           e.stopPropagation();
@@ -240,7 +271,7 @@ export const Mapmodal = forwardRef(function Mapmodal({ onDistrictClick }, ref) {
         scale={kamleScale}
         onClick={(e) => {
           e.stopPropagation();
-          onDistrictClick(getModelIdForMesh("KAMLE"));
+          onDistrictClick(getDistrictNameForMesh("KAMLE"));
         }}
         onPointerOver={(e) => {
           e.stopPropagation();

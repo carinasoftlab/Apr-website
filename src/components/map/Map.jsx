@@ -7,6 +7,7 @@ import { Mapmodal } from "../mapmodal/Mapmodal";
 import { Suspense, useEffect, useRef, useState } from "react";
 import DistrictReportCard from "../ui/DistrictReportCard";
 import { DISTRICT_DATA } from "@/constants/map-district.data";
+import axios from "axios";
 
 function RotatingMapGroup({ children }) {
   const groupRef = useRef();
@@ -27,11 +28,83 @@ function RotatingMapGroup({ children }) {
 
 export default function Map() {
   const [selectedDistrict, setSelectedDistrict] = useState(null);
+  const [districtData, setDistrictData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleDistrictClick = (meshName) => {
-    const found = DISTRICT_DATA.find((d) => d.modelId === meshName);
-    console.log(found);
-    setSelectedDistrict(found || null);
+  const API_BASE =
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8087/api/v1/apr/admin";
+
+  const formatDistrictName = (name) => {
+    if (!name) return "";
+    return name
+      .replace(/_/g, " ")
+      .replace(/-/g, " ")
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim();
+  };
+
+  const fetchDistrictData = async (districtName) => {
+    if (!districtName) return;
+
+    setLoading(true);
+    setError(null);
+    setDistrictData(null);
+
+    const formattedName = formatDistrictName(districtName);
+
+    try {
+      const response = await axios.get(
+        `${API_BASE}/getDistrictCategoriesWithSubCategoryCounts`,
+        {
+          params: { districtName: formattedName },
+          timeout: 10000,
+        }
+      );
+
+      if (response.data?.status === "success" && response.data?.data) {
+        setDistrictData(response.data);
+        setError(null);
+      } else {
+        setError(
+          response.data?.message || "No data available for this district"
+        );
+        setDistrictData(null);
+      }
+    } catch (err) {
+      console.error("Error fetching district data:", err);
+
+      if (err.code === "ECONNABORTED") {
+        setError("Request timeout. Please try again.");
+      } else if (err.response) {
+        setError(
+          err.response?.data?.message ||
+            `Error ${err.response.status}: Failed to fetch district data`
+        );
+      } else if (err.request) {
+        setError("Network error. Please check your connection.");
+      } else {
+        setError(err?.message || "Failed to fetch district data");
+      }
+      setDistrictData(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDistrictClick = async (districtName) => {
+    if (!districtName) return;
+    setSelectedDistrict({ name: districtName });
+    await fetchDistrictData(districtName);
+  };
+
+  const handleRetry = () => {
+    if (selectedDistrict?.name) {
+      fetchDistrictData(selectedDistrict.name);
+    }
   };
 
   return (
@@ -40,8 +113,15 @@ export default function Map() {
         <div className="popup-overlay">
           <div className="popup-top-left">
             <DistrictReportCard
-              districtData={selectedDistrict}
-              onClose={() => setSelectedDistrict(null)}
+              districtData={districtData}
+              loading={loading}
+              error={error}
+              onClose={() => {
+                setSelectedDistrict(null);
+                setDistrictData(null);
+                setError(null);
+              }}
+              onRetry={handleRetry}
             />
           </div>
         </div>

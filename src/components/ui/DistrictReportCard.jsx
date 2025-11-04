@@ -1,29 +1,52 @@
 "use client";
 import React, { useEffect } from "react";
-export default function DistrictReportCard({ districtData, onClose }) {
-  if (!districtData) return null;
 
-  const {
-    name,
-    50: score,
-    16: rank,
-    24: total,
-    12: completed,
-    8: going,
-    10: assets,
-    16: dprc,
-    10: womenPRI,
-    totalLeaders,
-    10: training,
-    3: panchayatBhawans,
-  } = districtData;
+const Loader = () => (
+  <div className="flex flex-col items-center justify-center py-12">
+    <div className="relative w-16 h-16">
+      <div className="absolute top-0 left-0 w-full h-full border-4 border-green-200 rounded-full"></div>
+      <div className="absolute top-0 left-0 w-full h-full border-4 border-green-600 rounded-full border-t-transparent animate-spin"></div>
+    </div>
+    <p className="mt-4 text-gray-600 font-semibold">Loading district data...</p>
+  </div>
+);
 
+export default function DistrictReportCard({ districtData, loading, error, onClose, onRetry }) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "";
     };
   }, []);
+
+  if (!districtData && !loading) return null;
+
+  const districtName = districtData?.districtName || districtData?.name || "District";
+  
+  const rgsaData = Array.isArray(districtData?.data?.RGSA) ? districtData.data.RGSA : [];
+  const sorData = districtData?.data?.SOR && typeof districtData.data.SOR === "object" ? districtData.data.SOR : {};
+  const fcGrantsData = districtData?.data?.["FC Grants"] && typeof districtData.data["FC Grants"] === "object" ? districtData.data["FC Grants"] : {};
+
+  const getRgsaCount = (category) => {
+    if (!Array.isArray(rgsaData)) return 0;
+    const item = rgsaData.find((item) => item?.category === category);
+    return item?.count ?? 0;
+  };
+
+  const panchayatBhawans = getRgsaCount("Panchayat Bhawans");
+  const dprc = getRgsaCount("DPRC");
+  const womenPRI = getRgsaCount("Women PRI Leader");
+  const training = getRgsaCount("Training Imparted");
+
+  const sorTotalSchemes = Number(sorData?.totalSchemes) || 0;
+  const sorCompleteSchemes = Number(sorData?.completeSchemes) || 0;
+  const sorOnGoingSchemes = Number(sorData?.onGoingSchemes) || 0;
+  const sorAssets = Number(sorData?.assets) || 0;
+
+  const fcTotalSchemes = Number(fcGrantsData?.totalSchemes) || 0;
+  const fcCompleteSchemes = Number(fcGrantsData?.completeSchemes) || 0;
+  const fcOnGoingSchemes = Number(fcGrantsData?.onGoingSchemes) || 0;
+  const fcAssets = Number(fcGrantsData?.assets) || 0;
 
   return (
     <div className="fixed inset-0 bg-black/40 z-50 flex justify-center items-center p-4 overflow-hidden">
@@ -35,7 +58,7 @@ export default function DistrictReportCard({ districtData, onClose }) {
         {/* Header */}
         <div className="flex justify-between items-center mb-8 flex-wrap gap-4">
           <h1 className="text-center text-gray-800 text-2xl md:text-3xl font-bold flex-1">
-            District Name : {name}
+            District Name : {districtName}
           </h1>
           <button
             onClick={onClose}
@@ -46,7 +69,38 @@ export default function DistrictReportCard({ districtData, onClose }) {
           </button>
         </div>
 
+        {loading && <Loader />}
+
+        {error && !loading && (
+          <div className="flex flex-col items-center justify-center py-12">
+            <div className="w-16 h-16 mb-4 rounded-full bg-red-100 flex items-center justify-center">
+              <svg
+                className="w-8 h-8 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+            <p className="text-red-600 font-semibold text-lg mb-2">Error Loading Data</p>
+            <p className="text-gray-600 text-sm">{error}</p>
+            <button
+              onClick={onRetry}
+              className="mt-4 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
         {/* Cards Grid */}
+        {!loading && !error && (
         <div className="flex flex-wrap justify-center gap-4">
           {/* RGSA Card */}
           <div className="w-full sm:w-[48%] h-fit lg:w-[31%] max-w-sm rounded-xl border border-yellow-500 bg-gradient-to-t from-[#FAEFDD] to-white shadow-md overflow-hidden">
@@ -56,10 +110,10 @@ export default function DistrictReportCard({ districtData, onClose }) {
             </div>
             <div className="p-4 space-y-3">
               {[
-                ["Panchayat Bhawans", 3],
-                ["DPRC", 16],
-                ["Women PRI Leader", 10],
-                ["Training Imparted", 10],
+                ["Panchayat Bhawans", panchayatBhawans],
+                ["DPRC", dprc],
+                ["Women PRI Leader", womenPRI],
+                ["Training Imparted", training],
               ].map(([label, value]) => (
                 <div
                   className="flex justify-between items-center gap-4"
@@ -84,12 +138,10 @@ export default function DistrictReportCard({ districtData, onClose }) {
             </div>
             <div className="p-4 space-y-3">
               {[
-                // ["Score", 50],
-                // ["Rank", 16],
-                ["Total Schemes", 24],
-                ["Complete Schemes", 12],
-                ["On Going Schemes", 8],
-                ["Assets", 10],
+                ["Total Schemes", sorTotalSchemes],
+                ["Complete Schemes", sorCompleteSchemes],
+                ["On Going Schemes", sorOnGoingSchemes],
+                ["Assets", sorAssets],
               ].map(([label, value]) => (
                 <div
                   className="flex justify-between items-center gap-4"
@@ -114,10 +166,10 @@ export default function DistrictReportCard({ districtData, onClose }) {
             </div>
             <div className="p-4 space-y-3">
               {[
-                ["Total Schemes", 24],
-                ["Complete Schemes", 12],
-                ["On Going Schemes", 8],
-                ["Assets", 10],
+                ["Total Schemes", fcTotalSchemes],
+                ["Complete Schemes", fcCompleteSchemes],
+                ["On Going Schemes", fcOnGoingSchemes],
+                ["Assets", fcAssets],
               ].map(([label, value]) => (
                 <div
                   className="flex justify-between items-center gap-4"
@@ -134,6 +186,7 @@ export default function DistrictReportCard({ districtData, onClose }) {
             </div>
           </div>
         </div>
+        )}
       </div>
     </div>
   );
