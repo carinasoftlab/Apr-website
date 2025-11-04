@@ -7,21 +7,32 @@ import Footer from "@/components/footer/page";
 import Header from "@/components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAboutData } from "@/store/api/homeSlice";
+import { useApi } from "@/lib/useApi";
 
 export default function AboutPage() {
   const dispatch = useDispatch();
-  const { data, loading, error } = useSelector(
-    (state) => state.home.aboutData
-  );
+  const { data, loading, error } = useSelector((state) => state.home.aboutData);
   const [imageError, setImageError] = React.useState(false);
 
-  const stats = [
-    { label: "Total Districts", value: "27" },
-    { label: "Panchayat Bhawans", value: "08" },
-    { label: "DPRC Centres", value: "23" },
-      
-    { label: "Women PRI Leaders", value: "2108" },
-  ];
+  const {
+    data: globalCounts,
+    loading: statsLoading,
+    error: statsError,
+  } = useApi("/getGlobalOverviewCounts", "GET");
+
+  const stats = React.useMemo(() => {
+    const d = globalCounts?.data || {};
+    return [
+      { label: "Total Districts", value: d.totalDistricts ?? "--" },
+      { label: "Panchayat Bhawans", value: d.panchayatBhawans ?? "--" },
+      { label: "DPRC Centres", value: d.dprcCentres ?? "--" },
+      { label: "Women PRI Leaders", value: d.womenPriLeaders ?? "--" },
+      {
+        label: "District Panchayat Development Officers",
+        value: d.districtPanchayatDevelopmentOfficers ?? "--",
+      },
+    ];
+  }, [globalCounts]);
 
   const heroData = data?.data?.[0];
   const baseImageURL =
@@ -140,28 +151,57 @@ export default function AboutPage() {
 
           <div className="bg-white rounded-3xl p-8">
             <div className="space-y-1">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  className="flex justify-between bg-prime-bg rounded-xl overflow-hidden flex-col md:flex-row mb-3 md:mb-1"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <div className="flex-1 px-6 py-4 xl:py-6 xl:px-28 2xl:py-7">
-                    <h3 className="text-lg xl:text-xl font-semibold text-center md:text-left">
-                      {stat.label}
-                    </h3>
-                  </div>
+              {statsLoading && (
+                <>
+                  {[1, 2, 3, 4, 5].map((i, index) => (
+                    <motion.div
+                      key={i}
+                      className="flex justify-between bg-prime-bg rounded-xl overflow-hidden flex-col md:flex-row mb-3 md:mb-1 animate-pulse"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                    >
+                      <div className="flex-1 px-6 py-4 xl:py-6 xl:px-28 2xl:py-7">
+                        <div className="h-6 w-48 bg-gray-200 rounded"></div>
+                      </div>
+                      <div className="bg-second px-8 py-4 min-w-[120px] 2xl:min-w-96 text-center xl:py-6 2xl:py-7 flex justify-center items-center">
+                        <div className="h-6 w-12 bg-white/60 rounded"></div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </>
+              )}
+
+              {!statsLoading && statsError && (
+                <div className="text-center py-6">
+                  <p className="text-red-600">Failed to load overview stats.</p>
+                </div>
+              )}
+
+              {!statsLoading &&
+                !statsError &&
+                stats.map((stat, index) => (
                   <motion.div
-                    className="bg-second px-8 py-4 min-w-[120px] 2xl:min-w-96 text-center xl:py-6 2xl:py-7 flex justify-center items-center"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
+                    key={stat.label}
+                    className="flex justify-between bg-prime-bg rounded-xl overflow-hidden flex-col md:flex-row mb-3 md:mb-1"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
-                    <span className="text-xl font-bold">{stat.value}</span>
+                    <div className="flex-1 px-6 py-4 xl:py-6 xl:px-28 2xl:py-7">
+                      <h3 className="text-lg xl:text-xl font-semibold text-center md:text-left">
+                        {stat.label}
+                      </h3>
+                    </div>
+                    <motion.div
+                      className="bg-second px-8 py-4 min-w-[120px] 2xl:min-w-96 text-center xl:py-6 2xl:py-7 flex justify-center items-center"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className="text-xl font-bold">{stat.value}</span>
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
