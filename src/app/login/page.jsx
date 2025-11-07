@@ -1,58 +1,58 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
+import { useState } from "react";
+import Image from "next/image";
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const [errors, setErrors] = useState({})
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
         [name]: "",
-      }))
+      }));
     }
-  }
+  };
 
   const validateForm = () => {
-    const newErrors = {}
+    const newErrors = {};
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email ID is required"
+      newErrors.email = "Email ID is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address"
+      newErrors.email = "Please enter a valid email address";
     }
 
     if (!formData.password.trim()) {
-      newErrors.password = "Password is required"
+      newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters"
+      newErrors.password = "Password must be at least 6 characters";
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!validateForm()) {
-      return
+      return;
     }
 
-    setIsLoading(true)
+    setIsLoading(true);
 
     try {
       // Simulate API call
@@ -64,49 +64,56 @@ export default function LoginPage() {
       // Redirect to admin panel
       // window.location.href = "http://82.180.132.164:6363/login";
     } catch (error) {
-      console.error("Login failed:", error)
-      setErrors({ submit: "Login failed. Please try again." })
+      console.error("Login failed:", error);
+      setErrors({ submit: "Login failed. Please try again." });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="/images/login/login-bg.jpg" 
-          alt="Mountain landscape background" 
-          fill 
-          className="object-cover" 
-          priority 
+        <Image
+          src="/images/login/loginBG.jpg"
+          alt="Mountain landscape background"
+          fill
+          className="object-cover"
+          priority
         />
         {/* Overlay for better contrast */}
         <div className="absolute inset-0 bg-black/20 md:bg-black/10"></div>
       </div>
+
+      <Image
+        src="/images/login/gov-of-apr.png"
+        class="size-24 md:size-36 lg:size-48 object-contain absolute top-0 right-5 z-20"
+        width={500}
+        height={500}
+      />
 
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col justify-center items-center gap-8 sm:gap-10 lg:gap-14 lg:grid lg:grid-cols-2 px-2 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-0">
         {/* Left Side - Logo and Welcome Text */}
         <div className="flex flex-col items-center justify-center text-center w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-none md:w-auto mx-auto">
           {/* Logo */}
-          <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 mx-auto lg:mx-0 relative flex items-center justify-center ">
-            <Image 
-              src="/images/login/PanchayatiRajLogo.svg" 
-              alt="Panchayati Raj Logo" 
-              fill 
-              className="object-contain" 
+          <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 mx-auto lg:mx-0 relative flex items-center justify-center z-10">
+            <Image
+              src="/images/login/PanchayatiRajLogo.svg"
+              alt="Panchayati Raj Logo"
+              fill
+              className="object-contain"
             />
           </div>
 
           {/* Welcome Text */}
-          <div className="text-[#2B2B2B] px-2 sm:px-4 lg:px-0">
+          <div className="text-[#ffffff] px-2 sm:px-4 lg:px-0">
             <h2 className="text-center text-base sm:text-lg md:text-xl lg:text-2xl font-bold opacity-90 mb-1">
               Welcome to
             </h2>
             <h1 className="text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl font-bold leading-tight">
-              PANCHAYATI RAJ
+              DEPARTMENT OF PANCHAYATI RAJ
             </h1>
           </div>
         </div>
@@ -123,10 +130,16 @@ export default function LoginPage() {
               </div>
 
               {/* Login Form */}
-              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-3 sm:space-y-4 md:space-y-6"
+              >
                 {/* Email Field */}
                 <div>
-                  <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2"
+                  >
                     Enter Email ID / number
                   </label>
                   <input
@@ -140,12 +153,19 @@ export default function LoginPage() {
                     }`}
                     disabled={isLoading}
                   />
-                  {errors.email && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.email}</p>}
+                  {errors.email && (
+                    <p className="mt-1 text-xs sm:text-sm text-red-600">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
 
                 {/* Password Field */}
                 <div>
-                  <label htmlFor="password" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  <label
+                    htmlFor="password"
+                    className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2"
+                  >
                     Password
                   </label>
                   <input
@@ -159,13 +179,19 @@ export default function LoginPage() {
                     }`}
                     disabled={isLoading}
                   />
-                  {errors.password && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.password}</p>}
+                  {errors.password && (
+                    <p className="mt-1 text-xs sm:text-sm text-red-600">
+                      {errors.password}
+                    </p>
+                  )}
                 </div>
 
                 {/* Submit Error */}
                 {errors.submit && (
                   <div className="text-center">
-                    <p className="text-xs sm:text-sm text-red-600">{errors.submit}</p>
+                    <p className="text-xs sm:text-sm text-red-600">
+                      {errors.submit}
+                    </p>
                   </div>
                 )}
 
@@ -197,5 +223,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
