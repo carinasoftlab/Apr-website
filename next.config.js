@@ -5,18 +5,18 @@ const nextConfig = {
         {
           protocol: "https",
           hostname: "www.pri.arunachal.gov.in",
-          pathname: "/uploads/**",
+          pathname: "/uploads/images/**",
         },
         {
           protocol: "https",
           hostname: "apr-backend.onrender.com",
-          pathname: "/uploads/**",
+          pathname: "/uploads/images/**",
         },
         {
           protocol: "http",
           hostname: "localhost",
           port: "8087",
-          pathname: "/uploads/**",
+          pathname: "/uploads/images/**",
         },
       ],
     },

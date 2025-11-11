@@ -95,7 +95,7 @@ export default function Page() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               {/* <ArunachalMap /> */}
-              <img className="w-[120%]" src="/images/mapImg.png" alt="" />
+              <img className="w-[120%]" src="/images/MapImg.png" alt="" />
             </motion.div>
           </div>
         </div>
