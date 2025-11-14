@@ -17,7 +17,8 @@ export default function PanchayatBhawansTab({ selectedDistrict, isLoading }) {
     page: currentPage,
     limit: itemsPerPage,
     scheme: "RGSA",
-    subScheme: "Panchayat Bhawan"
+    subScheme: "Panchayat Bhawan",
+    approvalStatus: "approved"
   };
   if (selectedDistrict && selectedDistrict !== "all") {
     apiParams.district = selectedDistrict;

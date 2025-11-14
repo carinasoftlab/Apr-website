@@ -13,6 +13,7 @@ const GramPanchayatCard = ({ selectedDistrict = "all" }) => {
     limit: 10,
     scheme: "RGSA",
     subScheme: "DPRC",
+    approvalStatus: "approved"
   };
   if (selectedDistrict && selectedDistrict !== "all") {
     apiParams.district = selectedDistrict;

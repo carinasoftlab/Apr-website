@@ -6,7 +6,7 @@ import { useApi } from "@/lib/useApi";
 
 export default function DistrictSelector({ selectedDistrict, onDistrictChange }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { data, loading } = useApi("/getAllDistricts", "GET");
+  const { data, loading } = useApi("/getAllDistricts?sort=name", "GET");
 
   const districts = useMemo(() => {
     const result = Array.isArray(data?.data)

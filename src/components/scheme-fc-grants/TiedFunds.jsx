@@ -15,6 +15,7 @@ const TiedFunds = ({ selectedDistrict = "all" }) => {
     subScheme: "Tied Funds",
     page: currentPage,
     limit: itemsPerPage,
+    approvalStatus: "approved"
   };
   if (selectedDistrict && selectedDistrict !== "all") {
     params.district = selectedDistrict;

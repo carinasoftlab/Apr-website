@@ -107,6 +107,7 @@ export function SchemeRgsaHeader() {
                   placeholder="blur"
                   blurDataURL="/images/placeholder.png"
                   onError={() => setImgSrc("/images/placeholder.png")} // fallback if broken
+                  unoptimized
                 />
               )}
             </div>

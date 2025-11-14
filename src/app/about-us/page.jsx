@@ -126,7 +126,8 @@ export default function AboutPage() {
                   alt="Hero Image"
                   fill
                   className="object-cover rounded-xl"
-                  onError={() => setImageError(true)}
+                    onError={() => setImageError(true)}
+                    unoptimized
                 />
               )}
               {!loading && (

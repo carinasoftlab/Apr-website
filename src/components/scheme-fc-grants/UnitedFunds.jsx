@@ -15,6 +15,7 @@ const UnitedFunds = ({ selectedDistrict = "all" }) => {
     subScheme: "Untied Funds",
     page: currentPage,
     limit: itemsPerPage,
+    approvalStatus: "approved"
   };
   if (selectedDistrict && selectedDistrict !== "all") {
     params.district = selectedDistrict;

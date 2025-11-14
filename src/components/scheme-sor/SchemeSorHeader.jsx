@@ -114,7 +114,8 @@ export function SchemeSorHeader() {
                   alt="SOR Grants Landscape"
                   className="rounded-[42px] object-contain object-center shadow-lg"
                   priority
-                  onError={() => setImgSrc("/images/placeholder.png")} // fallback works now
+                    onError={() => setImgSrc("/images/placeholder.png")} // fallback works now
+                    unoptimized
                 />
               )}
             </div>

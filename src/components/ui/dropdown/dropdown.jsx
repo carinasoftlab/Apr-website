@@ -7,7 +7,7 @@ import { useApi } from "@/lib/useApi";
 
 export default function Dropdown({ selectedDistrict = "all", onDistrictChange }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { data, loading } = useApi("/getAllDistricts", "GET");
+  const { data, loading } = useApi("/getAllDistricts?sort=name", "GET");
 
   // Add 'All Districts' to top of array
   const districts = useMemo(() => {
