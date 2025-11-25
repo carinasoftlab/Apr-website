@@ -102,7 +102,7 @@ export function SchemeRgsaHeader() {
                   src={imgSrc}
                   alt="RGSA Banner"
                   fill
-                  className="object-contain object-center rounded-[42px] shadow-sm"
+                  className="object-cover object-center rounded-[42px] shadow-sm"
                   priority
                   placeholder="blur"
                   blurDataURL="/images/placeholder.png"

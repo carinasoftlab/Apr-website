@@ -112,7 +112,7 @@ export function SchemeFcGrantsHeader() {
                 <Image
                   src={imgSrc}
                   alt="FC Grants Banner"
-                  className="w-full h-auto rounded-[42px] object-contain object-center shadow-lg"
+                  className="w-full h-auto rounded-[42px] object-cover object-center shadow-lg"
                   fill
                   priority
                     onError={() => setImgSrc("/images/placeholder.png")} //  fallback works now

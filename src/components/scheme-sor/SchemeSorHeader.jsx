@@ -112,7 +112,7 @@ export function SchemeSorHeader() {
                   src={imgSrc}
                   fill
                   alt="SOR Grants Landscape"
-                  className="rounded-[42px] object-contain object-center shadow-lg"
+                  className="rounded-[42px] object-cover object-center shadow-lg"
                   priority
                     onError={() => setImgSrc("/images/placeholder.png")} // fallback works now
                     unoptimized
