@@ -61,9 +61,9 @@ export default function PanchayatBhawansTab({ selectedDistrict, isLoading }) {
       const districtName = typeof item.district === "object" ? (item.district?.name || "N/A") : (item.district || "N/A");
       const heading = `${gp} , ${districtName}, Arunachal pradesh`;
 
-      const assetImages = item?.documents?.assetImages || [];
-      const firstImageFile = Array.isArray(assetImages)
-        ? (assetImages[0]?.file || assetImages[0])
+      const documentsImg1 = item?.documents?.documentsImg1 || [];
+      const firstImageFile = Array.isArray(documentsImg1)
+        ? (documentsImg1[0]?.file || documentsImg1[0])
         : null;
       const image = resolveImageUrl(firstImageFile);
 
