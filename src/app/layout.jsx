@@ -1,13 +1,31 @@
-import { Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
 import AppLayout from "@/components/AppLayout";
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
+
+const montserrat = localFont({
+  src: [
+    {
+      path: "../fonts/Montserrat-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Montserrat-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Montserrat-Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
   variable: "--font-mont",
-  weight: ["400", "700", "900"],
 });
+
+
 
 export const metadata = {
   title: "Department of Panchayati Raj",
